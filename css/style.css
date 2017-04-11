@@ -1,0 +1,44 @@
+html, body {
+  width: 1000px;
+  height: 1000px;
+  padding: 0;
+  margin: 0;
+}
+
+.page-div{
+  width: inherit;
+  height: inherit;
+  padding: 0;
+  margin: 0;
+  background-color: pink;
+}
+
+#login-image{
+   width: 220px;
+   height: 200px;
+   margin-top: 100px;
+   margin-left: 40%;
+}
+
+.center-text{
+  text-align: center;
+}
+
+#login-inputs-div{
+  text-align: center;
+  width: 600px;
+  height: 270px;
+  margin-left: 20%;
+  background-color: #ffccd5;
+  padding-top: 10%;
+  border: 4px solid black
+}
+
+#login-adm-buttom{
+  width: 50%;
+}
+
+.login-forms{
+  width: 80%;
+
+}
