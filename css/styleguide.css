@@ -1,0 +1,143 @@
+body, html {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    width: 1200px;
+    height: 1000px; /* TEMPORARY */
+    margin: auto;
+    padding: 20px;
+    background-color: #fcfcfc;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccc;
+    font-family: Lato;
+}
+
+/* - - - - grid system - - - - */
+/* grid system implemented as in http://j4n.co/blog/Creating-your-own-css-grid-system */
+
+.grid-container {
+    width : 100%;
+}
+
+.grid-container * {
+    box-sizing: border-box; /* allows us easy padding on col's */ 
+}
+
+.row:before, .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* base column width is 16.66%; giving space for six 1-sized collums */
+[class*='col-'] {
+    float: left;
+    min-height: 1px; 
+    width: 16.66%;
+    padding: 12px;
+}
+
+.col-1{ width: 16.60%; }
+.col-2{ width: 33.33%; }
+.col-3{ width: 50%;    }
+.col-4{ width: 66.66%; }
+.col-5{ width: 83.33%; }
+.col-6{ width: 100%;   }
+
+/* - - - - end of grid system - - - -  */
+
+.color-block {
+    height: 80px;
+    border-style: solid;
+    border-width: 0 0 5px 0;
+    border-color: rgba(0,0,0, 0.25);
+    color: rgba(0,0,0, 0.4);
+}
+
+h1, h2, h3, h4 {
+    color: #444;
+}
+
+p {
+    color: #333;
+}
+
+.header-horizontal-line {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.btn {
+    margin: 0 5px;
+    padding: 15px;
+    background-color: #eee;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-bottom: 2px solid rgba(0,0,0, 0.3);
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.btn:hover {
+    border-bottom: 3px solid rgba(0,0,0, 0.3);
+}
+
+.btn:active {
+    vertical-align: top;
+    border-bottom: 1px solid rgba(0,0,0, 0.2);
+    padding-top: 16px;
+    color: #000;
+}
+
+[class*='btn-']:active {
+    color: #FFF;
+}
+
+.btn-primary {
+    background-color: #B3A590;
+    color: #FFF;
+}
+
+.btn-primary:hover {
+    background-color: #B3A590;
+}
+
+.btn-success {
+    background-color: #92DD9F;
+    color: #FFF;
+}
+
+.btn-primary:hover {
+    background-color: #B3A590;
+}
+
+.btn-danger {
+    background-color: #E05D6F;
+    color: #FFF;
+}
+
+.btn-primary:hover {
+    background-color: #B3A590;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+}
+
+th {
+    border-bottom: 2px solid rgba(0,0,0, 0.1);
+}
+
+td {
+    border-bottom: 1px solid rgba(0,0,0, 0.1);
+    padding: 8px;
+}
