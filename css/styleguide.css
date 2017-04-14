@@ -195,6 +195,8 @@ nav.top-navbar {
     margin-bottom: -8px;
     position: relative;
     z-index: 10;
+    border-bottom: 4px solid #ccc;
+    width: 1200px;
 }
 
 nav.top-navbar .left-side {
