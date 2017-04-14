@@ -167,12 +167,6 @@ img {
     width: 100%;
 }
 
-/*main.has-top-navbar {
-    position: relative;
-    top: -7px;
-    z-index: 0;
-}*/
-
 nav.top-navbar {
     height: 60px;
     background-color: #eee;
