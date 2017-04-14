@@ -137,14 +137,15 @@ p {
     background-color: #B3A590;
 }
 
+<<<<<<< HEAD
 .btn-two-col-reg{
   width: 95%;
 
-}
-
+=======
 .btn i {
     margin-left: 8px;
     margin-right: 8px;
+>>>>>>> client-pet-crud
 }
 
 table {
@@ -362,6 +363,7 @@ label {
   bottom: 1.5px;
 }
 
+<<<<<<< HEAD
 .breadcrumbs{
   color: rgb(102, 102, 102);
 }
@@ -384,9 +386,7 @@ label {
 }
 .foto-itens-second-row{
   margin-left: 15px;
-}
-}
-
+=======
 .pre-form-btn-left {
     margin-left: 0;
 }
@@ -491,4 +491,5 @@ label {
     float:right;
     font-size: 20px;
     color: #E05D6F;
+>>>>>>> client-pet-crud
 }
