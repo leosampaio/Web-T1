@@ -84,6 +84,12 @@ p {
     cursor: pointer;
 }
 
+.btn-small {
+    color: #FFF;
+    font-size: 15px;
+    padding: 7px 15px;
+}
+
 .btn:hover {
     border-bottom: 3px solid rgba(0,0,0, 0.3);
 }
@@ -92,6 +98,13 @@ p {
     vertical-align: top;
     border-bottom: 1px solid rgba(0,0,0, 0.2);
     padding-top: 16px;
+    color: #000;
+}
+
+.btn-small:active {
+    vertical-align: top;
+    border-bottom: 1px solid rgba(0,0,0, 0.2);
+    padding-top: 8px;
     color: #000;
 }
 
@@ -124,6 +137,11 @@ p {
 
 .btn-primary:hover {
     background-color: #B3A590;
+}
+
+.btn i {
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 table {
@@ -223,7 +241,7 @@ nav.top-navbar .right-side {
 
 .sidebar {
     background-color: #C98485;
-    height: 500px;
+    height: 600px;
     color: #333;
     border-style: solid;
     border-width: 1px;
@@ -340,4 +358,57 @@ form input.space-forms {
   margin: 5px;
   position: relative;
   bottom: 1.5px;
+}
+
+.pre-form-btn-left {
+    margin-left: 0;
+}
+
+.pre-form-btn-right {
+    margin-right: 0;
+    float: right;
+}
+
+.pet-card {
+    height: 180px;
+    background-color: #eee;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-bottom: 3px solid rgba(0,0,0, 0.2);
+    border-radius: 5px;
+}
+
+.pet-card:hover {
+    position: relative;
+    bottom: 2px;
+    border-bottom: 4px solid rgba(0,0,0, 0.3);
+    cursor: pointer;
+}
+
+.pet-pic-container {
+    padding: 0;
+}
+
+.pet-card img {
+    width: 90px;
+    height: 90px;
+    float: left;
+    object-fit: cover;
+    margin-left: 0;
+    border-radius: 5px 0 5px 0;
+    position: relative;
+}
+
+.pet-card-header-container {
+    height: 90px;
+    padding-bottom: 0px;
+    line-height: 22px;
+}
+
+.pet-card-header {
+    border-bottom: 1px solid #ccc;
+    height: 58px;
+}
+
+.pet-card-header h2 {
+    line-height: 45px;
 }
