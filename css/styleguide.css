@@ -220,6 +220,7 @@ nav.top-navbar .right-side {
     height:100%;
     float: left;
     line-height: 10px;
+    text-align: right;
 }
 
 .profile-pic-on-navbar {
@@ -231,12 +232,20 @@ nav.top-navbar .right-side {
     margin-left: 20px;
 }
 
-.links-top-navbar {
-    text-align: right;
+.links-top-navbar a:not(:last-child) {
+    margin-right: 15px;
 }
 
-.links-top-navbar a:first-child {
-    margin-right: 15px;
+.links-top-navbar i {
+    padding: 0 10px;
+}
+
+.links-top-navbar a {
+    text-decoration: none;
+}
+
+.links-top-navbar a:hover {
+    text-decoration: underline;
 }
 
 .sidebar {
@@ -411,4 +420,57 @@ form input.space-forms {
 
 .pet-card-header h2 {
     line-height: 45px;
+}
+
+.product-card {
+    height: 110px;
+    background-color: #eee;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-bottom: 3px solid rgba(0,0,0, 0.2);
+    border-radius: 5px;
+}
+
+.product-card:hover {
+    position: relative;
+    bottom: 2px;
+    border-bottom: 4px solid rgba(0,0,0, 0.3);
+    cursor: pointer;
+}
+
+.product-pic-container {
+    padding: 0;
+}
+
+.product-card img {
+    width: 90px;
+    height: 106px;
+    float: left;
+    object-fit: cover;
+    margin-left: 0;
+    border-radius: 5px 0 0 1px;
+}
+
+.product-card:hover img {
+    height: 105px;
+}
+
+.product-card-header-container {
+    height: 90px;
+    padding-bottom: 0px;
+    line-height: 22px;
+}
+
+.product-card-header {
+    border-bottom: 1px solid #ccc;
+    height: 58px;
+}
+
+.product-card-header h2 {
+    margin:0;
+}
+
+.product-card-header i {
+    float:right;
+    font-size: 20px;
+    color: #E05D6F;
 }
