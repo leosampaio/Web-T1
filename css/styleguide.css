@@ -2,18 +2,18 @@ body, html {
     width: 100%;
     padding: 0;
     margin: 0;
+    font-family: Lato;
 }
 
 main {
     width: 1200px;
     height: 1000px; /* TEMPORARY */
     margin: auto;
-    padding: 20px;
     background-color: #fcfcfc;
     border-style: solid;
     border-width: 1px;
     border-color: #ccc;
-    font-family: Lato;
+    border-top: 0;
 }
 
 /* - - - - grid system - - - - */
@@ -21,6 +21,7 @@ main {
 
 .grid-container {
     width : 100%;
+    padding: 20px;
 }
 
 .grid-container * {
@@ -79,6 +80,7 @@ p {
     border-bottom: 2px solid rgba(0,0,0, 0.3);
     border-radius: 5px;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -140,4 +142,77 @@ th {
 td {
     border-bottom: 1px solid rgba(0,0,0, 0.1);
     padding: 8px;
+}
+
+a {
+    color: #B3A590;
+}
+
+code {
+    width: 100%;
+    display: block;
+    padding: 5px;
+    background-color: #B3A590;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.icons-example {
+    color: #E05D6F;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
+
+nav.top-navbar {
+    height: 60px;
+    background-color: #eee;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccc;
+    width: 1200px;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+nav.top-navbar .left-side {
+    float:left;
+    width: 200px;
+    margin-left: 20px;
+}
+
+nav.top-navbar .right-side {
+    float:right;
+    margin-right: 20px;
+}
+
+.logo-on-navbar {
+    width: 140px;
+    padding: 10px;
+}
+
+.profile-info-navbar {
+    height:100%;
+    float: left;
+    line-height: 10px;
+}
+
+.profile-pic-on-navbar {
+    width: 60px;
+    height: 60px;
+    float: right;
+    object-fit: cover;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.links-top-navbar {
+    text-align: right;
+}
+
+.links-top-navbar a:first-child {
+    margin-right: 15px;
 }
