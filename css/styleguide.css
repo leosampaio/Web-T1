@@ -167,16 +167,25 @@ img {
     width: 100%;
 }
 
+/*main.has-top-navbar {
+    position: relative;
+    top: -7px;
+    z-index: 0;
+}*/
+
 nav.top-navbar {
     height: 60px;
     background-color: #eee;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #ccc;
+    border: 1px solid #ccc;
+    border-bottom: 4px solid #ccc;
     width: 1200px;
     margin: auto;
     padding-top: 15px;
     padding-bottom: 15px;
+    border-radius:  0 0 10px 10px;
+    margin-bottom: -8px;
+    position: relative;
+    z-index: 10;
 }
 
 nav.top-navbar .left-side {
