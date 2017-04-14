@@ -25,7 +25,7 @@ main {
 }
 
 .grid-container * {
-    box-sizing: border-box; /* allows us easy padding on col's */ 
+    box-sizing: border-box; /* allows us easy padding on col's */
 }
 
 .row:before, .row:after {
@@ -37,7 +37,7 @@ main {
 /* base column width is 16.66%; giving space for six 1-sized collums */
 [class*='col-'] {
     float: left;
-    min-height: 1px; 
+    min-height: 1px;
     width: 16.66%;
     padding: 12px;
 }
@@ -101,7 +101,7 @@ p {
 
 .btn-primary {
     background-color: #B3A590;
-    color: #FFF;
+    color: #FFF;="../
 }
 
 .btn-primary:hover {
@@ -276,7 +276,7 @@ footer {
     margin-bottom:0px;
     background-color: #eee;
     text-align: center;
-    
+
 }
 
 footer p {

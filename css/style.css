@@ -5,20 +5,7 @@ html, body {
   margin: 0;
 }
 
-.page-div{
-  width: inherit;
-  height: inherit;
-  padding: 0;
-  margin: 0;
-  background-color: pink;
-}
 
-#login-image{
-   width: 220px;
-   height: 200px;
-   margin-top: 100px;
-   margin-left: 40%;
-}
 
 .center-text{
   text-align: center;
@@ -34,16 +21,12 @@ html, body {
   border: 4px solid black
 }
 
-#login-adm-buttom{
-  width: 50%;
-}
-
 .login-forms{
   width: 80%;
 
 }
 
-/* BARRA DE NAVEGAÇÃO */
+/* BARRA DE NAVEGAï¿½ï¿½O */
 nav {
     background-color: #dddddd;
     margin: 0;
@@ -70,4 +53,3 @@ nav > ul > li > a {
     font: 1em "Open Sans", sans-serif;
 }
 /* ---------------------------------------------------------------- */
-
