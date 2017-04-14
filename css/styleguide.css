@@ -52,8 +52,6 @@ main {
 /* - - - - end of grid system - - - -  */
 
 .color-block {
-    height: 80px;
-    border-style: solid;
     border-width: 0 0 5px 0;
     border-color: rgba(0,0,0, 0.25);
     color: rgba(0,0,0, 0.4);
@@ -126,15 +124,16 @@ p {
     background-color: #B3A590;
 }
 
+.btn-two-col-reg{
+  width: 95%;
+
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
-    text-align: left;
-    padding: 10px;
-}
 
 th {
     border-bottom: 2px solid rgba(0,0,0, 0.1);
@@ -171,8 +170,6 @@ nav.top-navbar {
     height: 60px;
     background-color: #eee;
     border: 1px solid #ccc;
-    border-bottom: 4px solid #ccc;
-    width: 1200px;
     margin: auto;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -189,7 +186,7 @@ nav.top-navbar .left-side {
 }
 
 nav.top-navbar .right-side {
-    float:right;
+    float: right;
     margin-right: 20px;
 }
 
@@ -326,13 +323,9 @@ form input[type="text"]:focus {
     margin: 20px 0;
 }
 
-form input.space-forms {
-  margin-bottom: 20px;
-}
-
-.breadcrumbs{
-  position: relative;
-  top: -15px;
+label {
+  display: block;
+  width: 100%;
 }
 
 .breadcrumbs i {
@@ -340,4 +333,28 @@ form input.space-forms {
   margin: 5px;
   position: relative;
   bottom: 1.5px;
+}
+
+.breadcrumbs{
+  color: rgb(102, 102, 102);
+}
+
+.photo-reg{
+  margin-top: 40px;
+  margin-left: 100px;
+  height: 160px;
+  width: 160px;
+  border: 7px solid;
+  border-radius: 5px;
+  border-color: rgb(102, 102, 102);
+  background-color: rgb(191, 191, 191);
+}
+
+.foto-itens-first-row{
+  margin-top: 100px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+.foto-itens-second-row{
+  margin-left: 15px;
 }
