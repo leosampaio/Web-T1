@@ -500,3 +500,13 @@ label {
     font-size: 20px;
     color: #E05D6F;
 }
+
+.border-pet-image-reg{
+    border: solid 3px;
+    border-color: rgb(102, 102, 102);
+    border-radius: 5px;
+    width:42px;
+    padding-bottom: 2px;
+    padding-top: 1px;
+    padding-left: 3px;
+}
