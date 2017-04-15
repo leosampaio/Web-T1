@@ -152,6 +152,8 @@ p {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 1.5px;
+    margin-bottom: 1px;
 }
 
 th, td {
@@ -513,6 +515,4 @@ label {
 
 select {
     margin: 15px;
-
-
 }
