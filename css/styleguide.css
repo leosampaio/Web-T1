@@ -279,10 +279,11 @@ nav.top-navbar .right-side {
 }
 
 .sidebar .sidebar-item:hover {
-    position: relative;
-    left: 1px;
+    /*position: relative;*/
+    /*left: 1px;*/
     border-top: 0px solid rgba(0,0,0, 0.1);
-    border-left: 3px solid rgba(0,0,0, 0.2);
+    border-left: 4px solid rgba(0,0,0, 0.2);
+    border-radius: 0 0 0 2px;
 }
 
 .sidebar .sidebar-item i {
@@ -503,7 +504,7 @@ label {
     color: #E05D6F;
 }
 
-.border-pet-image-reg{
+.border-pet-image-reg {
     border: solid 3px;
     border-color: rgb(102, 102, 102);
     border-radius: 5px;
@@ -550,7 +551,7 @@ select {
     border-bottom: 0 none;
 }
 
-.aba:target a, a:hover {
+.aba:target a, .aba a:hover {
     background: #E9DCA7;
 }
 
