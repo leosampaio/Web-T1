@@ -519,6 +519,8 @@ select {
     width: 220px;
 }
 
+
+/* --- Modificações necessárias : Sabrina;  */
 .put-right {
     margin-right: 0;
     float: right;
@@ -564,3 +566,4 @@ select {
 .aba:target .conteudo {
     z-index: -1;
 }
+/******************************************************************/
