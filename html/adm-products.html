@@ -1,0 +1,95 @@
+<!-- python -m SimpleHTTPServer 8000 -->
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/styleguide.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Petioro</title>
+</head>
+
+<body>
+
+  <nav class="top-navbar">
+      <div class="left-side">
+        <img class="logo-on-navbar" src=../img/petioro_logo.png />
+      </div>
+      <div class="right-side">
+        <div class="profile-info-navbar">
+          <p>Bem vindo Mestre Catioro</p>
+          <div class="links-top-navbar">
+            <a href="#">Perfil</a>
+            <a href="#">Sair</a>
+          </div>
+        </div>
+        <img class="profile-pic-on-navbar" src=../img/michelle.jpg />
+      </div>
+  </nav>
+
+  <main>
+    <div class="grid-container">
+      <div class="row">
+
+        <div class="col-1">
+          <nav class="sidebar">
+            <a href="#" class="sidebar-item sidebar-button selected"><i class="fa fa-lock"></i> Administradores</a>
+            <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
+            <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
+            <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
+            <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
+            <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Calendário</a>
+          </nav>
+        </div>
+
+        <div class="col-5">
+          <div class="row">
+            <div class="col-6">
+              <h1 class="header-horizontal-line">Produtos para nossos animaizinhos</h1>
+            </div>
+          </div>  
+
+          <div class="row">
+            <div class="col-2">
+              <button class="btn btn-two-col-reg btn-primary">
+                <i class="fa fa-trash fa-lg" aria-hidden="true"></i>&nbsp; Apagar Selecionados
+              </button>
+            </div>
+            <div class="col-2">
+              <button class="btn btn-two-col-reg btn-primary btn-right">
+                <i class="fa fa-print fa-lg" aria-hidden="true"></i>&nbsp; Imprimir
+              </button>
+            </div>
+            <div class="col-2">
+              <button class="btn btn-two-col-reg btn-primary btn-right">
+                <i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp; Novo Produto
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Preço</th>
+              <th>Qtde em Estoque</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Shampoo Cachorro Cheiroso</td>
+              <td>R$ 14,99</td>
+              <td>28</td>
+            </tr>
+          </table>  
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; Copyright 2017, ICMC/USP - Feito com <i class="fa fa-heart" style="color: #E05D6F"></i></p>
+    </footer>
+  </main>
+</body>
+</html>
