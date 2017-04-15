@@ -519,7 +519,48 @@ select {
     width: 220px;
 }
 
-.select-right {
+.put-right {
     margin-right: 0;
     float: right;
+}
+
+.abas {
+    position: relative;
+}
+
+.aba {
+    display: inline;
+    width: auto;
+}
+
+.aba > a {
+    padding: 0.5em 1em;
+    background: #D4C6A3;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CCC #CCC #FFF;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    width: auto;
+}
+
+.aba:not(:target) a {
+    border-bottom: 0 none;
+}
+
+.aba:target a, a:hover {
+    background: #E9DCA7;
+}
+
+.conteudo {
+    position: absolute;
+    left: 0;
+    top: calc(2em + 4px); /* altura do link + bordas */
+    z-index: -2;
+    border: 1px solid #CCC;
+    background-color: white;
+}
+
+.aba:target .conteudo {
+    z-index: -1;
 }
