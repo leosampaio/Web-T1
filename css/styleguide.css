@@ -514,5 +514,12 @@ label {
 }
 
 select {
-    margin: 15px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 220px;
+}
+
+.select-right {
+    margin-right: 0;
+    float: right;
 }
