@@ -513,6 +513,84 @@ label {
 
 select {
     margin: 15px;
+}
 
+/*  CALENDAR */
+
+.head-month-calendar{
+    background: #e05d6f;
+    height: 70px;
+    font-weight: bold;
+    font-size: 35px;
+    color: white;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.btn-next-calendar{
+    text-align: right;
+}
+
+.head-calendar{
+    text-align: center;
+    background: #c98485;
 
 }
+
+.day-schedule{
+    background-color: #D4C6A3;
+    text-align: center;
+    color: #757575;
+    font-weight: bold;
+}
+
+.size-day-schedule{
+    height: 574px;
+    padding-top: 287px;
+    font-weight: bold;
+}
+
+.schedules{
+    height: 50px;
+    border: dashed 2px;
+    border-color: #c5c5c5;
+    padding-top: 15px;
+    padding-left: 20px;
+    color: #757575;
+    font-weight: bold;
+}
+.color-arround{
+    background-color: #D4C6A3;
+}
+
+.schedule-color-odd{
+    background-color: #e9dca7;
+}
+
+.schedule-color-even{
+    background-color: #fff2bb;
+}
+.schedule-color-free-odd{
+    background-color: #d0d0d0;
+}
+.schedule-color-free-even{
+    background-color: #eeeeee;
+}
+
+.border-days-calendar{
+    border-bottom: solid 1px;
+    border-color: #b3a590;
+}
+
+.btn-calendar{
+    padding: 3px;
+    background-color: transparent;
+    border: transparent;
+    color: #fff2bb;
+}
+
+.itens-follow{
+    display: inline;
+    padding: 0px 50px;
+}
+
