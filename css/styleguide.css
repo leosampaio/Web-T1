@@ -390,9 +390,10 @@ form input[type="text"]:disabled {
     padding: 8px 10px;
 }
 
-#login-button {
+.login-button {
     width: 100%;
     margin: 20px 0;
+    text-align: center;
 }
 
 label {
@@ -739,4 +740,13 @@ label {
     margin: 10px;
     margin-left: 0;
     width: 100%;
+}
+
+.sales-add-to-cart-link {
+    text-decoration: none;
+}
+
+.sales-add-to-cart-link i {
+    font-size: 18px;
+    margin: 0 10px;
 }
