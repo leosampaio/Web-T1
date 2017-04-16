@@ -621,6 +621,11 @@ label {
     cursor: pointer;
 }
 
+.del-schedule{
+    float: right;
+    cursor: pointer;
+}
+
 .schedules:first-child {
     border-radius: 5px 5px 0 0;
 }
@@ -772,3 +777,4 @@ form input[type="text"].search-bar + i {
     color: #555;
     position: absolute;
 }
+
