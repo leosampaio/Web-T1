@@ -1,0 +1,109 @@
+<!-- python -m SimpleHTTPServer 8000 -->
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/styleguide.css">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Petioro</title>
+</head>
+
+<body>
+
+  <nav class="top-navbar">
+      <div class="left-side">
+        <img class="logo-on-navbar" src=../img/petioro_logo.png />
+      </div>
+      <div class="right-side">
+        <div class="profile-info-navbar">
+          <p>Bem vindo Cliente Catioro</p>
+          <div class="links-top-navbar">
+            <a href="#"><i class="fa fa-cart-plus"></i>Carrinho (1)</a>
+            <a href="#">Perfil</a>
+            <a href="#">Sair</a>
+          </div>
+        </div>
+        <img class="profile-pic-on-navbar" src="../img/client-placeholder.jpg" />
+      </div>
+  </nav>
+
+  <main>
+    <div class="grid-container">
+      <div class="row">
+        <div class="col-1">
+        <nav class="sidebar">
+          <a href="#" class="sidebar-item sidebar-button selected"><i class="fa fa-paw"></i> Pets</a>
+          <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+          <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-shopping-cart"></i> Produtos</a>
+        </nav>
+        </div>
+
+        <div class="col-5">
+          <div class="row">
+            <div class="col-6">
+              <h1 class="header-horizontal-line">Carrinho</h1>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class="col-6">
+                <table>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome do Produto</th>
+                    <th>Qtde</th>
+                    <th>Valor</th>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>Shampoo Cachorro Cheiroso</td>
+                    <td>1</td>
+                    <td>R$ 14,99</td>
+                  </tr>
+                </table>  
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <h3 class="cart-total align-right">Total: R$ 14,99</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <h2> Método de Pagamento </h1>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <ul class="abas">
+                  <li class="aba" id="aba-1">
+                    <a href="#aba-1">Abaaaaaaaaaaaaaaaaaaaaaaaa</a>
+                    <section class="conteudo"> Conteúdo da Aba 1 </section>
+                  </li>
+                  <li class="aba" id="aba-2">
+                    <a href="#aba-2">Aba 2</a> 
+                    <section class="conteudo"> Conteúdo da Aba 2 </section>
+                  </li>
+                  <li class="aba" id="aba-3">
+                    <a href="#aba-3">Aba 3</a> 
+                    <section class="conteudo"> Conteúdo da Aba 3 </section>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <footer>
+      <p>&copy; Copyright 2017, ICMC/USP - Feito com <i class="fa fa-heart" style="color: #E05D6F"></i></p>
+    </footer>
+  </main>
+</body>
+</html>

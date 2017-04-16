@@ -149,9 +149,35 @@ p {
     margin-right: 8px;
 }
 
+.select {
+    margin: 0 5px;
+    padding: 7px 40px 7px 15px;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-bottom: 2px solid rgba(0,0,0, 0.2);
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    appearance: none;
+    outline: none;
+    /* recreate arrow, tip from http://stackoverflow.com/a/38764639 */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIwLjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA0LjkgMTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQuOSAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiM0NDQ0NDQ7fQo8L3N0eWxlPgo8dGl0bGU+YXJyb3dzPC90aXRsZT4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSIxLjQsNC43IDIuNSwzLjIgMy41LDQuNyAiLz4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSIzLjUsNS4zIDIuNSw2LjggMS40LDUuMyAiLz4KPC9zdmc+Cg==) no-repeat 95% 50%;
+    background-color: #eee;
+    color: #333;
+}
+
+.select-primary {
+    background-color: #B3A590;
+    color: #FFF;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 1.5px;
+    margin-bottom: 1px;
 }
 
 th, td {
@@ -277,10 +303,11 @@ nav.top-navbar .right-side {
 }
 
 .sidebar .sidebar-item:hover {
-    position: relative;
-    left: 1px;
+    /*position: relative;*/
+    /*left: 1px;*/
     border-top: 0px solid rgba(0,0,0, 0.1);
-    border-left: 3px solid rgba(0,0,0, 0.2);
+    border-left: 4px solid rgba(0,0,0, 0.2);
+    border-radius: 0 0 0 2px;
 }
 
 .sidebar .sidebar-item i {
@@ -338,6 +365,7 @@ footer p {
 
 form input[type="text"] {
     padding: 5px;
+    padding-left: 8px;
     border-radius: 5px;
     border: none;
     border: 1px solid rgba(0,0,0, 0.2);
@@ -347,10 +375,19 @@ form input[type="text"] {
     margin: 10px 0;
     outline: none;
     font-size: 16px;
+    color: #333;
 }
 
 form input[type="text"]:focus {
     border-bottom: 3px solid rgba(0,0,0, 0.3);
+}
+
+form input[type="text"]:disabled {
+    /*border-bottom: 1px solid rgba(0,0,0, 0.2);*/
+    background-color: #ddd;
+    color: #999;
+    font-size: 12px;
+    padding: 8px 10px;
 }
 
 #login-button {
@@ -379,20 +416,19 @@ label {
   margin-left: 100px;
   height: 160px;
   width: 160px;
-  border: 7px solid;
   border-radius: 5px;
-  border-color: rgb(102, 102, 102);
-  background-color: rgb(191, 191, 191);
+  background-color: #eee;
+  border: 4px solid rgba(0, 0, 0, 0.3);
 }
 
-.foto-itens-first-row{
+.foto-itens-first-row {
   margin-top: 100px;
   margin-bottom: 15px;
   margin-left: 15px;
 }
+
 .foto-itens-second-row{
   margin-left: 15px;
-}
 }
 
 .pre-form-btn-left {
@@ -501,7 +537,7 @@ label {
     color: #E05D6F;
 }
 
-.border-pet-image-reg{
+.border-pet-image-reg {
     border: solid 3px;
     border-color: rgb(102, 102, 102);
     border-radius: 5px;
@@ -511,11 +547,15 @@ label {
     padding-left: 3px;
 }
 
-select {
-    margin: 15px;
+.put-right {
+    margin-right: 0;
+    float: right;
 }
 
-/*  CALENDAR */
+.align-right {
+    margin-right: 0;
+    float: right;
+}
 
 .head-month-calendar{
     background: #e05d6f;
@@ -594,3 +634,64 @@ select {
     padding: 0px 50px;
 }
 
+.align-left {
+    margin-left: 0;
+}
+
+.abas {
+    position: relative;
+}
+
+.aba {
+    display: inline;
+    width: auto;
+}
+
+.aba > a {
+    padding: 0.5em 1em;
+    background: #D4C6A3;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CCC #CCC #FFF;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    width: auto;
+}
+
+.aba:not(:target) a {
+    border-bottom: 0 none;
+}
+
+.aba:target a, .aba a:hover {
+    background: #E9DCA7;
+}
+
+.conteudo {
+    position: absolute;
+    left: 0;
+    top: calc(2em + 4px); /* altura do link + bordas */
+    z-index: -2;
+    border: 1px solid #CCC;
+    background-color: white;
+}
+
+.aba:target .conteudo {
+    z-index: -1;
+}
+/******************************************************************/
+
+.cart-total {
+    font-size: 24px;
+    margin: 0;
+}
+
+.earnings-big-values {
+    font-size: 24px;
+    margin: 0;
+}
+
+.select-prod-serv {
+    margin: 10px;
+    margin-left: 0;
+    width: 100%;
+}

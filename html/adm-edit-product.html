@@ -33,9 +33,9 @@
 
         <div class="col-1">
           <nav class="sidebar">
-            <a href="#" class="sidebar-item sidebar-button selected"><i class="fa fa-lock"></i> Administradores</a>
+            <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
             <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
-            <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
+            <a href="#" class="sidebar-item sidebar-button selected"><i class="fa fa-list"></i> Produtos</a>
             <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
             <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
             <a href="#" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Calendário</a>
@@ -46,28 +46,34 @@
 
           <div class="row">
             <div class="col-6">
-              <h1 class="header-horizontal-line">Novo Administrador</h1>
+              <h1 class="header-horizontal-line">Editar Dados Produto</h1>
               <p class="breadcrumbs">
-                <a href=http://localhost:8000/html/new-adm.html#>Administradores</a>
+                <a href=http://#/>Produtos</a>
                 <i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color: rgb(102, 102, 102)"></i>
-                Novo
+                Editar Produto
               </p>
             </div>
           </div>
           <div class="row">
             <form>
               <div class="col-3">
+                <label for="prod-serv-select">Selecione a opção para cadastrar:</label>
+                <select class="select select-prod-serv">
+                  <option value="product" selected>Produto</option>
+                  <option value="service">Serviço</option>
+                </select>
+
                 <label for="name-prod-reg">Nome</label>
                 <input class="two-col-input space-btw-two-co" type="text" name="name-prod-reg">
-                <label for="code-prod-reg">Username</label>
+                <label for="code-prod-reg">Código</label>
                 <input class="two-col-input" type="text" name="code-prod-reg">
-                <label for="price-prod-reg">Email</label>
+                <label for="price-prod-reg">Preço</label>
                 <input class="two-col-input" type="text" name="price-prod-reg">
-                <label for="desc-prod-reg">Telefone</label>
+                <label for="desc-prod-reg">Descrição</label>
                 <input class="two-col-input" type="text" name="desc-prod-reg">
               </div>
               <div class="col-3">
-                <label for="name-prod-reg">Senha</label>
+                <label for="name-prod-reg">Quantidade em Estoque</label>
                 <input class="two-col-input" type="text" name="name-prod-reg">
                 <div class="row">
                   <div class="col-4 photo-reg">
@@ -85,7 +91,7 @@
             </form>
             <div class="row">
               <div class="col-3">
-                <button class="btn btn-two-col-reg btn-primary">
+                <button class="btn btn-two-col-reg btn-primary align-left">
                   <i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i>&nbsp; Cancelar
                 </button>
               </div>
@@ -99,7 +105,7 @@
         </div>
 
       </div>
-
+      
     </div>
 
     <footer>
