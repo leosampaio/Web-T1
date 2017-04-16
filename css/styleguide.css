@@ -613,12 +613,12 @@ label {
     padding-top: 15px;
     padding-left: 20px;
     color: #757575;
-    font-weight: bold;
-    cursor: pointer;
+    font-weight: bold;   
 }
 
-.schedules:hover {
+.calendar-with-hover .schedules:hover {
     border-left: 5px solid rgba(0,0,0,0.1);
+    cursor: pointer;
 }
 
 .schedules:first-child {
