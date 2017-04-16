@@ -622,7 +622,7 @@ label {
 }
 
 .del-schedule{
-    float: right;
+    /*float: right;*/
     cursor: pointer;
 }
 
@@ -778,3 +778,6 @@ form input[type="text"].search-bar + i {
     position: absolute;
 }
 
+.itens-follow i {
+    margin: 0 10px;
+}
