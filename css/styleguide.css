@@ -7,7 +7,6 @@ body, html {
 
 main {
     width: 1200px;
-    /*height: 1000px; /* TEMPORARY */
     margin: auto;
     background-color: #fcfcfc;
     border-style: solid;
@@ -78,7 +77,7 @@ p {
     padding: 15px;
     background-color: #eee;
     border: 1px solid rgba(0,0,0, 0.1);
-    border-bottom: 2px solid rgba(0,0,0, 0.3);
+    border-bottom: 3px solid rgba(0,0,0, 0.2);
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
@@ -91,7 +90,7 @@ p {
 }
 
 .btn:hover {
-    border-bottom: 3px solid rgba(0,0,0, 0.3);
+    border-bottom: 4px solid rgba(0,0,0, 0.2);
 }
 
 .btn:active {
@@ -141,7 +140,6 @@ p {
 
 .btn-two-col-reg{
   width: 95%;
-
 }
 
 .btn i {
@@ -153,7 +151,7 @@ p {
     margin: 0 5px;
     padding: 7px 40px 7px 15px;
     border: 1px solid rgba(0,0,0, 0.1);
-    border-bottom: 2px solid rgba(0,0,0, 0.2);
+    border-bottom: 3px solid rgba(0,0,0, 0.2);
     border-radius: 5px;
     font-size: 15px;
     cursor: pointer;
@@ -780,4 +778,39 @@ form input[type="text"].search-bar + i {
 
 .itens-follow i {
     margin: 0 10px;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    margin-right: -10px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 0;
+    transition: 0.3s;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 3px solid rgba(0,0,0,0.1);
+}
+
+input[type="checkbox"]:checked:before {
+  content:'\f00c';
+  font: normal normal normal 12px/1 FontAwesome;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1em;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.3em;
+  text-align: center;
+  color: #eee;
+  position: relative;
+  left: 3px;
+  top: 2px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #B3A590;
+    margin-bottom: 0;
+    transition: 0.3s;
 }
