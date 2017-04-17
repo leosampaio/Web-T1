@@ -39,4 +39,6 @@ Nosso trabalho possui as pastas css, html e img, o arquivo PDF Petioro e o READM
 	- client-pets: página que exibe os pets cadastrados do cliente.
 	- client-products: página para que o cliente realize compras online.
 	- style-guide: página amostra dos estilos utilizados no sistema!
+
+	**Fica mais bonito no Safari, IE, Chrome e Opera devido ao estilo do checkbox!
 	
