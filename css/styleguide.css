@@ -792,6 +792,7 @@ input[type="checkbox"] {
     transition: 0.3s;
     border: 1px solid rgba(0,0,0,0.1);
     border-bottom: 3px solid rgba(0,0,0,0.1);
+    outline: none;
 }
 
 input[type="checkbox"]:checked:before {
