@@ -7,25 +7,17 @@
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Petioro</title>
+
+  <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <!-- Components -->
+  <link rel="import" href="/bower_components/polymer/polymer.html">
+  <link rel="import" href="../elements/top-navbar.html">
 </head>
 
 <body>
 
-<nav class="top-navbar">
-  <div class="left-side">
-    <img class="logo-on-navbar" src=../img/petioro_logo.png />
-  </div>
-  <div class="right-side">
-    <div class="profile-info-navbar">
-      <p>Bem vindo Mestre Catioro</p>
-      <div class="links-top-navbar">
-        <a href="#">Perfil</a>
-        <a href="adm-login.html">Sair</a>
-      </div>
-    </div>
-    <img class="profile-pic-on-navbar" src=../img/michelle.jpg />
-  </div>
-</nav>
+<top-navbar username="Mestre Catioro" profile-pic="../img/client-placeholder.jpg"></top-navbar>
 
 <main>
   <div class="grid-container">

@@ -1,0 +1,22 @@
+{
+  "name": "petioro",
+  "homepage": "https://github.com/leosampaio/Web-T1",
+  "authors": [
+    "Leonardo Sampaio Ferraz Ribeiro <leo.sampaio.ferraz.ribeiro@gmail.com>"
+  ],
+  "description": "webapp for pet shop management",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  }
+}

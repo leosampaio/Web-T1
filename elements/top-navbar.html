@@ -1,0 +1,113 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Import the styles from the style module my-colors -->
+<link rel="import" href="../css/style-module.html">
+
+<dom-module id="top-navbar">
+  <template>
+    <!-- Include the imported styles from my-colors -->
+    <style include="style-module">
+      nav.top-navbar {
+          height: 60px;
+          background-color: #eee;
+          border: 1px solid #ccc;
+          margin: auto;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          border-radius:  0 0 10px 10px;
+          margin-bottom: -8px;
+          position: relative;
+          z-index: 10;
+          border-bottom: 4px solid #ccc;
+          width: 1200px;
+      }
+
+      nav.top-navbar .left-side {
+          float:left;
+          width: 200px;
+          margin-left: 20px;
+      }
+
+      nav.top-navbar .right-side {
+          float: right;
+          margin-right: 20px;
+      }
+
+      .logo-on-navbar {
+          width: 140px;
+          padding: 10px;
+      }
+
+      .profile-info-navbar {
+          height:100%;
+          float: left;
+          line-height: 10px;
+          text-align: right;
+      }
+
+      .profile-pic {
+          width: 60px;
+          height: 60px;
+          float: right;
+          object-fit: cover;
+          border-radius: 50px;
+          margin-left: 20px;
+      }
+
+      .links-top-navbar a:not(:last-child) {
+          margin-right: 15px;
+      }
+
+      .links-top-navbar i {
+          padding: 0 10px;
+      }
+
+      .links-top-navbar a {
+          text-decoration: none;
+      }
+
+      .links-top-navbar a:hover {
+          text-decoration: underline;
+      }
+    </style>
+
+    <nav class="top-navbar">
+        <div class="left-side">
+          <img class="logo-on-navbar" src=../img/petioro_logo.png />
+        </div>
+        <div class="right-side">
+          <div class="profile-info-navbar">
+            <p>Bem vindo {{username}}</p>
+            <div class="links-top-navbar">
+              <a href="client-cart.html" hidden={{admin}}>
+                <i class="fa fa-cart-plus"></i> Carrinho (1)
+              </a>
+              <a href="#">Perfil</a>
+              <a href="adm-login.html">Sair</a>
+            </div>
+          </div>
+          <img class="profile-pic" src={{profile-pic}} />
+        </div>
+    </nav>
+
+  </template>
+  <script>
+    class TopNavbar extends Polymer.Element {
+      static get is() {
+        return "top-navbar";
+      }
+
+      static get properties() {
+        return {
+          username: String,
+          admin: Boolean,
+          "profile-pic": String
+        }
+      }
+
+
+    }
+
+    customElements.define(TopNavbar.is, TopNavbar);
+  </script>
+</dom-module>
