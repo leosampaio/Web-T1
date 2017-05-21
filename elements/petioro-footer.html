@@ -1,0 +1,40 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Import the styles from the style module my-colors -->
+<link rel="import" href="../css/style-module.html">
+
+<dom-module id="petioro-footer">
+  <template>
+    <!-- Include the imported styles from my-colors -->
+    <style include="style-module">
+      footer {
+          height:50px;
+          bottom:0px;
+          left:0px;
+          right:0px;
+          margin-bottom:0px;
+          background-color: #eee;
+          text-align: center;
+
+      }
+      footer p {
+          line-height: 50px;
+          height: 100%;
+          color: #888;
+      }
+    </style>
+
+    <footer>
+      <p>&copy; Copyright 2017, ICMC/USP - Feito com <i class="fa fa-heart" style="color: #E05D6F"></i></p>
+    </footer>
+
+  </template>
+  <script>
+    class PetioroFooter extends Polymer.Element {
+      static get is() {
+        return "petioro-footer";
+      }
+    }
+    customElements.define(PetioroFooter.is, PetioroFooter);
+  </script>
+</dom-module>

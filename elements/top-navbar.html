@@ -79,7 +79,7 @@
           <div class="profile-info-navbar">
             <p>Bem vindo {{username}}</p>
             <div class="links-top-navbar">
-              <a href="client-cart.html" hidden={{admin}}>
+              <a id="cart-link" href="#" hidden={{admin}}>
                 <i class="fa fa-cart-plus"></i> Carrinho (1)
               </a>
               <a href="#">Perfil</a>
@@ -105,7 +105,14 @@
         }
       }
 
-
+      ready() {
+        super.ready();
+        var cartLink = this.$['cart-link'];
+        cartLink.addEventListener('click', e => {
+          var event = new CustomEvent('did-click-cart', {bubbles: true, composed: true});
+          this.dispatchEvent(event);
+        });
+      }
     }
 
     customElements.define(TopNavbar.is, TopNavbar);
