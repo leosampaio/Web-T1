@@ -82,8 +82,8 @@
               <a id="cart-link" href="#" hidden={{admin}}>
                 <i class="fa fa-cart-plus"></i> Carrinho (1)
               </a>
-              <a href="#">Perfil</a>
-              <a href="adm-login.html">Sair</a>
+              <a id="profile-link" href="#">Perfil</a>
+              <a id="logout-link" href="#">Sair</a>
             </div>
           </div>
           <img class="profile-pic" src={{profile-pic}} />
@@ -110,6 +110,18 @@
         var cartLink = this.$['cart-link'];
         cartLink.addEventListener('click', e => {
           var event = new CustomEvent('did-click-cart', {bubbles: true, composed: true});
+          this.dispatchEvent(event);
+        });
+
+        var profileLink = this.$['profile-link'];
+        profileLink.addEventListener('click', e => {
+          var event = new CustomEvent('did-click-profile', {bubbles: true, composed: true});
+          this.dispatchEvent(event);
+        });
+
+         var profileLink = this.$['logout-link'];
+        profileLink.addEventListener('click', e => {
+          var event = new CustomEvent('did-click-logout', {bubbles: true, composed: true});
           this.dispatchEvent(event);
         });
       }
