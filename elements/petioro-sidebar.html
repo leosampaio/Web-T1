@@ -1,0 +1,149 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- Import the styles from the style module my-colors -->
+<link rel="import" href="../css/style-module.html">
+
+<dom-module id="side-navbar">
+  <template>
+    <!-- Include the imported styles from my-colors -->
+    <style include="style-module">
+      :host *{
+        box-sizing: border-box;
+      }
+
+      .sidebar {
+        background-color: #C98485;
+        height: 600px;
+        color: #333;
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgba(0,0,0, 0.2);
+        border-bottom-width: 5px;
+        border-radius: 10px;
+      }
+
+      .sidebar .sidebar-item {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        width: 100%;
+        border-bottom: 2px solid rgba(0,0,0, 0.1);
+        color: #FFF;
+        height: 50px;
+        line-height: 25px;
+        font-size: 14px;
+      }
+
+      .sidebar .sidebar-item:hover {
+        /*position: relative;*/
+        /*left: 1px;*/
+        border-top: 0px solid rgba(0,0,0, 0.1);
+        border-left: 4px solid rgba(0,0,0, 0.2);
+        border-radius: 0 0 0 2px;
+      }
+
+      .sidebar .sidebar-item i {
+        width: 30px;
+        text-align: center;
+      }
+
+      .sidebar .sidebar-item:first-child {
+        margin-top: 40px;
+        border-top: 2px solid rgba(0,0,0, 0.1);
+      }
+
+      .sidebar .sidebar-item.selected {
+        border: none;
+        border-left: 3px solid rgba(0,0,0, 0.2);
+        position: relative;
+        left: 1px;
+        background-color: #B27576;
+      }
+    </style>
+
+    <template is="dom-if" if="{{$(admin)}}">
+      <nav class="sidebar">
+        <a href="adm-adms.html" id="adm-link" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
+        <a href="adm-clients.html" id="clients-link" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
+        <a href="adm-products.html" id="products-link" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
+        <a href="adm-earnings.html" id="earnings-link" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
+        <a href="adm-sales.html" id="sales-link" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
+        <a href="adm-calendar.html" id="calendar-link" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+      </nav>
+    </template>
+
+    <template is="dom-if" if="{{!admin}}">
+      <nav class="sidebar">
+        <a href="client-pets.html" id="pets-link" class="sidebar-item sidebar-button"><i class="fa fa-paw"></i>Pets</a>
+        <a href="adm-calendar.html" id="calendar-link" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+        <a href="adm-products.html" id="products-link" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>       
+      </nav>
+    </template>
+
+  </template>
+  <script>
+    class SideNavbar extends Polymer.Element {
+      static get is() {
+        return "side-navbar";
+      }
+
+      static get properties() {
+        return {
+          username: String,
+          admin: Boolean,
+          "profile-pic": String
+        }
+      }
+
+      ready() {
+        super.ready();
+        
+          var admLink = this.$$('#adm-link');
+          console.log(admLink)
+          admLink.addEventListener('click', e => {
+            var event = new CustomEvent('did-click-adm', {bubbles: true, composed: true});
+            this.dispatchEvent(event);
+          }); 
+
+          var clientsLink = this.$$('#clients-link');
+          clientsLink.addEventListener('click', e => {
+            var event = new CustomEvent('did-click-clients', {bubbles: true, composed: true});
+            this.dispatchEvent(event);
+          });
+
+          var productsLink = this.$$('#products-link');
+          productsLink.addEventListener('click', e => {
+            var event = new CustomEvent('did-click-products', {bubbles: true, composed: true});
+            this.dispatchEvent(event);
+          });
+           
+           var earningsLink = this.$$('#earnings-link');
+          earningsLink.addEventListener('click', e => {
+            var event = new CustomEvent('did-click-earnings', {bubbles: true, composed: true});
+            this.dispatchEvent(event);
+          });
+
+            var salesLink = this.$$('#sales-link');
+          salesLink.addEventListener('click', e => {
+            var event = new CustomEvent('did-click-sales', {bubbles: true, composed: true});
+            this.dispatchEvent(event);
+          });
+
+           var petsLink = this.$$('#pets-link');
+          petsLink.addEventListener('click', e => {
+            var event = new CustomEvent('did-click-pets', {bubbles: true, composed: true});
+            this.dispatchEvent(event);
+          });
+
+          var calendarLink = this.$$('#calendar-link');
+          calendarLink.addEventListener('click', e => {
+            var event = new CustomEvent('did-click-calendar', {bubbles: true, composed: true});
+            this.dispatchEvent(event);
+          });
+   
+      }
+    }
+
+    customElements.define(SideNavbar.is, SideNavbar);
+  </script>
+</dom-module>

@@ -21,4 +21,10 @@ document.addEventListener("DOMContentLoaded", function() {
         console.info('Got a did-select-pet with pet: ', e.detail.pet);
         window.location.replace("client-edit-pet.html");
     });
+    document.addEventListener('did-click-logout', function(e){
+    	console.info('Got a did-click-logout on main.js');
+        window.location.replace("adm-login.html"); 
+    });
+
+
 });
