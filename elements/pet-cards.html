@@ -1,0 +1,73 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+<link rel="import" href="../elements/import.html">
+
+<dom-module id="pet-cards">
+  <template>
+    <style include="style-module">
+      :host * {
+        box-sizing: border-box;
+      }
+    </style>
+
+    <template is="dom-repeat" items="{{pets}}">
+
+      <div class="pet-id" hidden>[[item.id]]</div>
+      <div class="col-2">
+        <div class="pet-card" on-click="didSelectPet">
+          <div class="row">
+            <div class="col-2 pet-pic-container">
+              <img src="[[item.image_url]]">
+            </div>
+            <div class="col-4 pet-card-header-container">
+              <div class="pet-card-header">
+                <h2>[[item.name]]</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p>[[item.description]]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </template>
+
+  </template>
+  <script>
+    'use strict';
+
+    class PetCards extends Polymer.Element {
+      static get is() {
+        return "pet-cards";
+      }
+
+      static get properties() {
+        return {
+          pets: {
+            type: Array,
+            value() {
+              return [
+                {id: 1, name: 'Auau', image_url: '../img/pet-0.jpg', description: 'Lorem ipsum dolor sit amet'},
+                {id: 2, name: 'Dom York', image_url: '../img/pet-1.jpg', description: 'Lorem ipsum dolor sit amet'},
+                {id: 3, name: 'Sir Bob', image_url: '../img/pet-2.jpg', description: 'Lorem ipsum dolor sit amet'},
+                {id: 4, name: 'MiauMiau', image_url: '../img/pet-3.jpg', description: 'Lorem ipsum dolor sit amet'},
+                {id: 5, name: 'Lizbet Gatínea', image_url: '../img/pet-4.jpg', description: 'Lorem ipsum dolor sit amet'},
+                {id: 6, name: 'Dona Barb', image_url: '../img/pet-5.jpg', description: 'Lorem ipsum dolor sit amet'},
+              ];
+            }
+          }
+        }
+      }
+
+      didSelectPet(e) {
+        var pet = new Pet(e.model.item);
+        var event = new CustomEvent('did-select-pet', {bubbles: true, composed: true, detail: {pet: pet}});
+        this.dispatchEvent(event);
+      }
+    }
+    customElements.define(PetCards.is, PetCards);
+  </script>
+</dom-module>
