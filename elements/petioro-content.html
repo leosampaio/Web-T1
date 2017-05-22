@@ -1,0 +1,43 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+
+<dom-module id="petioro-content">
+  <template>
+    <style include="style-module">
+      :host * {
+        box-sizing: border-box;
+      }
+    </style>
+
+    <div class="col-6">
+      <div class="row">
+        <div class="col-6">
+          <h1 class="header-horizontal-line">
+            <slot name="title"></slot>
+          </h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <slot name="buttons-left"></slot>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-2">
+          <slot name="buttons-right"></slot>
+        </div>
+      </div>
+
+      <div><slot></slot></div>
+    </div>
+
+  </template>
+  <script>
+    class PetioroContent extends Polymer.Element {
+      static get is() {
+        return "petioro-content";
+      }
+    }
+    customElements.define(PetioroContent.is, PetioroContent);
+  </script>
+</dom-module>
