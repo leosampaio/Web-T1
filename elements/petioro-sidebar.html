@@ -61,22 +61,22 @@
       }
     </style>
 
-    <template is="dom-if" if="{{$(admin)}}">
+    <template is="dom-if" if="{{_isAdmin()}}">
       <nav class="sidebar">
-        <a href="adm-adms.html" id="adm-link" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
-        <a href="adm-clients.html" id="clients-link" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
-        <a href="adm-products.html" id="products-link" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
-        <a href="adm-earnings.html" id="earnings-link" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
-        <a href="adm-sales.html" id="sales-link" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
-        <a href="adm-calendar.html" id="calendar-link" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+        <a href="#" on-click="didSelectAdmins" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
+        <a href="#" on-click="didSelectClients" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
+        <a href="#" on-click="didSelectProducts" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
+        <a href="#" on-click="didSelectEarnings" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
+        <a href="#" on-click="didSelectSales" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
+        <a href="#" on-click="didSelectCalendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
       </nav>
     </template>
 
-    <template is="dom-if" if="{{!admin}}">
+    <template is="dom-if" if="{{!_isAdmin()}}">
       <nav class="sidebar">
-        <a href="client-pets.html" id="pets-link" class="sidebar-item sidebar-button"><i class="fa fa-paw"></i>Pets</a>
-        <a href="adm-calendar.html" id="calendar-link" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
-        <a href="adm-products.html" id="products-link" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>       
+        <a href="#" on-click="clientDidSelectPets" class="sidebar-item sidebar-button"><i class="fa fa-paw"></i>Pets</a>
+        <a href="#" on-click="clientDidSelectCalendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+        <a href="#" on-click="clientDidSelectProducts" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
       </nav>
     </template>
 
@@ -95,52 +95,53 @@
         }
       }
 
-      ready() {
-        super.ready();
-        
-          var admLink = this.$$('#adm-link');
-          console.log(admLink)
-          admLink.addEventListener('click', e => {
-            var event = new CustomEvent('did-click-adm', {bubbles: true, composed: true});
-            this.dispatchEvent(event);
-          }); 
+      _isAdmin() {
+        return this.admin == true
+      }
 
-          var clientsLink = this.$$('#clients-link');
-          clientsLink.addEventListener('click', e => {
-            var event = new CustomEvent('did-click-clients', {bubbles: true, composed: true});
-            this.dispatchEvent(event);
-          });
+      didSelectAdmins() {
+        var event = new CustomEvent('did-select-admins', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
+      }
 
-          var productsLink = this.$$('#products-link');
-          productsLink.addEventListener('click', e => {
-            var event = new CustomEvent('did-click-products', {bubbles: true, composed: true});
-            this.dispatchEvent(event);
-          });
-           
-           var earningsLink = this.$$('#earnings-link');
-          earningsLink.addEventListener('click', e => {
-            var event = new CustomEvent('did-click-earnings', {bubbles: true, composed: true});
-            this.dispatchEvent(event);
-          });
+      didSelectClients() {
+        var event = new CustomEvent('did-select-clients', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
+      }
 
-            var salesLink = this.$$('#sales-link');
-          salesLink.addEventListener('click', e => {
-            var event = new CustomEvent('did-click-sales', {bubbles: true, composed: true});
-            this.dispatchEvent(event);
-          });
+      didSelectProducts() {
+        var event = new CustomEvent('did-select-products', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
+      }
 
-           var petsLink = this.$$('#pets-link');
-          petsLink.addEventListener('click', e => {
-            var event = new CustomEvent('did-click-pets', {bubbles: true, composed: true});
-            this.dispatchEvent(event);
-          });
+      didSelectEarnings() {
+        var event = new CustomEvent('did-select-earnings', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
+      }
 
-          var calendarLink = this.$$('#calendar-link');
-          calendarLink.addEventListener('click', e => {
-            var event = new CustomEvent('did-click-calendar', {bubbles: true, composed: true});
-            this.dispatchEvent(event);
-          });
-   
+      didSelectSales() {
+        var event = new CustomEvent('did-select-sales', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
+      }
+
+      didSelectCalendar() {
+        var event = new CustomEvent('did-select-calendar', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
+      }
+
+      clientDidSelectPets() {
+        var event = new CustomEvent('client-did-select-pets', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
+      }
+
+      clientDidSelectCalendar() {
+        var event = new CustomEvent('client-did-select-calendar', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
+      }
+
+      clientDidSelectProducts() {
+        var event = new CustomEvent('client-did-select-products', {bubbles: true, composed: true});
+        this.dispatchEvent(event);
       }
     }
 
