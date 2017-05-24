@@ -1,566 +1,524 @@
-<!-- python -m SimpleHTTPServer 8000 -->
-<!DOCTYPE HTML>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-  <link rel="import" href="../elements/import.html">
-  <script src="../scripts/main.js"></script>
+<span slot="title">Agenda</span>
 
-  <title>Petioro</title>
-</head>
-
-<body>
-
-<top-navbar username="Mestre Catioro" profile-pic="../img/client-placeholder.jpg"></top-navbar>
-
-<main>
-    <div class="grid-container">
-        <div class="row">
-            <div class="col-1">
-                <side-navbar client></side-navbar>
-            </div>
-
-            <div class="col-5">
-
-                <div class="row">
-                    <div class="col-6">
-                        <h1 class="header-horizontal-line">Agenda</h1>
-                    </div>
-                </div>
-
-                <div class="row">
-          <div class="col-6">
-          <!-- ROW CONTAINER -->
-          <div class="row">
-            <!-- Row mês calendário-->
-            <div class="row head-month-calendar">
-              <div class="col-2 prev-calendar-button">
-                <button href="#" class="calendar-button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-              </div>
-              <div class="col-2"><label for="days-calendar" style="text-align: center">Abril</label></div>
-              <div class="col-2 next-calendar-button">
-                <button href="http://localhost:8000/html/client-calendar.html#" class="calendar-button"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-              </div>
-            </div>
-
-            <!-- ROW Principal do Calendário: Dia e Horários -->
-            <div class="row head-calendar">
-              <div class="col-1">
-                <label for="days-calendar" style="color: #FFFFFF">DIA</label>
-              </div>
-              <div class="col-5">
-                <label for="schedule-calendar" style="color: #FFFFFF">HORÁRIOS</label>
-              </div>
-            </div>
-
-            <!-- ROW dia 1 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>01</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules scheduled">09:00
-                  <label for="day-calendar" class="itens-follow">Jujuba</label>
-                  <i class="fa fa-scissors fa-lg itens-follow" aria-hidden="true"></i>
-                  <label for="day-calendar" class="itens-follow">Dono(a): Pietro</label>
-                </div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free">18:00</div>
-              </div>
-            </div>
-            <!-- ROW dia 2 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>02</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules scheduled">09:00
-                  <label for="day-calendar" class="itens-follow">Cacau</label>
-                  <i class="fa fa-bath fa-lg itens-follow" aria-hidden="true"></i>
-                  <label for="day-calendar" class="itens-follow">Dono(a): Letícia</label>
-                </div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules scheduled">12:00
-                  <label for="day-calendar" class="itens-follow">Petruquio</label>
-                  <i class="fa fa-scissors fa-lg itens-follow" aria-hidden="true"></i>
-                  <label for="day-calendar" class="itens-follow">Dono(a): Bruno</label>
-                </div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div>
-            <!-- ROW dia 3 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>03</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div>
-            <!-- ROW dia 4 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>04</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 5 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>05</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 6 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>06</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 7 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>07</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 8 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>08</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 9 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>09</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 10 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>10</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 11 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>11</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 12 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>12</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 13 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>13</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 14 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>14</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 15 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>15</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 16 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>16</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 17 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>17</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 18 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>18</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 19 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>19</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 20 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>20</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 21 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>21</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 22 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>22</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 23 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>23</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 24 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>24</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 25 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>25</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 26 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>26</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 27 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>27</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 28 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>28</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 29 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>29</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div><!-- ROW dia 30 do Calendário -->
-            <div class="row border-days-calendar">
-              <div class="col-1 day-schedule size-day-schedule"><h3>30</h3></div>
-              <div class="col-5 color-arround">
-                <div class="row schedules schedule-free">08:00</div>
-                <div class="row schedules schedule-free">09:00</div>
-                <div class="row schedules schedule-free">10:00</div>
-                <div class="row schedules schedule-free">11:00</div>
-                <div class="row schedules schedule-free">12:00</div>
-                <div class="row schedules schedule-free">13:00</div>
-                <div class="row schedules schedule-free">14:00</div>
-                <div class="row schedules schedule-free">15:00</div>
-                <div class="row schedules schedule-free">16:00</div>
-                <div class="row schedules schedule-free">17:00</div>
-                <div class="row schedules schedule-free ">18:00</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-
-            </div>
-        </div>
+<div class="row">
+<div class="col-6">
+<!-- ROW CONTAINER -->
+<div class="row">
+  <!-- Row mês calendário-->
+  <div class="row head-month-calendar">
+    <div class="col-2 prev-calendar-button">
+      <button href="#calendar/previous" class="calendar-button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
     </div>
+    <div class="col-2"><label for="days-calendar" style="text-align: center">Abril</label></div>
+    <div class="col-2 next-calendar-button">
+      <button href="#calendar/next" class="calendar-button"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
 
-    <petioro-footer></petioro-footer>
-</main>
+  <!-- ROW Principal do Calendário: Dia e Horários -->
+  <div class="row head-calendar">
+    <div class="col-1">
+      <label for="days-calendar" style="color: #FFFFFF">DIA</label>
+    </div>
+    <div class="col-5">
+      <label for="schedule-calendar" style="color: #FFFFFF">HORÁRIOS</label>
+    </div>
+  </div>
 
-</body>
-</html>
+  <!-- ROW dia 1 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>01</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules scheduled">09:00
+        <label for="day-calendar" class="itens-follow">Jujuba</label>
+        <i class="fa fa-scissors fa-lg itens-follow" aria-hidden="true"></i>
+        <label for="day-calendar" class="itens-follow">Dono(a): Pietro</label>
+      </div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free">18:00</div>
+    </div>
+  </div>
+  <!-- ROW dia 2 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>02</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules scheduled">09:00
+        <label for="day-calendar" class="itens-follow">Cacau</label>
+        <i class="fa fa-bath fa-lg itens-follow" aria-hidden="true"></i>
+        <label for="day-calendar" class="itens-follow">Dono(a): Letícia</label>
+      </div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules scheduled">12:00
+        <label for="day-calendar" class="itens-follow">Petruquio</label>
+        <i class="fa fa-scissors fa-lg itens-follow" aria-hidden="true"></i>
+        <label for="day-calendar" class="itens-follow">Dono(a): Bruno</label>
+      </div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div>
+  <!-- ROW dia 3 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>03</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div>
+  <!-- ROW dia 4 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>04</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 5 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>05</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 6 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>06</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 7 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>07</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 8 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>08</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 9 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>09</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 10 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>10</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 11 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>11</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 12 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>12</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 13 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>13</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 14 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>14</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 15 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>15</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 16 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>16</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 17 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>17</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 18 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>18</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 19 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>19</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 20 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>20</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 21 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>21</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 22 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>22</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 23 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>23</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 24 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>24</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 25 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>25</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 26 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>26</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 27 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>27</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 28 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>28</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 29 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>29</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div><!-- ROW dia 30 do Calendário -->
+  <div class="row border-days-calendar">
+    <div class="col-1 day-schedule size-day-schedule"><h3>30</h3></div>
+    <div class="col-5 color-arround">
+      <div class="row schedules schedule-free">08:00</div>
+      <div class="row schedules schedule-free">09:00</div>
+      <div class="row schedules schedule-free">10:00</div>
+      <div class="row schedules schedule-free">11:00</div>
+      <div class="row schedules schedule-free">12:00</div>
+      <div class="row schedules schedule-free">13:00</div>
+      <div class="row schedules schedule-free">14:00</div>
+      <div class="row schedules schedule-free">15:00</div>
+      <div class="row schedules schedule-free">16:00</div>
+      <div class="row schedules schedule-free">17:00</div>
+      <div class="row schedules schedule-free ">18:00</div>
+    </div>
+  </div>
+</div>

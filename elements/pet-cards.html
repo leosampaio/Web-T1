@@ -63,9 +63,7 @@
       }
 
       didSelectPet(e) {
-        var pet = new Pet(e.model.item);
-        var event = new CustomEvent('did-select-pet', {bubbles: true, composed: true, detail: {pet: pet}});
-        this.dispatchEvent(event);
+        location.href= '#pets/' + e.model.item.id;
       }
     }
     customElements.define(PetCards.is, PetCards);

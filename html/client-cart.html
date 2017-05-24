@@ -1,125 +1,87 @@
-<!-- python -m SimpleHTTPServer 8000 -->
-<!DOCTYPE HTML>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-  <link rel="import" href="../elements/import.html">
-  <script src="../scripts/main.js"></script>
+<span slot="title">Carrinho</span>
 
-  <title>Petioro</title>
-</head>
+<div class="row">
+  <div class="col-6">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome do Produto</th>
+        <th>Qtde</th>
+        <th>Valor</th>
+        <th>Remover</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Shampoo Cachorro Cheiroso</td>
+        <td>1</td>
+        <td>R$ 14,99</td>
+        <td><a href="#" class="sales-add-to-cart-link">Remover<i class="fa fa-trash"></i></a></td>
+      </tr>
+    </table>  
+  </div>
+</div>
 
-<body>
+<div class="row">
+  <div class="col-6">
+    <h3 class="cart-total align-right">Total: R$ 14,99</h3>
+  </div>
+</div>
 
-  <top-navbar username="Mestre Catioro" profile-pic="../img/client-placeholder.jpg"></top-navbar>
+<div class="row">
+  <div class="col-6">
+    <h2> Método de Pagamento </h1>
+  </div>
+</div>
 
-  <main>
-    <div class="grid-container">
+<div class="row">
+  <div class="segmented-control col-6">
+    <div class="col-2 segmented-control-segment" selected>
+      <a href="#">Cartão de Crédito</a>
+    </div>
+
+    <div class="col-2 segmented-control-segment">
+      <a href="#">Cartão de Débito</a> 
+    </div>
+
+    <div class="col-2 segmented-control-segment">
+      <a href="#">PicPay</a> 
+    </div>
+  </div>
+</div>
+
+<div class="segmented-control-content-blocks">
+  <div class="col-6">
+    <section class="segmented-control-content" selected>
       <div class="row">
-        <div class="col-1">
-          <side-navbar clients></side-navbar>
-        </div>
-
-        <div class="col-5">
-          <div class="row">
-            <div class="col-6">
-              <h1 class="header-horizontal-line">Carrinho</h1>
-            </div>
+        <form>
+          <div class="col-3">
+            <label for="name-prod-reg">Nome Titular</label>
+            <input class="two-col-input space-btw-two-co" type="text" name="name-prod-reg">
+            <label for="code-prod-reg">Número Cartão</label>
+            <input class="two-col-input" type="text" name="code-prod-reg">
+            <label for="price-prod-reg">Data de Vencimento</label>
+            <input class="two-col-input" type="text" name="price-prod-reg">
           </div>
-
-            <div class="row">
-              <div class="col-6">
-                <table>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nome do Produto</th>
-                    <th>Qtde</th>
-                    <th>Valor</th>
-                    <th>Remover</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Shampoo Cachorro Cheiroso</td>
-                    <td>1</td>
-                    <td>R$ 14,99</td>
-                    <td><a href="#" class="sales-add-to-cart-link">Remover<i class="fa fa-trash"></i></a></td>
-                  </tr>
-                </table>  
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <h3 class="cart-total align-right">Total: R$ 14,99</h3>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <h2> Método de Pagamento </h1>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="segmented-control col-6">
-                <div class="col-2 segmented-control-segment" selected>
-                  <a href="#">Cartão de Crédito</a>
-                </div>
-
-                <div class="col-2 segmented-control-segment">
-                  <a href="#">Cartão de Débito</a> 
-                </div>
-
-                <div class="col-2 segmented-control-segment">
-                  <a href="#">PicPay</a> 
-                </div>
-              </div>
-            </div>
-
-            <div class="segmented-control-content-blocks">
-              <div class="col-6">
-                <section class="segmented-control-content" selected>
-                  <div class="row">
-                    <form>
-                      <div class="col-3">
-                        <label for="name-prod-reg">Nome Titular</label>
-                        <input class="two-col-input space-btw-two-co" type="text" name="name-prod-reg">
-                        <label for="code-prod-reg">Número Cartão</label>
-                        <input class="two-col-input" type="text" name="code-prod-reg">
-                        <label for="price-prod-reg">Data de Vencimento</label>
-                        <input class="two-col-input" type="text" name="price-prod-reg">
-                      </div>
-                      <div class="col-3">
-                        <label for="name-prod-reg">CVV</label>
-                        <input class="two-col-input" type="text" name="name-prod-reg">
-                      </div>
-                    </form>
-                  </div>
-                </section>
-              </div>
-              <div class="col-6">
-                <section class="segmented-control-content">Conteúdo da Aba 2</section>
-              </div>
-              <div class="col-6">
-                <section class="segmented-control-content">Conteúdo da Aba 2</section>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <button class="btn btn-primary align-left" style="width:100%">
-                <i class="fa fa-diamond fa-fw "></i> Finalizar Compra
-                </button>
-              </div>
-            </div>
-
-        </div>
+          <div class="col-3">
+            <label for="name-prod-reg">CVV</label>
+            <input class="two-col-input" type="text" name="name-prod-reg">
+          </div>
+        </form>
       </div>
-    </div>
-    </div>
+    </section>
+  </div>
+  <div class="col-6">
+    <section class="segmented-control-content">Conteúdo da Aba 2</section>
+  </div>
+  <div class="col-6">
+    <section class="segmented-control-content">Conteúdo da Aba 2</section>
+  </div>
+</div>
 
-    <petioro-footer></petioro-footer>
-  </main>
-</body>
-</html>
+<div class="row">
+  <div class="col-6">
+    <button class="btn btn-primary align-left" style="width:100%">
+    <i class="fa fa-diamond fa-fw "></i> Finalizar Compra
+    </button>
+  </div>
+</div>
