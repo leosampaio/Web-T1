@@ -1,6 +1,8 @@
 'use strict';
 
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener('WebComponentsReady', function() {
+
+    var router = new Router();
 
     document.addEventListener('did-click-cart', function(e) {
         console.info('Got a did-click-cart on main.js');
