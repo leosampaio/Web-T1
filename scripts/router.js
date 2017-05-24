@@ -5,21 +5,21 @@ class Router {
     }
 
     constructor() {
-        window.onhashchange = this.urlChanged;
+        window.onhashchange = () => {this.urlChanged()};
         this.routes = {};
     }
 
     urlChanged() {
         const url = location.hash;
         const path = url.split('#');
-        if (path.length) > 1 {
-           render(path[1]);
+        if (path.length > 1) {
+           this.triggerEventForRoute(path[1]);
         }
     }
 
     _buildEventNameForRoute(route) {
         var event_name = "";
-        var split_route = url.split('/');
+        var split_route = route.split('/');
 
         if (split_route.length == 0) { return; }
 
@@ -29,6 +29,7 @@ class Router {
             event_name = "admin-"
         }
 
+        const resource = split_route[0];
         event_name = event_name + '-' + resource
 
         if (split_route.length > 1) {
@@ -39,7 +40,7 @@ class Router {
     }
 
     triggerEventForRoute(route) {
-        var split_route = url.split('/');
+        var split_route = route.split('/');
 
         if (split_route.length == 0) { return; }
 
@@ -54,14 +55,14 @@ class Router {
 
         if (split_route.length > 1) {
             const resource_id = split_route[0];
-            event = new CustomEvent(_buildEventNameForRoute(route), {
+            event = new CustomEvent(this._buildEventNameForRoute(route), {
                 bubbles: true,
                 composed: true, 
                 detail: {id: resource_id}
             });
             document.dispatchEvent(event);
         } else {
-            event = new CustomEvent(_buildEventNameForRoute(route), {
+            event = new CustomEvent(this._buildEventNameForRoute(route), {
                 bubbles: true,
                 composed: true
             });
@@ -69,11 +70,23 @@ class Router {
         }
     }
 
-    registerForRoute(route, callback) {
-        const event_name = _buildEventNameForRoute(route);
+    viewForRoute(route, callback) {
+        const event_name = this._buildEventNameForRoute(route);
         document.addEventListener(event_name, function(e) {
-            html_to_render = callback(e.detail);
-            console.log(html_to_render);
+            callback(html_to_render => {
+                console.log(html_to_render);
+            }, e.detail);
         });
+    }
+
+    ajaxGet(url, success) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               success(this.responseText);
+            }
+        };
+        xhttp.open("GET", url, true);
+        xhttp.send();
     }
 }
