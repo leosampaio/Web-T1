@@ -58,7 +58,7 @@ class Router {
         const resource = split_route[0];
 
         if (split_route.length > 1) {
-            const resource_id = split_route[0];
+            const resource_id = split_route[1];
             event = new CustomEvent(this._buildEventNameForRoute(route), {
                 bubbles: true,
                 composed: true, 

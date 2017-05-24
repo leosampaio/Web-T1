@@ -63,20 +63,20 @@
 
     <template is="dom-if" if="{{_isAdmin()}}">
       <nav class="sidebar">
-        <a href="#admin/admins" on-click="didSelectAdmins" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
-        <a href="#admin/clients" on-click="didSelectClients" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
-        <a href="#admin/products" on-click="didSelectProducts" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
-        <a href="#admin/earnings" on-click="didSelectEarnings" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
-        <a href="#admin/sales" on-click="didSelectSales" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
-        <a href="#admin/calendar" on-click="didSelectCalendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+        <a href="#admin/admins" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
+        <a href="#admin/clients" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
+        <a href="#admin/products" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
+        <a href="#admin/earnings" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
+        <a href="#admin/sales" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
+        <a href="#admin/calendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
       </nav>
     </template>
 
     <template is="dom-if" if="{{!_isAdmin()}}">
       <nav class="sidebar">
-        <a href="#pets" on-click="clientDidSelectPets" class="sidebar-item sidebar-button"><i class="fa fa-paw"></i>Pets</a>
-        <a href="#calendar" on-click="clientDidSelectCalendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
-        <a href="#products" on-click="clientDidSelectProducts" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
+        <a href="#pets" class="sidebar-item sidebar-button"><i class="fa fa-paw"></i>Pets</a>
+        <a href="#calendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+        <a href="#products" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
       </nav>
     </template>
 
@@ -97,51 +97,6 @@
 
       _isAdmin() {
         return this.admin == true
-      }
-
-      didSelectAdmins() {
-        var event = new CustomEvent('did-select-admins', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
-      }
-
-      didSelectClients() {
-        var event = new CustomEvent('did-select-clients', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
-      }
-
-      didSelectProducts() {
-        var event = new CustomEvent('did-select-products', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
-      }
-
-      didSelectEarnings() {
-        var event = new CustomEvent('did-select-earnings', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
-      }
-
-      didSelectSales() {
-        var event = new CustomEvent('did-select-sales', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
-      }
-
-      didSelectCalendar() {
-        var event = new CustomEvent('did-select-calendar', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
-      }
-
-      clientDidSelectPets() {
-        var event = new CustomEvent('client-did-select-pets', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
-      }
-
-      clientDidSelectCalendar() {
-        var event = new CustomEvent('client-did-select-calendar', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
-      }
-
-      clientDidSelectProducts() {
-        var event = new CustomEvent('client-did-select-products', {bubbles: true, composed: true});
-        this.dispatchEvent(event);
       }
     }
 
