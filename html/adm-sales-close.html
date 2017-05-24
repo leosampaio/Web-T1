@@ -1,95 +1,95 @@
 <span slot="title">Vendas</span>
 
-          <div class="row">
-            <div class="col-6">
-              <p class="breadcrumbs">
-                <a href=#>Nova Venda</a>
-                <i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color: rgb(102, 102, 102)"></i>
-                Finalização
-              </p>
-            </div>
+<div class="row">
+<div class="col-6">
+  <p class="breadcrumbs">
+    <a href=#>Nova Venda</a>
+    <i class="fa fa-chevron-right fa-fw" aria-hidden="true" style="color: rgb(102, 102, 102)"></i>
+    Finalização
+  </p>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome do Produto</th>
+        <th>Qtde</th>
+        <th>Valor</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Shampoo Cachorro Cheiroso</td>
+        <td>1</td>
+        <td>R$ 14,99</td>
+      </tr>
+    </table>  
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <h3 class="cart-total align-right">Total: R$ 14,99</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <h2> Método de Pagamento </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="segmented-control col-6">
+    <div class="col-2 segmented-control-segment" selected>
+      <a href="#">Cartão de Crédito</a>
+    </div>
+
+    <div class="col-2 segmented-control-segment">
+      <a href="#">Cartão de Débito</a> 
+    </div>
+
+    <div class="col-2 segmented-control-segment">
+      <a href="#">PicPay</a> 
+    </div>
+  </div>
+</div>
+
+<div class="segmented-control-content-blocks">
+  <div class="col-6">
+    <section class="segmented-control-content" selected>
+      <div class="row">
+        <form>
+          <div class="col-3">
+            <label for="name-prod-reg">Nome Titular</label>
+            <input class="two-col-input space-btw-two-co" type="text" name="name-prod-reg">
+            <label for="code-prod-reg">Número Cartão</label>
+            <input class="two-col-input" type="text" name="code-prod-reg">
+            <label for="price-prod-reg">Data de Vencimento</label>
+            <input class="two-col-input" type="text" name="price-prod-reg">
           </div>
-          
-          <div class="row">
-              <div class="col-6">
-                <table>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nome do Produto</th>
-                    <th>Qtde</th>
-                    <th>Valor</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Shampoo Cachorro Cheiroso</td>
-                    <td>1</td>
-                    <td>R$ 14,99</td>
-                  </tr>
-                </table>  
-              </div>
-            </div>
+          <div class="col-3">
+            <label for="name-prod-reg">CVV</label>
+            <input class="two-col-input" type="text" name="name-prod-reg">
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  <div class="col-6">
+    <section class="segmented-control-content">Conteúdo da Aba 2</section>
+  </div>
+  <div class="col-6">
+    <section class="segmented-control-content">Conteúdo da Aba 2</section>
+  </div>
+</div>
 
-            <div class="row">
-              <div class="col-6">
-                <h3 class="cart-total align-right">Total: R$ 14,99</h3>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <h2> Método de Pagamento </h2>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="segmented-control col-6">
-                <div class="col-2 segmented-control-segment" selected>
-                  <a href="#">Cartão de Crédito</a>
-                </div>
-
-                <div class="col-2 segmented-control-segment">
-                  <a href="#">Cartão de Débito</a> 
-                </div>
-
-                <div class="col-2 segmented-control-segment">
-                  <a href="#">PicPay</a> 
-                </div>
-              </div>
-            </div>
-
-            <div class="segmented-control-content-blocks">
-              <div class="col-6">
-                <section class="segmented-control-content" selected>
-                  <div class="row">
-                    <form>
-                      <div class="col-3">
-                        <label for="name-prod-reg">Nome Titular</label>
-                        <input class="two-col-input space-btw-two-co" type="text" name="name-prod-reg">
-                        <label for="code-prod-reg">Número Cartão</label>
-                        <input class="two-col-input" type="text" name="code-prod-reg">
-                        <label for="price-prod-reg">Data de Vencimento</label>
-                        <input class="two-col-input" type="text" name="price-prod-reg">
-                      </div>
-                      <div class="col-3">
-                        <label for="name-prod-reg">CVV</label>
-                        <input class="two-col-input" type="text" name="name-prod-reg">
-                      </div>
-                    </form>
-                  </div>
-                </section>
-              </div>
-              <div class="col-6">
-                <section class="segmented-control-content">Conteúdo da Aba 2</section>
-              </div>
-              <div class="col-6">
-                <section class="segmented-control-content">Conteúdo da Aba 2</section>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-6">
-                <button class="btn btn-primary align-left" style="width:100%" onclick="location.href='adm-sales.html';">
-                <i class="fa fa-diamond fa-fw "></i> Finalizar Venda
-                </button>
-              </div>
-            </div>
+<div class="row">
+  <div class="col-6">
+    <button class="btn btn-primary align-left" style="width:100%" onclick="location.href='#admin/sales';">
+    <i class="fa fa-diamond fa-fw "></i> Finalizar Venda
+    </button>
+  </div>
+</div>

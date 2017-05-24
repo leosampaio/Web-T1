@@ -76,6 +76,14 @@ router.viewForRoute("admin/sales", () => {
     })
 })
 
+router.viewForRoute("admin/sales/id", (params) => {
+    if (params.id == 'new') {
+        router.ajaxGet("/html/adm-sales-close.html", response => {
+            router.renderAdmin(response)
+        })
+    }
+})
+
 router.viewForRoute("admin/calendar", () => {
     router.ajaxGet("/html/adm-calendar.html", response => {
         router.renderAdmin(response)
