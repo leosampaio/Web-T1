@@ -1,144 +1,109 @@
-<!-- python -m SimpleHTTPServer 8000 -->
-<!DOCTYPE HTML>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-  <link rel="import" href="../elements/import.html">
+<span slot="title">Produtos</span>
 
-  <title>Petioro</title>
-</head>
+<div class="row">
+  <div class="col-6">
+    <form>
+      <input type="text" placeholder="Buscar produtos" class="search-bar"></input>
+      <i class="fa fa-search"></i>
+    </form>
+  </div>
+</div>
+<div class="row">
 
-<body>
-
-  <top-navbar username="Mestre Catioro" profile-pic="../img/client-placeholder.jpg"></top-navbar>
-
-  <main>
-    <div class="grid-container">
+  <div class="col-2">
+    <div class="product-card">
       <div class="row">
-        <div class="col-1">
-        <nav class="sidebar">
-          <side-navbar clients></side-navbar>
+        <div class="col-2 product-pic-container">
+          <img src="../img/product-0.jpg">
         </div>
-
-        <div class="col-5">
-          <div class="row">
-            <div class="col-6">
-              <h1 class="header-horizontal-line">Pets</h1>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <form>
-                <input type="text" placeholder="Buscar produtos" class="search-bar"></input>
-                <i class="fa fa-search"></i>
-              </form>
-            </div>
-          </div>
-          <div class="row">
-
-            <div class="col-2">
-              <div class="product-card">
-                <div class="row">
-                  <div class="col-2 product-pic-container">
-                    <img src="../img/product-0.jpg">
-                  </div>
-                  <div class="col-4 product-card-header-container">
-                    <div class="product-card-header">
-                      <h2>Escova para Cães</h2>
-                      <p>R$100,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-2">
-              <div class="product-card">
-                <div class="row">
-                  <div class="col-2 product-pic-container">
-                    <img src="../img/product-1.jpg">
-                  </div>
-                  <div class="col-4 product-card-header-container">
-                    <div class="product-card-header">
-                      <h2>Luva para Bolas</h2>
-                      <p>R$200,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-2">
-              <div class="product-card">
-                <div class="row">
-                  <div class="col-2 product-pic-container">
-                    <img src="../img/product-2.jpg">
-                  </div>
-                  <div class="col-4 product-card-header-container">
-                    <div class="product-card-header">
-                      <h2>Drogas Orgânicas</h2>
-                      <p>R$1250,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-2">
-              <div class="product-card">
-                <div class="row">
-                  <div class="col-2 product-pic-container">
-                    <img src="../img/product-3.jpg">
-                  </div>
-                  <div class="col-4 product-card-header-container">
-                    <div class="product-card-header">
-                      <h2>Canhão de Bolas de Tênis</h2>
-                      <p>R$50,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-2">
-              <div class="product-card">
-                <div class="row">
-                  <div class="col-2 product-pic-container">
-                    <img src="../img/product-4.jpg">
-                  </div>
-                  <div class="col-4 product-card-header-container">
-                    <div class="product-card-header">
-                      <h2>Bola de Tênis Gigante</h2>
-                      <p>R$5,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-2">
-              <div class="product-card">
-                <div class="row">
-                  <div class="col-2 product-pic-container">
-                    <img src="../img/product-5.jpg">
-                  </div>
-                  <div class="col-4 product-card-header-container">
-                    <div class="product-card-header">
-                      <h2>Pilha de Fezes Dourada</h2>
-                      <p>R$500.000,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+        <div class="col-4 product-card-header-container">
+          <div class="product-card-header">
+            <h2>Escova para Cães</h2>
+            <p>R$100,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <petioro-footer></petioro-footer>
-  </main>
-</body>
-</html>
+  <div class="col-2">
+    <div class="product-card">
+      <div class="row">
+        <div class="col-2 product-pic-container">
+          <img src="../img/product-1.jpg">
+        </div>
+        <div class="col-4 product-card-header-container">
+          <div class="product-card-header">
+            <h2>Luva para Bolas</h2>
+            <p>R$200,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="product-card">
+      <div class="row">
+        <div class="col-2 product-pic-container">
+          <img src="../img/product-2.jpg">
+        </div>
+        <div class="col-4 product-card-header-container">
+          <div class="product-card-header">
+            <h2>Drogas Orgânicas</h2>
+            <p>R$1250,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="product-card">
+      <div class="row">
+        <div class="col-2 product-pic-container">
+          <img src="../img/product-3.jpg">
+        </div>
+        <div class="col-4 product-card-header-container">
+          <div class="product-card-header">
+            <h2>Canhão de Bolas de Tênis</h2>
+            <p>R$50,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="product-card">
+      <div class="row">
+        <div class="col-2 product-pic-container">
+          <img src="../img/product-4.jpg">
+        </div>
+        <div class="col-4 product-card-header-container">
+          <div class="product-card-header">
+            <h2>Bola de Tênis Gigante</h2>
+            <p>R$5,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="product-card">
+      <div class="row">
+        <div class="col-2 product-pic-container">
+          <img src="../img/product-5.jpg">
+        </div>
+        <div class="col-4 product-card-header-container">
+          <div class="product-card-header">
+            <h2>Pilha de Fezes Dourada</h2>
+            <p>R$500.000,00 <a href="#"><i class="fa fa-cart-plus"></i></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

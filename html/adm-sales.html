@@ -1,122 +1,84 @@
-<!-- python -m SimpleHTTPServer 8000 -->
-<!DOCTYPE HTML>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-  <link rel="import" href="../elements/import.html">
+<span slot="title">Vendas</span>
 
-  <title>Petioro</title>
-</head>
+<div class="row">
+  <div class="col-6">
+    <form>
+      <input type="text" placeholder="Buscar produtos" class="search-bar"></input>
+      <i class="fa fa-search"></i>
+    </form>
+  </div>
+</div>
 
-<body>
-
-  <top-navbar username="Mestre Catioro" profile-pic="../img/michelle.jpg" admin></top-navbar>
-
-  <main>
-    <div class="grid-container">
-      <div class="row">
-
-        <div class="col-1">
-          <side-navbar admin></side-navbar>
-        </div>
-
-        <div class="col-5">
-
-          <div class="row">
-            <div class="col-6">
-              <h1 class="header-horizontal-line">Vendas</h1>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-6">
-              <form>
-                <input type="text" placeholder="Buscar produtos" class="search-bar"></input>
-                <i class="fa fa-search"></i>
-              </form>
-            </div>
-          </div>
-          
-          <div class="row">
-              <div class="col-6">
-              <h2 class="header-horizontal-line">Produtos</h2>
-                <table>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nome do Produto</th>
-                    <th>Estoque</th>
-                    <th>Valor</th>
-                    <th>Carrinho</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Shampoo Cachorro Cheiroso</td>
-                    <td>105</td>
-                    <td>R$ 14,99</td>
-                    <td><a href="#" class="sales-add-to-cart-link">Adicionar<i class="fa fa-cart-plus"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Bola de Tênis Gigante</td>
-                    <td>2</td>
-                    <td>R$ 1499,99</td>
-                    <td><a href="#" class="sales-add-to-cart-link">Adicionar<i class="fa fa-cart-plus"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Canhão de Bolas de Tênis</td>
-                    <td>120</td>
-                    <td>R$ 149,99</td>
-                    <td><a href="#" class="sales-add-to-cart-link">Adicionar<i class="fa fa-cart-plus"></i></a></td>
-                  </tr>
-                </table>  
-              </div>
-          </div>
-
-
-
-          <div class="row">
-              <div class="col-6">
-                <h2 class="header-horizontal-line">Carrinho</h2>
-                <table>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nome do Produto</th>
-                    <th>Qtde</th>
-                    <th>Valor</th>
-                    <th>Remover</th>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Shampoo Cachorro Cheiroso</td>
-                    <td>1</td>
-                    <td>R$ 14,99</td>
-                    <td><a href="#" class="sales-add-to-cart-link">Remover<i class="fa fa-trash"></i></a></td>
-                  </tr>
-                </table>  
-              </div>
-          </div>
-
-            <div class="row">
-              <div class="col-6">
-                <h3 class="cart-total align-right">Total: R$ 14,99</h3>
-              </div>
-            </div>
-
-          <div class="row">
-              <div class="col-6">
-                <button class="btn btn-primary align-left" style="width:100%" onclick="location.href='adm-sales-close.html';">
-                <i class="fa fa-chevron-right fa-fw"></i> Finalizar Venda
-                </button>
-              </div>
-            </div>
-
-        </div>
-      </div>
+<div class="row">
+    <div class="col-6">
+    <h2 class="header-horizontal-line">Produtos</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Nome do Produto</th>
+          <th>Estoque</th>
+          <th>Valor</th>
+          <th>Carrinho</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Shampoo Cachorro Cheiroso</td>
+          <td>105</td>
+          <td>R$ 14,99</td>
+          <td><a href="#" class="sales-add-to-cart-link">Adicionar<i class="fa fa-cart-plus"></i></a></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Bola de Tênis Gigante</td>
+          <td>2</td>
+          <td>R$ 1499,99</td>
+          <td><a href="#" class="sales-add-to-cart-link">Adicionar<i class="fa fa-cart-plus"></i></a></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Canhão de Bolas de Tênis</td>
+          <td>120</td>
+          <td>R$ 149,99</td>
+          <td><a href="#" class="sales-add-to-cart-link">Adicionar<i class="fa fa-cart-plus"></i></a></td>
+        </tr>
+      </table>  
     </div>
+</div>
 
-   <petioro-footer></petioro-footer>
-  </main>
-</body>
-</html>
+
+
+<div class="row">
+    <div class="col-6">
+      <h2 class="header-horizontal-line">Carrinho</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Nome do Produto</th>
+          <th>Qtde</th>
+          <th>Valor</th>
+          <th>Remover</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Shampoo Cachorro Cheiroso</td>
+          <td>1</td>
+          <td>R$ 14,99</td>
+          <td><a href="#" class="sales-add-to-cart-link">Remover<i class="fa fa-trash"></i></a></td>
+        </tr>
+      </table>  
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <h3 class="cart-total align-right">Total: R$ 14,99</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <button class="btn btn-primary align-left" style="width:100%" onclick="location.href='adm-sales-close.html';">
+    <i class="fa fa-chevron-right fa-fw"></i> Finalizar Venda
+    </button>
+  </div>
+</div>

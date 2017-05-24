@@ -1,50 +1,18 @@
-<!-- python -m SimpleHTTPServer 8000 -->
-<!DOCTYPE HTML>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-  <link rel="import" href="../elements/import.html">
+<span slot="title">Pet</span>
 
-  <title>Petioro</title>
-</head>
+<span slot="buttons-left">
+  <button class="btn btn-primary btn-small pre-form-btn-left">
+      <i class="fa fa-trash"></i>Apagar selecionados
+  </button>
+</span>
 
-<body>
+<span slot="buttons-right">
+  <button class="btn btn-primary btn-small pre-form-btn-right" onclick="location.href='client-new-pet.html';">
+    <i class="fa fa-plus"></i>Novo Pet
+  </button>
+  <button class="btn btn-primary btn-small pre-form-btn-right">
+    <i class="fa fa-print"></i>Imprimir
+  </button>
+</span>
 
-  <top-navbar username="Mestre Catioro" profile-pic="../img/client-placeholder.jpg"></top-navbar>
-
-  <main>
-    <div class="grid-container">
-      <div class="row">
-        <div class="col-1">
-          <side-navbar clients></side-navbar>
-        </div>
-
-        <petioro-content class="col-5">
-          <span slot="title">Pet</span>
-
-          <span slot="buttons-left">
-            <button class="btn btn-primary btn-small pre-form-btn-left">
-                <i class="fa fa-trash"></i>Apagar selecionados
-            </button>
-          </span>
-
-          <span slot="buttons-right">
-            <button class="btn btn-primary btn-small pre-form-btn-right" onclick="location.href='client-new-pet.html';">
-              <i class="fa fa-plus"></i>Novo Pet
-            </button>
-            <button class="btn btn-primary btn-small pre-form-btn-right">
-              <i class="fa fa-print"></i>Imprimir
-            </button>
-          </span>
-
-          <pet-cards></pet-cards>
-
-        </petioro-content>
-      </div>
-    </div>
-
-    <petioro-footer></petioro-footer>
-  </main>
-</body>
-</html>
+<pet-cards></pet-cards>

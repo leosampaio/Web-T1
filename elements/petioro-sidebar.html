@@ -63,20 +63,20 @@
 
     <template is="dom-if" if="{{_isAdmin()}}">
       <nav class="sidebar">
-        <a href="#" on-click="didSelectAdmins" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
-        <a href="#" on-click="didSelectClients" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
-        <a href="#" on-click="didSelectProducts" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
-        <a href="#" on-click="didSelectEarnings" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
-        <a href="#" on-click="didSelectSales" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
-        <a href="#" on-click="didSelectCalendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+        <a href="#admin/admins" on-click="didSelectAdmins" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
+        <a href="#admin/clients" on-click="didSelectClients" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
+        <a href="#admin/products" on-click="didSelectProducts" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
+        <a href="#admin/earnings" on-click="didSelectEarnings" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
+        <a href="#admin/sales" on-click="didSelectSales" class="sidebar-item sidebar-button"><i class="fa fa-credit-card"></i> Vendas</a>
+        <a href="#admin/calendar" on-click="didSelectCalendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
       </nav>
     </template>
 
     <template is="dom-if" if="{{!_isAdmin()}}">
       <nav class="sidebar">
-        <a href="#" on-click="clientDidSelectPets" class="sidebar-item sidebar-button"><i class="fa fa-paw"></i>Pets</a>
-        <a href="#" on-click="clientDidSelectCalendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
-        <a href="#" on-click="clientDidSelectProducts" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
+        <a href="#pets" on-click="clientDidSelectPets" class="sidebar-item sidebar-button"><i class="fa fa-paw"></i>Pets</a>
+        <a href="#calendar" on-click="clientDidSelectCalendar" class="sidebar-item sidebar-button"><i class="fa fa-calendar"></i> Agenda</a>
+        <a href="#products" on-click="clientDidSelectProducts" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
       </nav>
     </template>
 

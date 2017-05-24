@@ -6,7 +6,6 @@ class Router {
 
     constructor() {
         window.onhashchange = () => {this.urlChanged()};
-        this.routes = {};
     }
 
     urlChanged() {
@@ -14,6 +13,12 @@ class Router {
         const path = url.split('#');
         if (path.length > 1) {
            this.triggerEventForRoute(path[1]);
+        } else {
+            event = new CustomEvent('root', {
+                bubbles: true,
+                composed: true
+            });
+            document.dispatchEvent(event);
         }
     }
 
@@ -22,6 +27,7 @@ class Router {
         var split_route = route.split('/');
 
         if (split_route.length == 0) { return; }
+        if (split_route[0] == '') { return 'root' }
 
         const isAdmin = split_route[0] == 'admin';
         if (isAdmin) {
@@ -49,8 +55,6 @@ class Router {
             split_route = split_route.slice(1);
         }
 
-        if (split_route.length == 0) { return; }
-
         const resource = split_route[0];
 
         if (split_route.length > 1) {
@@ -72,10 +76,8 @@ class Router {
 
     viewForRoute(route, callback) {
         const event_name = this._buildEventNameForRoute(route);
-        document.addEventListener(event_name, function(e) {
-            callback(html_to_render => {
-                console.log(html_to_render);
-            }, e.detail);
+        document.addEventListener(event_name, (e) => {
+            callback(e.detail)
         });
     }
 
@@ -88,5 +90,44 @@ class Router {
         };
         xhttp.open("GET", url, true);
         xhttp.send();
+    }
+
+    renderAdmin(html) {
+        var body = document.querySelector("body");
+        var sidebar = document.querySelector("side-navbar");
+        var content = document.querySelector("petioro-content");
+
+        if (sidebar == null || !sidebar.admin) { // render whole admin page
+            router.ajaxGet("/html/admin.html", response => {
+                body.innerHTML = response;
+                content = document.querySelector("petioro-content");
+                content.innerHTML = html;
+            })
+        } else {
+            content.innerHTML = html;
+        }
+    }
+
+    renderClient(html) {
+        var body = document.querySelector("body");
+        var sidebar = document.querySelector("side-navbar");
+        var content = document.querySelector("petioro-content");
+
+        if (sidebar == null || sidebar.admin) { // render whole client page
+            router.ajaxGet("/html/client.html", response => {
+                body.innerHTML = response;
+                content = document.querySelector("petioro-content");
+                content.innerHTML = html;
+            })
+        } else {
+            content.innerHTML = html;
+        }
+    }
+
+    renderLogin(html) {
+        var body = document.querySelector("body");
+        router.ajaxGet("/html/adm-login.html", response => {
+            body.innerHTML = response;
+        })
     }
 }
