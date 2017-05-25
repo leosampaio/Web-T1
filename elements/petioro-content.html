@@ -22,12 +22,16 @@
       </div>
 
       <div class="row">
+        <slot name="before-buttons"></slot>
+      </div>
+
+      <div class="row">
         <div class="col-2">
-          <slot name="buttons-left"></slot>
+          <slot class="buttons-left" name="buttons-left"></slot>
         </div>
         <div class="col-2"></div>
         <div class="col-2">
-          <slot name="buttons-right"></slot>
+          <slot id="buttons-right" name="buttons-right"></slot>
         </div>
       </div>
 

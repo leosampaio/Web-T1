@@ -1,21 +1,12 @@
 <span slot="title">Clientinhos Bonitinhos</span>
 
-<div class="row">
-  <div class="col-2">
-    <button class="btn btn-primary btn-small pre-form-btn-left">
-      <i class="fa fa-trash"></i>Apagar selecionados
-    </button>
-  </div>
-  <div class="col-2"></div>
-  <div class="col-2">
-    <button class="btn btn-primary btn-small pre-form-btn-right" onclick="location.href='#admin/clients/new';">
-      <i class="fa fa-plus"></i>Novo Cliente
-    </button>
-    <button class="btn btn-primary btn-small pre-form-btn-right">
-      <i class="fa fa-print"></i>Imprimir
-    </button>
-  </div>
-</div>
+<button slot="buttons-left" class="btn btn-primary btn-small pre-form-btn-left">
+  <i class="fa fa-trash"></i>Apagar selecionados
+</button>
+
+<button slot="buttons-right" class="btn btn-primary btn-small pre-form-btn-right" onclick="location.href='#admin/clients/new';">
+  <i class="fa fa-plus"></i>Novo Cliente
+</button>
 
 <div class="row">
   <div class="col-6">
