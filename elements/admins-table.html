@@ -1,0 +1,72 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+<link rel="import" href="../elements/import.html">
+
+<dom-module id="admins-table">
+  <template>
+    <style include="style-module">
+      :host * {
+        box-sizing: border-box;
+      }
+    </style>
+      <div class="row">
+        <div class="col-6">
+          <table>
+            <thead>
+              <tr>
+              <th></th>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              </tr>
+            </thead>
+
+            <tbody>
+            <template is="dom-repeat" items="{{admins}}">
+              <tr>
+              <td><input type="checkbox" name="delete" value="{{item.id}}" /></td>
+              <td on-click='didSelectItem'>{{item.id}}</td>
+              <td on-click='didSelectItem'>{{item.name}}</td>
+              <td on-click='didSelectItem'>{{item.email}}</td>
+              </tr>
+            </template>
+            </tbody>
+          </table>
+      </div>
+    </div>
+    <petioro-table>
+
+  </template>
+  <script>
+    'use strict';
+
+    class AdminsTable extends Polymer.Element {
+      static get is() {
+        return "admins-table";
+      }
+
+      static get properties() {
+        return {
+          admins: {
+            type: Array,
+            value() {
+              return [
+                {id: 1, name: 'Mestre', email: 'admin@mail.com'},
+                {id: 2, name: 'Mestre York', email: 'admin@mail.com'},
+                {id: 3, name: 'Mestre Bob', email: 'admin@mail.com'},
+                {id: 4, name: 'Mestre', email: 'admin@mail.com'},
+                {id: 5, name: 'Mestre Gatínea', email: 'admin@mail.com'},
+                {id: 6, name: 'Mestre Barb', email: 'admin@mail.com'},
+              ];
+            }
+          }
+        }
+      }
+
+      didSelectItem(e) {
+        location.href= '#admin/admins/' + e.model.item.id;
+      }
+    }
+    customElements.define(AdminsTable.is, AdminsTable);
+  </script>
+</dom-module>

@@ -1,0 +1,69 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+<link rel="import" href="../elements/import.html">
+
+<dom-module id="earnings-table">
+  <template>
+    <style include="style-module">
+      :host * {
+        box-sizing: border-box;
+      }
+    </style>
+      <div class="row">
+        <div class="col-6">
+          <table>
+            <thead>
+              <tr>
+              <th>Data/Hora</th>
+              <th>Nome do Produto</th>
+              <th>Valor individual</th>
+              <th>Quantidade</th>
+              <th>Valor total</th>
+              </tr>
+            </thead>
+
+            <tbody>
+            <template is="dom-repeat" items="{{sales}}">
+              <tr data-id={{item.id}}>
+              <td>{{item.date}}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.price}}</td>
+              <td>{{item.qty}}</td>
+              <td>{{item.total}}</td>
+              </tr>
+            </template>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+  </template>
+  <script>
+    'use strict';
+
+    class EarningsTable extends Polymer.Element {
+      static get is() {
+        return "earnings-table";
+      }
+
+      static get properties() {
+        return {
+          sales: {
+            type: Array,
+            value() {
+              return [
+                {id: 1, date: '24/05/2017 11:10', name: 'Escova', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+                {id: 2, date: '24/05/2017 11:10', name: 'Banho', price: 'R$100,00', qty: '2', total: 'R$400,00'},
+                {id: 3, date: '24/05/2017 11:10', name: 'Batata', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+                {id: 4, date: '24/05/2017 11:10', name: 'Canhão', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+                {id: 5, date: '24/05/2017 11:10', name: 'Tosa', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+                {id: 6, date: '24/05/2017 11:10', name: 'Pilha', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+              ];
+            }
+          }
+        }
+      }
+    }
+    customElements.define(EarningsTable.is, EarningsTable);
+  </script>
+</dom-module>

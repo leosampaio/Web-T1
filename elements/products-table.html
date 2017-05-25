@@ -1,0 +1,73 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+<link rel="import" href="../elements/import.html">
+
+<dom-module id="products-table">
+  <template>
+    <style include="style-module">
+      :host * {
+        box-sizing: border-box;
+      }
+    </style>
+      <div class="row">
+        <div class="col-6">
+          <table>
+            <thead>
+              <tr>
+              <th></th>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Preço</th>
+              <th>Estoque</th>
+              </tr>
+            </thead>
+
+            <tbody>
+            <template is="dom-repeat" items="{{products}}">
+              <tr>
+              <td><input type="checkbox" name="delete" value="{{item.id}}" /></td>
+              <td on-click='didSelectItem'>{{item.id}}</td>
+              <td on-click='didSelectItem'>{{item.name}}</td>
+              <td on-click='didSelectItem'>{{item.price}}</td>
+              <td on-click='didSelectItem'>{{item.qty}}</td>
+              </tr>
+            </template>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+  </template>
+  <script>
+    'use strict';
+
+    class ProductsTable extends Polymer.Element {
+      static get is() {
+        return "products-table";
+      }
+
+      static get properties() {
+        return {
+          products: {
+            type: Array,
+            value() {
+              return [
+                {id: 1, name: 'Escova', price: 'R$100,00', qty: '120'},
+                {id: 2, name: 'Banho', price: 'R$100,00', qty: 'Serviço'},
+                {id: 3, name: 'Batata', price: 'R$100,00', qty: '120'},
+                {id: 4, name: 'Canhão', price: 'R$100,00', qty: '120'},
+                {id: 5, name: 'Tosa', price: 'R$100,00', qty: 'Serviço'},
+                {id: 6, name: 'Pilha', price: 'R$100,00', qty: '120'},
+              ];
+            }
+          }
+        }
+      }
+
+      didSelectItem(e) {
+        location.href= '#admin/products/' + e.model.item.id;
+      }
+    }
+    customElements.define(ProductsTable.is, ProductsTable);
+  </script>
+</dom-module>

@@ -1,0 +1,75 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+<link rel="import" href="../elements/import.html">
+
+<dom-module id="cart-table">
+  <template>
+    <style include="style-module">
+      :host * {
+        box-sizing: border-box;
+      }
+    </style>
+    <div class="row">
+      <div class="col-6">
+        <table>
+          <thead>
+            <tr>
+            <th>ID</th>
+            <th>Nome do Produto</th>
+            <th>Valor individual</th>
+            <th>Quantidade</th>
+            <th>Valor total</th>
+            <th>Remover</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          <template is="dom-repeat" items="{{sales}}">
+            <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.qty}}</td>
+            <td>{{item.total}}</td>
+            <td on-click='removeFromCart'><a class="sales-add-to-cart-link">Remover<i class="fa fa-trash"></i></a></td>
+            </tr>
+          </template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </template>
+  <script>
+    'use strict';
+
+    class CartTable extends Polymer.Element {
+      static get is() {
+        return "cart-table";
+      }
+
+      static get properties() {
+        return {
+          sales: {
+            type: Array,
+            value() {
+              return [
+                {id: 1, name: 'Escova', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+                {id: 2, name: 'Banho', price: 'R$100,00', qty: '2', total: 'R$400,00'},
+                {id: 3, name: 'Batata', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+                {id: 4, name: 'Canhão', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+                {id: 5, name: 'Tosa', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+                {id: 6, name: 'Pilha', price: 'R$100,00', qty: '1', total: 'R$200,00'},
+              ];
+            }
+          }
+        }
+      }
+
+      removeFromCart(e) {
+        
+      }
+    }
+    customElements.define(CartTable.is, CartTable);
+  </script>
+</dom-module>
