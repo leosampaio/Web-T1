@@ -2,7 +2,7 @@
 <link rel="import" href="../css/style-module.html">
 <link rel="import" href="../elements/import.html">
 
-<dom-module id="admins-table">
+<dom-module id="clients-table">
   <template>
     <style include="style-module">
       :host * {
@@ -18,45 +18,46 @@
               <th>ID</th>
               <th>Nome</th>
               <th>Email</th>
+              <th>Telefone</th>
               </tr>
             </thead>
 
             <tbody>
-            <template is="dom-repeat" items="{{admins}}">
+            <template is="dom-repeat" items="{{clients}}">
               <tr>
               <td><input type="checkbox" name="delete" value="{{item.id}}" /></td>
               <td on-click='didSelectItem'>{{item.id}}</td>
               <td on-click='didSelectItem'>{{item.name}}</td>
               <td on-click='didSelectItem'>{{item.email}}</td>
+              <td on-click='didSelectItem'>{{item.phone}}</td>
               </tr>
             </template>
             </tbody>
           </table>
       </div>
     </div>
-    <petioro-table>
 
   </template>
   <script>
     'use strict';
 
-    class AdminsTable extends Polymer.Element {
+    class ClientsTable extends Polymer.Element {
       static get is() {
-        return "admins-table";
+        return "clients-table";
       }
 
       static get properties() {
         return {
-          admins: {
+          clients: {
             type: Array,
             value() {
               return [
-                {id: 1, name: 'Mestre', email: 'admin@mail.com'},
-                {id: 2, name: 'Mestre York', email: 'admin@mail.com'},
-                {id: 3, name: 'Mestre Bob', email: 'admin@mail.com'},
-                {id: 4, name: 'Mestre', email: 'admin@mail.com'},
-                {id: 5, name: 'Mestre Gatínea', email: 'admin@mail.com'},
-                {id: 6, name: 'Mestre Barb', email: 'admin@mail.com'},
+                {id: 1, name: 'Mestre', email: 'admin@mail.com', phone: '555 17 3343'},
+                {id: 2, name: 'Mestre York', email: 'admin@mail.com', phone: '555 17 3343'},
+                {id: 3, name: 'Mestre Bob', email: 'admin@mail.com', phone: '555 17 3343'},
+                {id: 4, name: 'Mestre', email: 'admin@mail.com', phone: '555 17 3343'},
+                {id: 5, name: 'Mestre Gatínea', email: 'admin@mail.com', phone: '555 17 3343'},
+                {id: 6, name: 'Mestre Barb', email: 'admin@mail.com', phone: '555 17 3343'},
               ];
             }
           }
@@ -64,9 +65,9 @@
       }
 
       didSelectItem(e) {
-        location.href= '#admin/admins/' + e.model.item.id;
+        location.href= '#admin/clients/' + e.model.item.id;
       }
     }
-    customElements.define(AdminsTable.is, AdminsTable);
+    customElements.define(ClientsTable.is, ClientsTable);
   </script>
 </dom-module>

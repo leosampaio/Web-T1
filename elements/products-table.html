@@ -2,7 +2,7 @@
 <link rel="import" href="../css/style-module.html">
 <link rel="import" href="../elements/import.html">
 
-<dom-module id="admins-table">
+<dom-module id="products-table">
   <template>
     <style include="style-module">
       :host * {
@@ -17,46 +17,47 @@
               <th></th>
               <th>ID</th>
               <th>Nome</th>
-              <th>Email</th>
+              <th>Preço</th>
+              <th>Estoque</th>
               </tr>
             </thead>
 
             <tbody>
-            <template is="dom-repeat" items="{{admins}}">
+            <template is="dom-repeat" items="{{products}}">
               <tr>
               <td><input type="checkbox" name="delete" value="{{item.id}}" /></td>
               <td on-click='didSelectItem'>{{item.id}}</td>
               <td on-click='didSelectItem'>{{item.name}}</td>
-              <td on-click='didSelectItem'>{{item.email}}</td>
+              <td on-click='didSelectItem'>{{item.price}}</td>
+              <td on-click='didSelectItem'>{{item.qty}}</td>
               </tr>
             </template>
             </tbody>
           </table>
       </div>
     </div>
-    <petioro-table>
 
   </template>
   <script>
     'use strict';
 
-    class AdminsTable extends Polymer.Element {
+    class ProductsTable extends Polymer.Element {
       static get is() {
-        return "admins-table";
+        return "products-table";
       }
 
       static get properties() {
         return {
-          admins: {
+          products: {
             type: Array,
             value() {
               return [
-                {id: 1, name: 'Mestre', email: 'admin@mail.com'},
-                {id: 2, name: 'Mestre York', email: 'admin@mail.com'},
-                {id: 3, name: 'Mestre Bob', email: 'admin@mail.com'},
-                {id: 4, name: 'Mestre', email: 'admin@mail.com'},
-                {id: 5, name: 'Mestre Gatínea', email: 'admin@mail.com'},
-                {id: 6, name: 'Mestre Barb', email: 'admin@mail.com'},
+                {id: 1, name: 'Escova', price: 'R$100,00', qty: '120'},
+                {id: 2, name: 'Banho', price: 'R$100,00', qty: 'Serviço'},
+                {id: 3, name: 'Batata', price: 'R$100,00', qty: '120'},
+                {id: 4, name: 'Canhão', price: 'R$100,00', qty: '120'},
+                {id: 5, name: 'Tosa', price: 'R$100,00', qty: 'Serviço'},
+                {id: 6, name: 'Pilha', price: 'R$100,00', qty: '120'},
               ];
             }
           }
@@ -64,9 +65,9 @@
       }
 
       didSelectItem(e) {
-        location.href= '#admin/admins/' + e.model.item.id;
+        location.href= '#admin/products/' + e.model.item.id;
       }
     }
-    customElements.define(AdminsTable.is, AdminsTable);
+    customElements.define(ProductsTable.is, ProductsTable);
   </script>
 </dom-module>
