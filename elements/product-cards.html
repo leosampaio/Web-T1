@@ -1,0 +1,125 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+<link rel="import" href="../elements/import.html">
+
+<dom-module id="product-cards">
+  <template>
+    <style include="style-module">
+      :host * {
+          box-sizing: border-box;
+      }
+
+      .product-card {
+          height: 110px;
+          background-color: #eee;
+          border: 1px solid rgba(0,0,0, 0.1);
+          border-bottom: 3px solid rgba(0,0,0, 0.2);
+          border-radius: 5px;
+      }
+
+      .product-card:hover {
+          position: relative;
+          bottom: 2px;
+          border-bottom: 4px solid rgba(0,0,0, 0.3);
+          cursor: pointer;
+      }
+
+      .product-pic-container {
+          padding: 0;
+      }
+
+      .product-card img {
+          width: 90px;
+          height: 106px;
+          float: left;
+          object-fit: cover;
+          margin-left: 0;
+          border-radius: 5px 0 0 1px;
+      }
+
+      .product-card:hover img {
+          height: 105px;
+      }
+
+      .product-card-header-container {
+          height: 90px;
+          padding-bottom: 0px;
+          line-height: 22px;
+      }
+
+      .product-card-header {
+          border-bottom: 1px solid #ccc;
+          height: 58px;
+      }
+
+      .product-card-header h2 {
+          margin:0;
+      }
+
+      .product-card-header i {
+          float:right;
+          font-size: 20px;
+          color: #E05D6F;
+      }
+    </style>
+
+    <div class="row">
+    <template is="dom-repeat" items="{{products}}">
+
+      <div class="product-id" hidden>[[item.id]]</div>
+      <div class="col-2">
+        <div class="product-card">
+          <div class="row">
+            <div class="col-2 product-pic-container">
+              <img src="[[item.image_url]]">
+            </div>
+            <div class="col-4 product-card-header-container">
+              <div class="product-card-header">
+                <h2>[[item.name]]</h2>
+                <p>[[item.price]] <a href="#"><i class="fa fa-cart-plus"></i></a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </template>
+    </div>
+
+  </template>
+  <script>
+    'use strict';
+
+    class ProductCards extends Polymer.Element {
+      static get is() {
+        return "product-cards";
+      }
+
+      static get properties() {
+        return {
+          products: {
+            type: Array,
+            value() {
+              return [
+                {id: 1, image_url: "../img/product-0.jpg", name: "Escova para Cães", price: "R$100,00"},
+                {id: 2, image_url: "../img/product-1.jpg", name: "Luva para Bolas", price: "R$200,00"},
+                {id: 3, image_url: "../img/product-2.jpg", name: "Drogas Orgânicas", price: "R$1250,00"},
+                {id: 4, image_url: "../img/product-3.jpg", name: "Canhão de Bolas de Tênis", price: "R$50,00"},
+                {id: 5, image_url: "../img/product-4.jpg", name: "Bola de Tênis Gigante", price: "R$5,00"},
+                {id: 6, image_url: "../img/product-5.jpg", name: "Pilha de Fezes Dourada", price: "R$500.000,00"}
+              ];
+            }
+          }
+        }
+      }
+
+      didSelectPet(e) {
+        location.href= '#pets/' + e.model.item.id;
+      }
+    }
+    customElements.define(ProductCards.is, ProductCards);
+  </script>
+</dom-module>
+
+
+          

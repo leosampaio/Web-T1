@@ -1,18 +1,11 @@
 <span slot="title">Pet</span>
 
-<span slot="buttons-left">
-  <button class="btn btn-primary btn-small pre-form-btn-left">
-      <i class="fa fa-trash"></i>Apagar selecionados
-  </button>
-</span>
+<button slot="buttons-left" class="btn btn-primary btn-small pre-form-btn-left">
+    <i class="fa fa-trash"></i>Apagar selecionados
+</button>
 
-<span slot="buttons-right">
-  <button class="btn btn-primary btn-small pre-form-btn-right" onclick="location.href='#pets/new';">
+<button slot="buttons-right" class="btn btn-primary btn-small pre-form-btn-right" onclick="location.href='#pets/new';">
     <i class="fa fa-plus"></i>Novo Pet
-  </button>
-  <button class="btn btn-primary btn-small pre-form-btn-right">
-    <i class="fa fa-print"></i>Imprimir
-  </button>
-</span>
+</button>
 
 <pet-cards></pet-cards>

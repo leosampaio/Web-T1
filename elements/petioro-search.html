@@ -1,0 +1,63 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+
+<dom-module id="petioro-search">
+  <template>
+    <style include="style-module">
+      :host * {
+          box-sizing: border-box;
+      }
+
+      form input[type="text"].search-bar {
+          padding: 15px;
+          float: right;
+          width: 100%;
+          padding-left: 50px;
+      }
+
+      form input[type="text"].search-bar + i {
+          margin: 10px 0;
+          padding: 10px;
+          padding-left: 15px;
+          height: 100%;
+          font-size: 28px;
+          color: #555;
+          position: absolute;
+      }
+    </style>
+
+    <div class="row">
+      <div class="col-6">
+        <form on-keyup="searchSubmit">
+          <input type="text" placeholder={{placeholder}} class="search-bar"></input>
+          <i class="fa fa-search"></i>
+        </form>
+      </div>
+    </div>
+
+  </template>
+  <script>
+    class PetioroSearch extends Polymer.Element {
+      static get is() {
+        return "petioro-search";
+      }
+
+      static get properties() {
+        return {
+          placeholder: {
+            type: String,
+          }
+        }
+      }
+
+      searchSubmit(e) {
+        event = new CustomEvent("did-search", {
+                bubbles: true,
+                composed: true, 
+                detail: {query: e.target.value}
+        });
+      }
+    }
+    customElements.define(PetioroSearch.is, PetioroSearch);
+  </script>
+</dom-module>

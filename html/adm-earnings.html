@@ -1,6 +1,6 @@
 <span slot="title">Ganhos</span>
 
-<div class="row">
+<div slot="before-buttons">
   <div class="col-3">
     <h3 class="earnings-big-values">10.000.000</h3>
     <p>produtos vendidos no mês de Abril</p>
@@ -11,21 +11,15 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-3">
-    <select class="select select-primary pre-form-btn-left">
-      <option value="janeiro">Janeiro</option>
-      <option value="fevereiro">Fevereiro</option>
-      <option value="marco">Março</option>
-      <option value="abril">Abril</option>
-    </select>
-  </div>
-  <div class="col-3">
-    <button class="btn btn-primary pre-form-btn-right btn-small">
-      <i class="fa fa-print fa-lg" aria-hidden="true"></i>&nbsp; Imprimir
-    </button>
-  </div>
-</div>
+<select slot="buttons-left" class="select select-primary pre-form-btn-left">
+  <option value="janeiro">Janeiro</option>
+  <option value="fevereiro">Fevereiro</option>
+  <option value="marco">Março</option>
+  <option value="abril">Abril</option>
+</select>
+<button slot="buttons-right" class="btn btn-primary pre-form-btn-right btn-small">
+  <i class="fa fa-print fa-lg" aria-hidden="true"></i>&nbsp; Imprimir
+</button>
 
 <div class="row">
   <div class="col-6">
