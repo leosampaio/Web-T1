@@ -1,3 +1,5 @@
+'use strict';
+
 class Router {
 
     static navigate(route) {
@@ -93,42 +95,50 @@ class Router {
     }
 
     getTemplate(path, success) {
-        let url = "templates/" + path
-        this.ajaxGet(url, success)
+        let p = new Promise((resolve, reject) => {
+            let url = "templates/" + path
+            this.ajaxGet(url, resolve)
+        });
+        return p
     }
 
     renderHTMLWithType(html, type) {
-        let shell = ""; 
-        let sidebarShouldBeAdmin = false;
-        if (type == "admin") {
-            shell = "templates/admin/base.html";
-            sidebarShouldBeAdmin = true;
-        } else if (type == "client") {
-            shell = "templates/client/base.html";
-            sidebarShouldBeAdmin = false;
-        }
+        let p = new Promise((resolve, reject) => {
+            let shell = ""; 
+            let sidebarShouldBeAdmin = false;
+            if (type == "admin") {
+                shell = "templates/admin/base.html";
+                sidebarShouldBeAdmin = true;
+            } else if (type == "client") {
+                shell = "templates/client/base.html";
+                sidebarShouldBeAdmin = false;
+            }
 
-        let body = document.querySelector("body");
-        let sidebar = document.querySelector("side-navbar");
-        let content = document.querySelector("petioro-content");
+            let body = document.querySelector("body");
+            let sidebar = document.querySelector("side-navbar");
+            let content = document.querySelector("petioro-content");
 
-        if (sidebar == null || (sidebarShouldBeAdmin != sidebar.admin)) {
-            router.ajaxGet(shell, response => {
-                body.innerHTML = response;
-                content = document.querySelector("petioro-content");
+            if (sidebar == null || (sidebarShouldBeAdmin != sidebar.admin)) {
+                router.ajaxGet(shell, response => {
+                    body.innerHTML = response;
+                    content = document.querySelector("petioro-content");
+                    content.innerHTML = html;
+                    resolve(content)
+                })
+            } else {
                 content.innerHTML = html;
-            })
-        } else {
-            content.innerHTML = html;
-        }
+                resolve(content)
+            }
+        });
+        return p;
     }
 
     renderAdmin(html) {
-        this.renderHTMLWithType(html, "admin")
+        return this.renderHTMLWithType(html, "admin");
     }
 
     renderClient(html) {
-        this.renderHTMLWithType(html, "client")
+        return this.renderHTMLWithType(html, "client");
     }
 
     renderLogin() {
