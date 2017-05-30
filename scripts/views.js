@@ -12,9 +12,11 @@ router.viewForRoute("logout", () => {
 
 router.viewForRoute("admin/admins", () => {
     router.getTemplate("admin/admins/index.html").then((response) => {
-        return router.renderAdmin(response);
-    }).then((content) => {
-
+        return Promise.all([router.renderAdmin(response), Admin.getAll()]);
+    }).then((results) => {
+        let content = results[0];
+        let admins = results[1];
+        content.querySelector('admins-table').admins = admins
     })
 })
 
@@ -60,9 +62,11 @@ router.viewForRoute("admin/clients/id", (params) => {
 
 router.viewForRoute("admin/products", () => {
     router.getTemplate("admin/products/index.html").then((response) => {
-        return router.renderAdmin(response);
-    }).then((content) => {
-
+        return Promise.all([router.renderAdmin(response), Product.getAll()]);
+    }).then((results) => {
+        let content = results[0];
+        let products = results[1];
+        content.querySelector('products-table').products = products
     })
 })
 
@@ -134,11 +138,12 @@ router.viewForRoute("admin/calendar/id", (params) => {
 
 router.viewForRoute("pets", () => {
     router.getTemplate("client/pets/index.html").then((response) => {
-        return router.renderClient(response);
-    }).then((content) => {
-        let cards = content.querySelector("pet-cards");
-        cards.pets = Pet.getAll();
-    })
+        return Promise.all([router.renderClient(response), Pet.getAll()])
+    }).then((results) => {
+        let content = results[0];
+        let pets = results[1];
+        content.querySelector("pet-cards").pets = pets
+    });
 })
 
 router.viewForRoute("pets/id", (params) => {
@@ -167,10 +172,12 @@ router.viewForRoute("calendar", () => {
 
 router.viewForRoute("products", () => {
     router.getTemplate("client/products/index.html").then((response) => {
-        return router.renderClient(response);
-    }).then((content) => {
+        return Promise.all([router.renderClient(response), Product.getAll()]);
+    }).then((results) => {
+        let content = results[0];
+        let products = results[1];
         let cards = content.querySelector('product-cards');
-        cards.products = Product.getAll();
+        cards.products = products;
     })
 })
 
