@@ -38,9 +38,11 @@ router.viewForRoute("admin/admins/id", (params) => {
 
 router.viewForRoute("admin/clients", () => {
     router.getTemplate("admin/clients/index.html").then((response) => {
-        return router.renderAdmin(response);
-    }).then((content) => {
-
+        return Promise.all([router.renderAdmin(response), Client.getAll()]);
+    }).then((results) => {
+        let content = results[0];
+        let clients = results[1];
+        content.querySelector('clients-table').clients = clients
     })
 })
 
