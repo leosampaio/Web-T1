@@ -107,21 +107,21 @@
 
       ready() {
         super.ready();
-        var cartLink = this.$['cart-link'];
+        let cartLink = this.$['cart-link'];
         cartLink.addEventListener('click', e => {
-          var event = new CustomEvent('did-click-cart', {bubbles: true, composed: true});
+          let event = new CustomEvent('did-click-cart', {bubbles: true, composed: true});
           this.dispatchEvent(event);
         });
 
-        var profileLink = this.$['profile-link'];
+        let profileLink = this.$['profile-link'];
         profileLink.addEventListener('click', e => {
-          var event = new CustomEvent('did-click-profile', {bubbles: true, composed: true});
+          let event = new CustomEvent('did-click-profile', {bubbles: true, composed: true});
           this.dispatchEvent(event);
         });
 
-         var profileLink = this.$['logout-link'];
-        profileLink.addEventListener('click', e => {
-          var event = new CustomEvent('did-click-logout', {bubbles: true, composed: true});
+        let logoutLink = this.$['logout-link'];
+        logoutLink.addEventListener('click', e => {
+          let event = new CustomEvent('did-click-logout', {bubbles: true, composed: true});
           this.dispatchEvent(event);
         });
       }
