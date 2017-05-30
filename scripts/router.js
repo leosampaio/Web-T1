@@ -23,8 +23,8 @@ class Router {
     }
 
     _buildEventNameForRoute(route) {
-        var event_name = "";
-        var split_route = route.split('/');
+        let event_name = "";
+        let split_route = route.split('/');
 
         if (split_route.length == 0) { return; }
         if (split_route[0] == '') { return 'root' }
@@ -46,7 +46,7 @@ class Router {
     }
 
     triggerEventForRoute(route) {
-        var split_route = route.split('/');
+        let split_route = route.split('/');
 
         if (split_route.length == 0) { return; }
 
@@ -82,7 +82,7 @@ class Router {
     }
 
     ajaxGet(url, success) {
-        var xhttp = new XMLHttpRequest();
+        let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                success(this.responseText);
@@ -92,13 +92,28 @@ class Router {
         xhttp.send();
     }
 
-    renderAdmin(html) {
-        var body = document.querySelector("body");
-        var sidebar = document.querySelector("side-navbar");
-        var content = document.querySelector("petioro-content");
+    getTemplate(path, success) {
+        let url = "templates/" + path
+        this.ajaxGet(url, success)
+    }
 
-        if (sidebar == null || !sidebar.admin) { // render whole admin page
-            router.ajaxGet("/html/admin.html", response => {
+    renderHTMLWithType(html, type) {
+        let shell = ""; 
+        let sidebarShouldBeAdmin = false;
+        if (type == "admin") {
+            shell = "templates/admin/base.html";
+            sidebarShouldBeAdmin = true;
+        } else if (type == "client") {
+            shell = "templates/client/base.html";
+            sidebarShouldBeAdmin = false;
+        }
+
+        let body = document.querySelector("body");
+        let sidebar = document.querySelector("side-navbar");
+        let content = document.querySelector("petioro-content");
+
+        if (sidebar == null || (sidebarShouldBeAdmin != sidebar.admin)) {
+            router.ajaxGet(shell, response => {
                 body.innerHTML = response;
                 content = document.querySelector("petioro-content");
                 content.innerHTML = html;
@@ -106,27 +121,19 @@ class Router {
         } else {
             content.innerHTML = html;
         }
+    }
+
+    renderAdmin(html) {
+        this.renderHTMLWithType(html, "admin")
     }
 
     renderClient(html) {
-        var body = document.querySelector("body");
-        var sidebar = document.querySelector("side-navbar");
-        var content = document.querySelector("petioro-content");
-
-        if (sidebar == null || sidebar.admin) { // render whole client page
-            router.ajaxGet("/html/client.html", response => {
-                body.innerHTML = response;
-                content = document.querySelector("petioro-content");
-                content.innerHTML = html;
-            })
-        } else {
-            content.innerHTML = html;
-        }
+        this.renderHTMLWithType(html, "client")
     }
 
-    renderLogin(html) {
-        var body = document.querySelector("body");
-        router.ajaxGet("/html/adm-login.html", response => {
+    renderLogin() {
+        let body = document.querySelector("body");
+        router.ajaxGet("/templates/login.html", response => {
             body.innerHTML = response;
         })
     }
