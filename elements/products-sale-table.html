@@ -14,7 +14,6 @@
           <table>
             <thead>
               <tr>
-              <th></th>
               <th>ID</th>
               <th>Nome</th>
               <th>Preço</th>
@@ -26,7 +25,6 @@
             <tbody>
             <template is="dom-repeat" items="{{products}}">
               <tr>
-              <td><input type="checkbox" name="delete" value="{{item.id}}" /></td>
               <td>{{item.id}}</td>
               <td>{{item.name}}</td>
               <td>{{item.price}}</td>
@@ -51,17 +49,7 @@
       static get properties() {
         return {
           products: {
-            type: Array,
-            value() {
-              return [
-                {id: 1, name: 'Escova', price: 'R$100,00', qty: '120'},
-                {id: 2, name: 'Banho', price: 'R$100,00', qty: 'Serviço'},
-                {id: 3, name: 'Batata', price: 'R$100,00', qty: '120'},
-                {id: 4, name: 'Canhão', price: 'R$100,00', qty: '120'},
-                {id: 5, name: 'Tosa', price: 'R$100,00', qty: 'Serviço'},
-                {id: 6, name: 'Pilha', price: 'R$100,00', qty: '120'},
-              ];
-            }
+            type: Array
           }
         }
       }

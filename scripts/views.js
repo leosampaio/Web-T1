@@ -100,18 +100,24 @@ router.viewForRoute("admin/earnings", () => {
 
 router.viewForRoute("admin/sales", () => {
     router.getTemplate("admin/sales/index.html").then((response) => {
-        return router.renderAdmin(response);
-    }).then((content) => {
-
+        return Promise.all([router.renderAdmin(response), Product.getAll(), Cart.getCurrent()]);
+    }).then((results) => {
+        let content = results[0];
+        let products = results[1];
+        let cart = results[2];
+        content.querySelector('products-sale-table').products = products;
+        content.querySelector('cart-table').cart = cart;
     })
 })
 
 router.viewForRoute("admin/sales/id", (params) => {
     if (params.id == 'new') {
         router.getTemplate("admin/sales/second-step.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+            return Promise.all([router.renderAdmin(response), Cart.getCurrent()]);
+        }).then((results) => {
+            let content = results[0];
+            let cart = results[1];
+            content.querySelector('cart-table').cart = cart;
         })
     }
 })

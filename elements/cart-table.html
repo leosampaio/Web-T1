@@ -24,18 +24,24 @@
           </thead>
 
           <tbody>
-          <template is="dom-repeat" items="{{sales}}">
+          <template is="dom-repeat" items="{{cart.sales}}">
             <tr>
             <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.product.name}}</td>
+            <td>{{item.product.price}}</td>
             <td>{{item.qty}}</td>
-            <td>{{item.total}}</td>
+            <td>{{item.formattedTotalPrice}}</td>
             <td on-click='removeFromCart'><a class="sales-add-to-cart-link">Remover<i class="fa fa-trash"></i></a></td>
             </tr>
           </template>
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <h3 class="cart-total align-right">Total: {{cart.formattedTotalPrice}}</h3>
       </div>
     </div>
 
@@ -50,18 +56,8 @@
 
       static get properties() {
         return {
-          sales: {
-            type: Array,
-            value() {
-              return [
-                {id: 1, name: 'Escova', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-                {id: 2, name: 'Banho', price: 'R$100,00', qty: '2', total: 'R$400,00'},
-                {id: 3, name: 'Batata', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-                {id: 4, name: 'Canhão', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-                {id: 5, name: 'Tosa', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-                {id: 6, name: 'Pilha', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-              ];
-            }
+          cart: {
+            type: Object
           }
         }
       }
