@@ -136,7 +136,8 @@ router.viewForRoute("pets", () => {
     router.getTemplate("client/pets/index.html").then((response) => {
         return router.renderClient(response);
     }).then((content) => {
-
+        let cards = content.querySelector("pet-cards");
+        cards.pets = Pet.getAll();
     })
 })
 
@@ -168,7 +169,8 @@ router.viewForRoute("products", () => {
     router.getTemplate("client/products/index.html").then((response) => {
         return router.renderClient(response);
     }).then((content) => {
-
+        let cards = content.querySelector('product-cards');
+        cards.products = Product.getAll();
     })
 })
 
