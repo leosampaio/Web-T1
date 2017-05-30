@@ -25,11 +25,11 @@
             <tbody>
             <template is="dom-repeat" items="{{sales}}">
               <tr data-id={{item.id}}>
-              <td>{{item.date}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.price}}</td>
+              <td>{{item.formattedDate}}</td>
+              <td>{{item.product.name}}</td>
+              <td>{{item.product.price}}</td>
               <td>{{item.qty}}</td>
-              <td>{{item.total}}</td>
+              <td>{{item.formattedTotalPrice}}</td>
               </tr>
             </template>
             </tbody>
@@ -49,17 +49,7 @@
       static get properties() {
         return {
           sales: {
-            type: Array,
-            value() {
-              return [
-                {id: 1, date: '24/05/2017 11:10', name: 'Escova', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-                {id: 2, date: '24/05/2017 11:10', name: 'Banho', price: 'R$100,00', qty: '2', total: 'R$400,00'},
-                {id: 3, date: '24/05/2017 11:10', name: 'Batata', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-                {id: 4, date: '24/05/2017 11:10', name: 'Canhão', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-                {id: 5, date: '24/05/2017 11:10', name: 'Tosa', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-                {id: 6, date: '24/05/2017 11:10', name: 'Pilha', price: 'R$100,00', qty: '1', total: 'R$200,00'},
-              ];
-            }
+            type: Array
           }
         }
       }

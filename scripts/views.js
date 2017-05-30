@@ -90,9 +90,11 @@ router.viewForRoute("admin/products/id", (params) => {
 
 router.viewForRoute("admin/earnings", () => {
     router.getTemplate("admin/earnings/index.html").then((response) => {
-        return router.renderAdmin(response);
-    }).then((content) => {
-
+        return Promise.all([router.renderAdmin(response), Sale.getAll()]);
+    }).then((results) => {
+        let content = results[0];
+        let sales = results[1];
+        content.querySelector('earnings-table').sales = sales
     })
 })
 
