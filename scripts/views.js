@@ -132,13 +132,13 @@ router.viewForRoute("admin/calendar", () => {
 
 router.viewForRoute("admin/calendar/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("admin/events/new.html").then((response) => {
+        router.getTemplate("client/events/new.html").then((response) => {
             return router.renderAdmin(response);
         }).then((content) => {
 
         })
     } else {
-        router.getTemplate("admin/events/edit.html").then((response) => {
+        router.getTemplate("client/events/edit.html").then((response) => {
             return router.renderAdmin(response);
         }).then((content) => {
 
