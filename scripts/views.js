@@ -124,13 +124,25 @@ router.viewForRoute("admin/sales/id", (params) => {
 
 router.viewForRoute("admin/calendar", () => {
     router.getTemplate("admin/events/calendar.html").then((response) => {
-        return router.renderAdmin(response);
-    }).then((content) => {
-
+        return Promise.all([router.renderAdmin(response), DailySummary.getDailySummaryForToday()]);
+    }).then((results) => {
+        let content = results[0];
+        let summary = results[1];
+        content.querySelector('petioro-calendar').dailySummary = summary;
     })
 })
 
 router.viewForRoute("admin/calendar/id", (params) => {
+    router.getTemplate("admin/events/calendar.html").then((response) => {
+        return Promise.all([router.renderAdmin(response), DailySummary.getDailySummaryForDate(params.id)]);
+    }).then((results) => {
+        let content = results[0];
+        let summary = results[1];
+        content.querySelector('petioro-calendar').dailySummary = summary;
+    })
+})
+
+router.viewForRoute("admin/events/id", (params) => {
     if (params.id == 'new') {
         router.getTemplate("client/events/new.html").then((response) => {
             return router.renderAdmin(response);

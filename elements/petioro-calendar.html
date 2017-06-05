@@ -48,10 +48,6 @@
           text-align: left;
       }
 
-      .size-day-schedule {
-          height: 574px;
-      }
-
       .day-schedule h3 {
           font-weight: bold;
           font-family: Lato;
@@ -137,11 +133,11 @@
         <!-- Row mês calendário-->
         <div class="row head-month-calendar">
           <div class="col-2 prev-calendar-button">
-            <button href="#admin/calendar/previous" class="calendar-button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+            <button on-click="didClickPrevious" class="calendar-button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
           </div>
-          <div class="col-2 header-container"><h2 style="text-align: center">Abril</h2></div>
+          <div class="col-2 header-container"><h2 style="text-align: center">{{dailySummary.formattedMonth}}</h2></div>
           <div class="col-2 next-calendar-button">
-            <button href="#admin/calendar/next" class="calendar-button"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+            <button on-click="didClickNext" class="calendar-button"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
           </div>
         </div>
 
@@ -157,25 +153,25 @@
 
         <!-- ROW dia do Calendário -->
         <div class="row border-days-calendar">
-          <div class="col-1 day-schedule size-day-schedule"><h3>01</h3></div>
+          <div class="col-1 day-schedule"><h3>{{dailySummary.formattedDay}}</h3></div>
           <div class="col-5">
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">08:00</div>
-            <div class="row schedules scheduled">09:00
-              <span class="itens-follow">Jujuba</span>
-              <i class="fa fa-scissors fa-lg itens-follow" aria-hidden="true"></i>
-              <span class="del-schedule itens-follow "> Excluir<i class="fa fa-trash"></i></span>
-            </div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">10:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">11:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">12:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">13:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">14:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">15:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">16:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">17:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">18:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">18:00</div>
-            <div class="row schedules schedule-free" onclick="location.href='#admin/calendar/new';">18:00</div>
+
+            <template is="dom-repeat" items="{{dailySummary.slots}}">
+
+              <template is="dom-if" if="{{!item.isScheduled}}">
+                <div class="row schedules schedule-free" onclick="location.href='#admin/events/new';">{{item.time}}</div>
+              </template>
+
+              <template is="dom-if" if="{{item.isScheduled}}">
+                <div class="row schedules scheduled">{{item.time}}
+                  <span class="itens-follow">{{item.event.pet.name}}</span>
+                  <i class="fa fa-scissors fa-lg itens-follow" aria-hidden="true"></i>
+                  <span class="del-schedule itens-follow "> Excluir<i class="fa fa-trash"></i></span>
+                </div>
+              </template>
+
+            </template>
+
           </div>
         </div>
       </div>
@@ -192,14 +188,18 @@
 
       static get properties() {
         return {
-          events: {
-            type: Array
+          dailySummary: {
+            type: Object
           }
         }
       }
 
-      didSelectPet(e) {
-        location.href= '#pets/' + e.model.item.id;
+      didClickNext(e) {
+        location.href='#admin/calendar/' + this.dailySummary.nextDateID
+      }
+
+      didClickPrevious(e) {
+        location.href='#admin/calendar/' + this.dailySummary.previousDateID
       }
     }
     customElements.define(PetioroCalendar.is, PetioroCalendar);
