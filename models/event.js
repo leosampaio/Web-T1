@@ -16,7 +16,7 @@ class CalendarEvent {
                     new CalendarEvent({id: 1,
                         client: new Client({id: 1, name: 'John', email: 'client@mail.com', phone: '555 17 3343'}),
                         pet: new Pet({id: 1, name: 'Auau', image_url: '../img/pet-0.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                        service: new Product({id: 1, image_url: "../img/product-0.jpg", name: "Escova para Cães", price: "R$100,00", qty: 100}),
+                        service: new Product({id: 1, image_url: "../img/product-0.jpg", name: "Escova para Cães", price: "R$100,00"}),
                         date: Date(),
                         slotid: Math.floor((Math.random() * 10) + 1),
                     }),
@@ -30,7 +30,7 @@ class CalendarEvent {
             resolve(new CalendarEvent({id: 1,
                         client: new Client({id: 1, name: 'John', email: 'client@mail.com', phone: '555 17 3343'}),
                         pet: new Pet({id: 1, name: 'Auau', image_url: '../img/pet-0.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                        service: new Product({id: 1, image_url: "../img/product-0.jpg", name: "Escova para Cães", price: "R$100,00", qty: 100}),
+                        service: new Product({id: 1, image_url: "../img/product-0.jpg", name: "Escova para Cães", price: "R$100,00"}),
                         date: Date(),
                         slotid: Math.floor((Math.random() * 10) + 1),
                     }));

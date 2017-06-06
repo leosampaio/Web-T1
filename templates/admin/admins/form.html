@@ -1,0 +1,26 @@
+<span slot="title">Dados Administrador</span>
+<span slot="breadcrumbs"><a href="#admin/admins">Administradores</a> - Dados</span>
+<petioro-form action="admin/admins">
+  <span slot="left-columm">
+    <label for="name">Nome</label>
+    <input type="text" name="name">
+    <label for="username">Username</label>
+    <input type="text" name="username">
+    <label for="email">Email</label>
+    <input type="text" name="email">
+    <label for="phone">Telefone</label>
+    <input type="text" name="phone">
+  </span>
+  <span slot="right-columm">
+    <label for="password">Senha</label>
+    <input type="text" name="password">
+    <label for="picture_url">URL da foto</label>
+    <input type="text" name="image_url">
+  </span>
+  <button slot="left-button" class="btn btn-primary align-left" onclick="location.href='#admin/admins';">
+    <i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i>&nbsp; Cancelar
+  </button>
+  <button slot="right-button" class="btn btn-primary" type="submit">
+    <i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i>&nbsp; Salvar
+  </button>
+</petioro-form>

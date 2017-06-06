@@ -1,6 +1,6 @@
 'use strict';
 
-let router = new Router();
+var router = new Router();
 
 router.viewForRoute("", () => {
     router.renderLogin();
@@ -22,16 +22,16 @@ router.viewForRoute("admin/admins", () => {
 
 router.viewForRoute("admin/admins/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("admin/admins/new.html").then((response) => {
+        router.getTemplate("admin/admins/form.html").then((response) => {
             return router.renderAdmin(response);
-        }).then((content) => {
-
         })
     } else {
-        router.getTemplate("admin/admins/edit.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/admins/form.html").then((response) => {
+            return Promise.all([router.renderAdmin(response), Admin.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model
         })
     }
 })

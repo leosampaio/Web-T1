@@ -1,0 +1,128 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+<link rel="import" href="../elements/import.html">
+
+<dom-module id="petioro-form">
+  <template>
+    <style include="style-module">
+      :host * {
+        box-sizing: border-box;
+      }
+
+      div ::slotted(button) {
+        width: 100%;
+      }
+
+      .left-align > div:first-child {
+        padding-left: 0;
+      }
+
+      .left-align > div:last-child {
+        padding-right: 0;
+      }
+
+    </style>
+
+    <div class="row">
+      <form onsubmit="didSubmitForm();" action="#">
+        <input hidden value={{model.id}} />
+        <div class="col-3">
+          <slot id="left-columm" name="left-columm"></slot>
+        </div>
+        <div class="col-3">
+           <slot id="right-columm" name="right-columm"></slot>
+        </div>
+      </form>
+      <div class="col-6 left-align">
+        <div class="col-3">
+          <slot id="left-button" name="left-button"></slot>
+        </div>
+        <div class="col-3">
+          <slot id="right-button" name="right-button"></slot>
+        </div>
+      </div>
+    </div>
+
+  </template>
+  <script>
+    'use strict';
+
+    class PetioroForm extends Polymer.Element {
+      static get is() {
+        return "petioro-form";
+      }
+
+      static get properties() {
+        return {
+          editing: {
+            type: Boolean,
+            value: false
+          },
+          model: {
+            type: Object,
+            notify: true,
+            observer: '_modelDidChange'
+          },
+          action: {
+            type: String
+          }
+        }
+      }
+
+      ready() {
+        super.ready();
+        const leftSlot = this.$['left-button'];
+        const rightSlot = this.$['right-button'];
+        const nodes = leftSlot.assignedNodes({flatten: true}).concat(rightSlot.assignedNodes({flatten: true}));
+        let submitButton;
+        for (let node of nodes) {
+          if (node.type == 'submit') {
+            submitButton = node;
+          }
+        }
+        submitButton.addEventListener('click', (e) => {
+          this.didSubmitForm(e);
+        });
+      }
+
+      _getAllInputNodes() {
+        const leftSlot = this.$['left-columm'];
+        const rightSlot = this.$['right-columm'];
+        const nodes = leftSlot.assignedNodes({flatten: true}).concat(rightSlot.assignedNodes({flatten: true}));
+        let allInputNodes = [];
+        for (let node of nodes) {
+          let inputNodes = node.querySelectorAll('input');
+          allInputNodes = allInputNodes.concat(Array.from(inputNodes));
+        }
+        return allInputNodes;
+      }
+
+      _getModelFromInput() {
+        let model = {};
+        let inputNodes = this._getAllInputNodes();
+        for (let inputNode of inputNodes) {
+          model[inputNode.name] = inputNode.value;
+        }
+        return model
+      }
+
+      _modelDidChange(model, oldModel) {
+        let allInputNodes = this._getAllInputNodes();
+        for (let inputNode of allInputNodes) {
+          inputNode.value = model[inputNode.name] != null ? model[inputNode.name] : "";
+        }
+      }
+
+      didSubmitForm(e) {
+        let model = this._getModelFromInput();
+        let router = new Router();
+        if (this.model) {
+          router.triggerActionForRoute(this.action, model, this.model.id)
+        } else {
+          router.triggerActionForRoute(this.action, model)
+        }
+      }
+    }
+    customElements.define(PetioroForm.is, PetioroForm);
+  </script>
+</dom-module>

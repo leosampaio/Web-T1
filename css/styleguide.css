@@ -147,25 +147,6 @@ p {
     margin-right: 8px;
 }
 
-.select {
-    margin: 0 5px;
-    padding: 7px 40px 7px 15px;
-    border: 1px solid rgba(0,0,0, 0.1);
-    border-bottom: 3px solid rgba(0,0,0, 0.2);
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    background-image: none;
-    -webkit-appearance: none;
-    -moz-appearance: none; 
-    appearance: none;
-    outline: none;
-    /* recreate arrow, tip from http://stackoverflow.com/a/38764639 */
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIwLjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA0LjkgMTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQuOSAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiM0NDQ0NDQ7fQo8L3N0eWxlPgo8dGl0bGU+YXJyb3dzPC90aXRsZT4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSIxLjQsNC43IDIuNSwzLjIgMy41LDQuNyAiLz4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSIzLjUsNS4zIDIuNSw2LjggMS40LDUuMyAiLz4KPC9zdmc+Cg==) no-repeat 95% 50%;
-    background-color: #eee;
-    color: #333;
-}
-
 .select-primary {
     background-color: #B3A590;
     color: #FFF;
@@ -366,7 +347,7 @@ footer p {
     padding-top: 10px;
 }
 
-form input[type="text"] {
+input[type="text"] {
     padding: 5px;
     padding-left: 8px;
     border-radius: 5px;
@@ -381,16 +362,72 @@ form input[type="text"] {
     color: #333;
 }
 
-form input[type="text"]:focus {
+input[type="text"]:focus {
     border-bottom: 3px solid rgba(0,0,0, 0.3);
 }
 
-form input[type="text"]:disabled {
+input[type="text"]:disabled {
     /*border-bottom: 1px solid rgba(0,0,0, 0.2);*/
     background-color: #ddd;
     color: #999;
     font-size: 12px;
     padding: 8px 10px;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    margin-right: -10px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 0;
+    transition: 0.3s;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 3px solid rgba(0,0,0,0.1);
+    outline: none;
+}
+
+input[type="checkbox"]:checked:before {
+  content:'\f00c';
+  font: normal normal normal 12px/1 FontAwesome;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1em;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.3em;
+  text-align: center;
+  color: #eee;
+  position: relative;
+  left: 3px;
+  top: 2px;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #B3A590;
+    margin-bottom: 0;
+    transition: 0.3s;
+}
+
+.select {
+    margin: 0 5px;
+    padding: 7px 40px 7px 15px;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-bottom: 3px solid rgba(0,0,0, 0.2);
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; 
+    appearance: none;
+    outline: none;
+    /* recreate arrow, tip from http://stackoverflow.com/a/38764639 */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIwLjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA0LjkgMTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQuOSAxMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiM0NDQ0NDQ7fQo8L3N0eWxlPgo8dGl0bGU+YXJyb3dzPC90aXRsZT4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSIxLjQsNC43IDIuNSwzLjIgMy41LDQuNyAiLz4KPHBvbHlnb24gY2xhc3M9InN0MCIgcG9pbnRzPSIzLjUsNS4zIDIuNSw2LjggMS40LDUuMyAiLz4KPC9zdmc+Cg==) no-repeat 95% 50%;
+    background-color: #eee;
+    color: #333;
 }
 
 .login-button {
@@ -760,14 +797,14 @@ label {
     margin: 0 10px;
 }
 
-form input[type="text"].search-bar {
+input[type="text"].search-bar {
     padding: 15px;
     float: right;
     width: 100%;
     padding-left: 50px;
 }
 
-form input[type="text"].search-bar + i {
+input[type="text"].search-bar + i {
     margin: 10px 0;
     padding: 10px;
     padding-left: 15px;
@@ -781,39 +818,3 @@ form input[type="text"].search-bar + i {
     margin: 0 10px;
 }
 
-input[type="checkbox"] {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 20px;
-    width: 20px;
-    margin-right: -10px;
-    font-size: 20px;
-    border-radius: 5px;
-    margin-bottom: 0;
-    transition: 0.3s;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-bottom: 3px solid rgba(0,0,0,0.1);
-    outline: none;
-}
-
-input[type="checkbox"]:checked:before {
-  content:'\f00c';
-  font: normal normal normal 12px/1 FontAwesome;
-  display: inline-block;
-  vertical-align: top;
-  line-height: 1em;
-  width: 1em;
-  height: 1em;
-  margin-right: 0.3em;
-  text-align: center;
-  color: #eee;
-  position: relative;
-  left: 3px;
-  top: 2px;
-}
-
-input[type="checkbox"]:checked {
-    background-color: #B3A590;
-    margin-bottom: 0;
-    transition: 0.3s;
-}

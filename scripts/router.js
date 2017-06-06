@@ -1,5 +1,7 @@
 'use strict';
 
+let _routerInstance = null;
+
 class Router {
 
     static navigate(route) {
@@ -7,7 +9,12 @@ class Router {
     }
 
     constructor() {
-        window.onhashchange = () => {this.urlChanged()};
+        if (!_routerInstance) {
+            _routerInstance = this;
+            window.onhashchange = () => {this.urlChanged()};
+        }
+
+        return _routerInstance
     }
 
     urlChanged() {
@@ -19,6 +26,28 @@ class Router {
             event = new CustomEvent('root', {
                 bubbles: true,
                 composed: true
+            });
+            document.dispatchEvent(event);
+        }
+    }
+
+    _buildEventNameForActionRoute(route) {
+        return "action-" + this._buildEventNameForRoute(route);
+    }
+
+    triggerActionForRoute(route, model, id) {
+        if (id) {
+            event = new CustomEvent(this._buildEventNameForActionRoute(route), {
+                bubbles: true,
+                composed: true, 
+                detail: {id: id, model: model}
+            });
+            document.dispatchEvent(event);
+        } else {
+            event = new CustomEvent(this._buildEventNameForActionRoute(route), {
+                bubbles: true,
+                composed: true,
+                detail: {model: model}
             });
             document.dispatchEvent(event);
         }
@@ -78,6 +107,13 @@ class Router {
 
     viewForRoute(route, callback) {
         const event_name = this._buildEventNameForRoute(route);
+        document.addEventListener(event_name, (e) => {
+            callback(e.detail)
+        });
+    }
+
+    actionForRoute(route, callback) {
+        const event_name = this._buildEventNameForActionRoute(route);
         document.addEventListener(event_name, (e) => {
             callback(e.detail)
         });
