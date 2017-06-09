@@ -20,3 +20,22 @@ router.actionForRoute("admin/clients", (parameters) => {
         Client.create(newModel);
     }
 })
+
+router.actionForRoute("admin/products", (parameters) => {
+    let newModel = new Product(parameters.model);
+    if (parameters.id != null) {
+        Client.update(parameters.id, newModel);
+    } else {
+        Client.create(newModel);
+    }
+})
+
+router.actionForRoute("admin/events", (parameters) => {
+    let newModel = new CalendarEvent(parameters.model);
+    if (parameters.id != null) {
+        Client.update(parameters.id, newModel);
+    } else {
+        Client.create(newModel);
+    }
+})
+

@@ -53,11 +53,11 @@ router.viewForRoute("admin/clients/id", (params) => {
         })
     } else {
         router.getTemplate("admin/clients/form.html").then((response) => {
-            return Promise.all([router.renderClient(response), Client.getByID(params.id)]);
+            return Promise.all([router.renderAdmin(response), Client.getByID(params.id)]);
         }).then((results) => {
             let content = results[0];
             let model = results[1];
-            content.querySelector('petioro-form').model = model
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
@@ -68,22 +68,22 @@ router.viewForRoute("admin/products", () => {
     }).then((results) => {
         let content = results[0];
         let products = results[1];
-        content.querySelector('products-table').products = products
+        content.querySelector('products-table').products = products;
     })
 })
 
 router.viewForRoute("admin/products/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("admin/products/new.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/products/form.html").then((response) => {
+             return router.renderAdmin(response);
         })
     } else {
-        router.getTemplate("admin/products/edit.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/products/form.html").then((response) => {
+            return Promise.all([router.renderAdmin(response), Product.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
@@ -144,19 +144,22 @@ router.viewForRoute("admin/calendar/id", (params) => {
 
 router.viewForRoute("admin/events/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("client/events/new.html").then((response) => {
+        router.getTemplate("admin/events/form.html").then((response) => {
             return router.renderAdmin(response);
         }).then((content) => {
 
         })
     } else {
-        router.getTemplate("client/events/edit.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/events/form.html").then((response) => {
+            return Promise.all([router.renderAdmin(response), CalendarEvent.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
+
 
 router.viewForRoute("pets", () => {
     router.getTemplate("client/pets/index.html").then((response) => {
