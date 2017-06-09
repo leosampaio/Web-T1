@@ -9,6 +9,7 @@ class Client {
         this.phone = properties.phone;
         this.password = properties.password;
         this.image_url = properties.image_url;
+        this.address = properties.address;
     }
 
     static getAll() {
@@ -30,5 +31,15 @@ class Client {
             resolve(new Client({id: 1, name: 'Mestre', email: 'admin@mail.com', phone: '555 17 3343'}));
         });
         return p
+    }
+
+     static update(id, model) {
+        console.log("Updated id " + id + " with: ")
+        console.log(model);
+    }
+
+    static create(model) {
+        console.log("Created new model:")
+        console.log(model);
     }
 }

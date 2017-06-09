@@ -10,3 +10,13 @@ router.actionForRoute("admin/admins", (parameters) => {
         Admin.create(newModel);
     }
 })
+
+
+router.actionForRoute("admin/clients", (parameters) => {
+    let newModel = new Client(parameters.model);
+    if (parameters.id != null) {
+        Client.update(parameters.id, newModel);
+    } else {
+        Client.create(newModel);
+    }
+})

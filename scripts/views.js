@@ -16,7 +16,7 @@ router.viewForRoute("admin/admins", () => {
     }).then((results) => {
         let content = results[0];
         let admins = results[1];
-        content.querySelector('admins-table').admins = admins
+        content.querySelector('admins-table').admins = admins;
     })
 })
 
@@ -31,7 +31,7 @@ router.viewForRoute("admin/admins/id", (params) => {
         }).then((results) => {
             let content = results[0];
             let model = results[1];
-            content.querySelector('petioro-form').model = model
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
@@ -42,22 +42,22 @@ router.viewForRoute("admin/clients", () => {
     }).then((results) => {
         let content = results[0];
         let clients = results[1];
-        content.querySelector('clients-table').clients = clients
+        content.querySelector('clients-table').clients = clients;
     })
 })
 
 router.viewForRoute("admin/clients/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("admin/clients/new.html").then((response) => {
+        router.getTemplate("admin/clients/form.html").then((response) => {
             return router.renderAdmin(response);
-        }).then((content) => {
-
         })
     } else {
-        router.getTemplate("admin/clients/edit.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/clients/form.html").then((response) => {
+            return Promise.all([router.renderClient(response), Client.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model
         })
     }
 })
