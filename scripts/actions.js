@@ -39,3 +39,12 @@ router.actionForRoute("admin/events", (parameters) => {
     }
 })
 
+router.actionForRoute("client/pets", (parameters) => {
+    let newModel = new Pet(parameters.model);
+    if (parameters.id != null) {
+        Client.update(parameters.id, newModel);
+    } else {
+        Client.create(newModel);
+    }
+})
+

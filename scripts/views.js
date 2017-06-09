@@ -173,16 +173,18 @@ router.viewForRoute("pets", () => {
 
 router.viewForRoute("pets/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("client/pets/new.html").then((response) => {
+        router.getTemplate("client/pets/form.html").then((response) => {
             return router.renderClient(response);
         }).then((content) => {
 
         })
     } else {
-        router.getTemplate("client/pets/edit.html").then((response) => {
-            return router.renderClient(response);
-        }).then((content) => {
-
+        router.getTemplate("client/pets/form.html").then((response) => {
+            return Promise.all([router.renderClient(response), Pet.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
