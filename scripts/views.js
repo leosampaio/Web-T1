@@ -191,9 +191,21 @@ router.viewForRoute("pets/id", (params) => {
 
 router.viewForRoute("calendar", () => {
     router.getTemplate("client/events/calendar.html").then((response) => {
-        return router.renderClient(response);
-    }).then((content) => {
+        return Promise.all([router.renderClient(response), DailySummary.getDailySummaryForToday()]);
+    }).then((results) => {
+        let content = results[0];
+        let summary = results[1];
+        content.querySelector('petioro-calendar').dailySummary = summary;
+    })
+})
 
+router.viewForRoute("calendar/id", () => {
+    router.getTemplate("client/events/calendar.html").then((response) => {
+        return Promise.all([router.renderClient(response), DailySummary.getDailySummaryForDate(params.id)]);
+    }).then((results) => {
+        let content = results[0];
+        let summary = results[1];
+        content.querySelector('petioro-calendar').dailySummary = summary;
     })
 })
 
@@ -210,8 +222,10 @@ router.viewForRoute("products", () => {
 
 router.viewForRoute("cart", () => {
     router.getTemplate("client/cart/index.html").then((response) => {
-        return router.renderClient(response);
-    }).then((content) => {
-
+        return Promise.all([router.renderClient(response), Cart.getCurrent()]);
+    }).then((results) => {
+        let content = results[0];
+        let cart = results[1];
+        content.querySelector('cart-table').cart = cart;
     })
 })

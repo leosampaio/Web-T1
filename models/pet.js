@@ -13,32 +13,89 @@ class Pet {
 
     static getAll() {
         let p = new Promise((resolve, reject) => {
-        resolve([
-                new Pet({id: 1, name: 'Auau', image_url: '../img/pet-0.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                new Pet({id: 2, name: 'Dom York', image_url: '../img/pet-1.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                new Pet({id: 3, name: 'Sir Bob', image_url: '../img/pet-2.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                new Pet({id: 4, name: 'MiauMiau', image_url: '../img/pet-3.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                new Pet({id: 5, name: 'Lizbet Gatínea', image_url: '../img/pet-4.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                new Pet({id: 6, name: 'Dona Barb', image_url: '../img/pet-5.jpg', description: 'Lorem ipsum dolor sit amet'}),
-              ]);
+            let db = new Database();
+            db.getIDB().then((idb) => {
+                let models = [];
+                db.idb.transaction(["pets"]).objectStore("pets").openCursor().onsuccess = (event) => {
+                  let cursor = event.target.result;
+                  if (cursor) {
+                    let model = new Pet(cursor.value);
+                    model.id = cursor.key;
+                    models.push(cursor.value);
+                    cursor.continue();
+                  }
+                  else {
+                    resolve(models);
+                  }
+                };
+            })
         });
         return p;
     }
 
     static getByID(id) {
         let p = new Promise((resolve, reject) => {
-            resolve(new Pet({id: 1, name: 'Auau', image_url: '../img/pet-0.jpg', description: 'Lorem ipsum dolor sit amet'}));
+            let db = new Database();
+            let transaction = db.idb.transaction(["pets"]);
+            let objectStore = transaction.objectStore("pets");
+            let request = objectStore.get(Number(id));
+            request.onerror = function(event) {
+              console.error("Something went wrong!", event);
+            };
+            request.onsuccess = function(event) {
+              resolve(new Pet(request.result));
+            };
         });
-        return p
+        return p;
     }
-    
+
     static update(id, model) {
-        console.log("Updated id " + id + " with: ")
-        console.log(model);
+        let p = new Promise((resolve, reject) => {
+            console.log("Updated id " + id + " with: ")
+            console.log(model);
+            model.id = Number(id);
+
+            let db = new Database()
+            let transaction = db.idb.transaction(["pets"], "readwrite");
+
+            transaction.onerror = (event) => {
+              console.error("Something went wrong!", event);
+            };
+
+            let objectStore = transaction.objectStore("pets");
+            let request = objectStore.put(model);
+            request.onsuccess = (event) => {
+               resolve();
+            };
+        });
+        return p;
     }
 
     static create(model) {
-        console.log("Created new model:")
-        console.log(model);
+        let p = new Promise((resolve, reject) => {
+            model.id = this.incrementId();
+            console.log("Created new model:")
+            console.log(model);
+
+            let db = new Database()
+            let transaction = db.idb.transaction(["pets"], "readwrite");
+
+            transaction.onerror = (event) => {
+              console.error("Something went wrong!", event);
+            };
+
+            let objectStore = transaction.objectStore("pets");
+            let request = objectStore.add(model);
+            request.onsuccess = (event) => {
+               resolve();
+            };
+        });
+        return p;
+    }
+
+    static incrementId() {
+        if (this.latestId == null) this.latestId = 0;
+        else this.latestId++
+        return this.latestId
     }
 }

@@ -55,7 +55,7 @@ router.actionForRoute("admin/events", (parameters) => {
     }
 })
 
-router.actionForRoute("client/pets", (parameters) => {
+router.actionForRoute("pets", (parameters) => {
     let newModel = new Pet(parameters.model);
     if (parameters.id !== null && parameters.id !== undefined) {
         Pet.update(parameters.id, newModel).then(() => {

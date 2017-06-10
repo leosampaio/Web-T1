@@ -1,6 +1,6 @@
 <span slot="title">Dados Pet</span>
-<span slot="breadcrumbs"><a href="#admin/admins">Pets</a> - Dados</span>
-<petioro-form action="admin/admins">
+<span slot="breadcrumbs"><a href="#pets">Pets</a> - Dados</span>
+<petioro-form action="pets">
   <span slot="left-columm">
     <label for="name">Nome</label>
     <input type="text" name="name">
@@ -14,6 +14,8 @@
   <span slot="right-columm">
     <label for="picture_url">URL da foto</label>
     <input type="text" name="image_url">
+    <label for="description">Biografia</label>
+    <input type="text" name="description">
   </span>
   <button slot="left-button" class="btn btn-primary align-left" onclick="location.href='#pets';">
     <i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i>&nbsp; Cancelar
