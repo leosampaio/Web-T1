@@ -91,7 +91,7 @@
         const nodes = leftSlot.assignedNodes({flatten: true}).concat(rightSlot.assignedNodes({flatten: true}));
         let allInputNodes = [];
         for (let node of nodes) {
-          let inputNodes = node.querySelectorAll('input');
+          let inputNodes = node.querySelectorAll('input, select');
           allInputNodes = allInputNodes.concat(Array.from(inputNodes));
         }
         return allInputNodes;
