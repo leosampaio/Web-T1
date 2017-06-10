@@ -1,0 +1,40 @@
+<span slot="title">Agendar Compromisso</span>
+<span slot="breadcrumbs"><a href="#admin/events">Agenda</a> -  Agendar Compromisso</span>
+<petioro-form action="admin/events">
+  <span slot="left-columm">
+    <label for="service">Selecione o serviço que deseja:</label>
+    <select class="select select-forms">
+        <option value="service-A" selected>Tosa</option>
+        <option value="service-B">Banho</option>
+      </select>
+    <label for="client">Nome do Cliente</label>
+    <input type="text" name="client">
+    <label for="pet">Username do Amigo</label>
+    <input type="text" name="pet">
+  </span>
+  <span slot="right-columm">
+    <label for="date">Data Escolhida</label>
+    <input type="text" name="date">
+    <label for="picture_url">Horário Escolhido</label>
+    <select class="select select-forms">
+        <option value="0" selected>8:00</option>
+        <option value="1">9:00</option>
+        <option value="2">10:00</option>
+        <option value="3">11:00</option>
+        <option value="4">12:00</option>
+        <option value="5">13:00</option>
+        <option value="6">14:00</option>
+        <option value="7">15:00</option>
+        <option value="8">16:00</option>
+        <option value="9">17:00</option>
+      </select>
+    
+  </span>
+  <button slot="left-button" class="btn btn-primary align-left" onclick="location.href='#admin/calendar';">
+    <i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i>&nbsp; Cancelar
+  </button>
+  <button slot="right-button" class="btn btn-primary" type="submit">
+    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp; Confirmar
+  </button>
+</petioro-form>
+

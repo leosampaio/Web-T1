@@ -32,4 +32,14 @@ class Product {
         });
         return p
     }
+
+    static update(id, model) {
+        console.log("Updated id " + id + " with: ")
+        console.log(model);
+    }
+
+    static create(model) {
+        console.log("Created new model:")
+        console.log(model);
+    }
 }

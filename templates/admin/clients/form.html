@@ -1,0 +1,27 @@
+<span slot="title">Dados Cliente</span>
+<span slot="breadcrumbs"><a href="#admin/clients">Clientes</a> - Dados
+</span>
+<petioro-form action="admin/clients">
+  <span slot="left-columm">
+    <label for="name">Nome</label>
+    <input type="text" name="name">
+    <label for="username">Username</label>
+    <input type="text" name="username">
+    <label for="email">Email</label>
+    <input type="text" name="email">
+    <label for="address">Endereço</label>
+    <input type="text" name="address">
+  </span>
+  <span slot="right-columm">
+  	<label for="phone">Telefone</label>
+    <input type="text" name="phone">
+    <label for="picture_url">URL da foto</label>
+    <input type="text" name="image_url">
+  </span>
+  <button slot="left-button" class="btn btn-primary align-left" onclick="location.href='#admin/clients';">
+    <i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i>&nbsp; Cancelar
+  </button>
+  <button slot="right-button" class="btn btn-primary" type="submit">
+    <i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i>&nbsp; Salvar
+  </button>
+</petioro-form>

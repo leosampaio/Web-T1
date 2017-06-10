@@ -16,7 +16,7 @@ router.viewForRoute("admin/admins", () => {
     }).then((results) => {
         let content = results[0];
         let admins = results[1];
-        content.querySelector('admins-table').admins = admins
+        content.querySelector('admins-table').admins = admins;
     })
 })
 
@@ -31,7 +31,7 @@ router.viewForRoute("admin/admins/id", (params) => {
         }).then((results) => {
             let content = results[0];
             let model = results[1];
-            content.querySelector('petioro-form').model = model
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
@@ -42,22 +42,22 @@ router.viewForRoute("admin/clients", () => {
     }).then((results) => {
         let content = results[0];
         let clients = results[1];
-        content.querySelector('clients-table').clients = clients
+        content.querySelector('clients-table').clients = clients;
     })
 })
 
 router.viewForRoute("admin/clients/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("admin/clients/new.html").then((response) => {
+        router.getTemplate("admin/clients/form.html").then((response) => {
             return router.renderAdmin(response);
-        }).then((content) => {
-
         })
     } else {
-        router.getTemplate("admin/clients/edit.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/clients/form.html").then((response) => {
+            return Promise.all([router.renderAdmin(response), Client.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
@@ -68,22 +68,22 @@ router.viewForRoute("admin/products", () => {
     }).then((results) => {
         let content = results[0];
         let products = results[1];
-        content.querySelector('products-table').products = products
+        content.querySelector('products-table').products = products;
     })
 })
 
 router.viewForRoute("admin/products/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("admin/products/new.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/products/form.html").then((response) => {
+             return router.renderAdmin(response);
         })
     } else {
-        router.getTemplate("admin/products/edit.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/products/form.html").then((response) => {
+            return Promise.all([router.renderAdmin(response), Product.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
@@ -144,19 +144,22 @@ router.viewForRoute("admin/calendar/id", (params) => {
 
 router.viewForRoute("admin/events/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("client/events/new.html").then((response) => {
+        router.getTemplate("admin/events/form.html").then((response) => {
             return router.renderAdmin(response);
         }).then((content) => {
 
         })
     } else {
-        router.getTemplate("client/events/edit.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
+        router.getTemplate("admin/events/form.html").then((response) => {
+            return Promise.all([router.renderAdmin(response), CalendarEvent.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model;
         })
     }
 })
+
 
 router.viewForRoute("pets", () => {
     router.getTemplate("client/pets/index.html").then((response) => {
@@ -170,16 +173,18 @@ router.viewForRoute("pets", () => {
 
 router.viewForRoute("pets/id", (params) => {
     if (params.id == 'new') {
-        router.getTemplate("client/pets/new.html").then((response) => {
+        router.getTemplate("client/pets/form.html").then((response) => {
             return router.renderClient(response);
         }).then((content) => {
 
         })
     } else {
-        router.getTemplate("client/pets/edit.html").then((response) => {
-            return router.renderClient(response);
-        }).then((content) => {
-
+        router.getTemplate("client/pets/form.html").then((response) => {
+            return Promise.all([router.renderClient(response), Pet.getByID(params.id)]);
+        }).then((results) => {
+            let content = results[0];
+            let model = results[1];
+            content.querySelector('petioro-form').model = model;
         })
     }
 })

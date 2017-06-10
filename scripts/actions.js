@@ -10,3 +10,41 @@ router.actionForRoute("admin/admins", (parameters) => {
         Admin.create(newModel);
     }
 })
+
+
+router.actionForRoute("admin/clients", (parameters) => {
+    let newModel = new Client(parameters.model);
+    if (parameters.id != null) {
+        Client.update(parameters.id, newModel);
+    } else {
+        Client.create(newModel);
+    }
+})
+
+router.actionForRoute("admin/products", (parameters) => {
+    let newModel = new Product(parameters.model);
+    if (parameters.id != null) {
+        Client.update(parameters.id, newModel);
+    } else {
+        Client.create(newModel);
+    }
+})
+
+router.actionForRoute("admin/events", (parameters) => {
+    let newModel = new CalendarEvent(parameters.model);
+    if (parameters.id != null) {
+        Client.update(parameters.id, newModel);
+    } else {
+        Client.create(newModel);
+    }
+})
+
+router.actionForRoute("client/pets", (parameters) => {
+    let newModel = new Pet(parameters.model);
+    if (parameters.id != null) {
+        Client.update(parameters.id, newModel);
+    } else {
+        Client.create(newModel);
+    }
+})
+
