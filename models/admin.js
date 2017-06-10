@@ -94,7 +94,7 @@ class Admin {
     }
 
     static incrementId() {
-        if (!this.latestId) this.latestId = 1
+        if (!this.latestId == null) this.latestId = 0;
         else this.latestId++
         return this.latestId
     }

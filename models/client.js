@@ -14,32 +14,89 @@ class Client {
 
     static getAll() {
         let p = new Promise((resolve, reject) => {
-        resolve([
-                new Client({id: 1, name: 'John', email: 'client@mail.com', phone: '555 17 3343'}),
-                new Client({id: 2, name: 'Alice York', email: 'client@mail.com', phone: '555 17 3343'}),
-                new Client({id: 3, name: 'Mr. Bob', email: 'client@mail.com', phone: '555 17 3343'}),
-                new Client({id: 4, name: 'Sir Aladin', email: 'client@mail.com', phone: '555 17 3343'}),
-                new Client({id: 5, name: 'Ms. Cat', email: 'client@mail.com', phone: '555 17 3343'}),
-                new Client({id: 6, name: 'Mr. Barb', email: 'client@mail.com', phone: '555 17 3343'}),
-              ]);
+            let db = new Database();
+            db.getIDB().then((idb) => {
+                let models = [];
+                db.idb.transaction(["clients"]).objectStore("clients").openCursor().onsuccess = (event) => {
+                  let cursor = event.target.result;
+                  if (cursor) {
+                    let model = new Client(cursor.value);
+                    model.id = cursor.key;
+                    models.push(cursor.value);
+                    cursor.continue();
+                  }
+                  else {
+                    resolve(models);
+                  }
+                };
+            })
         });
         return p;
     }
 
     static getByID(id) {
         let p = new Promise((resolve, reject) => {
-            resolve(new Client({id: 1, name: 'Mestre', email: 'admin@mail.com', phone: '555 17 3343'}));
+            let db = new Database();
+            let transaction = db.idb.transaction(["clients"]);
+            let objectStore = transaction.objectStore("clients");
+            let request = objectStore.get(Number(id));
+            request.onerror = function(event) {
+              console.error("Something went wrong!", event);
+            };
+            request.onsuccess = function(event) {
+              resolve(new Client(request.result));
+            };
         });
-        return p
+        return p;
     }
 
-     static update(id, model) {
-        console.log("Updated id " + id + " with: ")
-        console.log(model);
+    static update(id, model) {
+        let p = new Promise((resolve, reject) => {
+            console.log("Updated id " + id + " with: ")
+            console.log(model);
+            model.id = Number(id);
+
+            let db = new Database()
+            let transaction = db.idb.transaction(["clients"], "readwrite");
+
+            transaction.onerror = (event) => {
+              console.error("Something went wrong!", event);
+            };
+
+            let objectStore = transaction.objectStore("clients");
+            let request = objectStore.put(model);
+            request.onsuccess = (event) => {
+               resolve();
+            };
+        });
+        return p;
     }
 
     static create(model) {
-        console.log("Created new model:")
-        console.log(model);
+        let p = new Promise((resolve, reject) => {
+            model.id = this.incrementId();
+            console.log("Created new model:")
+            console.log(model);
+
+            let db = new Database()
+            let transaction = db.idb.transaction(["clients"], "readwrite");
+
+            transaction.onerror = (event) => {
+              console.error("Something went wrong!", event);
+            };
+
+            let objectStore = transaction.objectStore("clients");
+            let request = objectStore.add(model);
+            request.onsuccess = (event) => {
+               resolve();
+            };
+        });
+        return p;
+    }
+
+    static incrementId() {
+        if (this.latestId == null) this.latestId = 0;
+        else this.latestId++
+        return this.latestId
     }
 }

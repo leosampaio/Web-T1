@@ -13,7 +13,7 @@ class Database {
 
             _databaseInstance = this;
 
-            // indexedDB.deleteDatabase(DB_NAME)
+            indexedDB.deleteDatabase(DB_NAME)
 
             let request = indexedDB.open(DB_NAME);
             request.onerror = (event) => {
@@ -22,6 +22,7 @@ class Database {
 
             request.onsuccess = (event) => {
               this.idb = event.target.result;
+              this._updateAutoincrementingID();
             };
 
             request.onupgradeneeded = (event) => {
@@ -46,28 +47,96 @@ class Database {
                     newlyCreatedAdminStore.add(masterAdmin);
                 };
 
-                objectStore = this.idb.createObjectStore("clients", { autoIncrement : true });
+                objectStore = this.idb.createObjectStore("clients", { keyPath: "id" });
                 objectStore.createIndex("name", "name", { unique: false });
                 objectStore.createIndex("email", "email", { unique: true });
                 objectStore.createIndex("username", "username", { unique: true });
 
-                objectStore = this.idb.createObjectStore("events", { autoIncrement : true });
+                objectStore = this.idb.createObjectStore("events", { keyPath: "id" });
 
-                objectStore = this.idb.createObjectStore("pets", { autoIncrement : true });
+                objectStore = this.idb.createObjectStore("pets", { keyPath: "id" });
                 objectStore.createIndex("name", "name", { unique: false });
                 objectStore.createIndex("username", "username", { unique: true });
 
-                objectStore = this.idb.createObjectStore("products", { autoIncrement : true });
+                objectStore = this.idb.createObjectStore("products", { keyPath: "id" });
                 objectStore.createIndex("name", "name", { unique: false });
                 objectStore.createIndex("code", "code", { unique: true });
 
-                objectStore = this.idb.createObjectStore("sales", { autoIncrement : true });
+                objectStore = this.idb.createObjectStore("sales", { keyPath: "id" });
 
-                objectStore = this.idb.createObjectStore("cart", { autoIncrement : true });
+                objectStore = this.idb.createObjectStore("cart", { keyPath: "id" });
             };
         }
 
         return _databaseInstance;
+    }
+
+    _updateAutoincrementingID() {
+        this.idb.transaction(["admins"]).objectStore("admins").openCursor(null, 'prev').onsuccess = (event) => {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.key == 0) {
+                    cursor.continue();
+                } else {
+                    Admin.latestId = cursor.key;
+                }
+            }
+        };
+
+        this.idb.transaction(["clients"]).objectStore("clients").openCursor(null, 'prev').onsuccess = (event) => {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.key == 0) {
+                    cursor.continue();
+                } else {
+                    Client.latestId = cursor.key;
+                }
+            }
+        };
+
+        this.idb.transaction(["products"]).objectStore("products").openCursor(null, 'prev').onsuccess = (event) => {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.key == 0) {
+                    cursor.continue();
+                } else {
+                    Product.latestId = cursor.key;
+                }
+            }
+        };
+
+        this.idb.transaction(["events"]).objectStore("events").openCursor(null, 'prev').onsuccess = (event) => {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.key == 0) {
+                    cursor.continue();
+                } else {
+                    Event.latestId = cursor.key;
+                }
+            }
+        };
+
+        this.idb.transaction(["pets"]).objectStore("pets").openCursor(null, 'prev').onsuccess = (event) => {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.key == 0) {
+                    cursor.continue();
+                } else {
+                    Pet.latestId = cursor.key;
+                }
+            }
+        };
+
+        this.idb.transaction(["cart"]).objectStore("cart").openCursor(null, 'prev').onsuccess = (event) => {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.key == 0) {
+                    cursor.continue();
+                } else {
+                    Cart.latestId = cursor.key;
+                }
+            }
+        };
     }
 
     getIDB() {
