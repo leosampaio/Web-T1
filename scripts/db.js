@@ -13,7 +13,7 @@ class Database {
 
             _databaseInstance = this;
 
-            indexedDB.deleteDatabase(DB_NAME)
+            // indexedDB.deleteDatabase(DB_NAME)
 
             let request = indexedDB.open(DB_NAME);
             request.onerror = (event) => {

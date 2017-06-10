@@ -4,7 +4,7 @@ var router = new Router();
 
 router.actionForRoute("admin/admins", (parameters) => {
     let newModel = new Admin(parameters.model);
-    if (parameters.id != null) {
+    if (parameters.id !== null && parameters.id !== undefined) {
         Admin.update(parameters.id, newModel).then(() => {
             location.href='#admin/admins';
         });
@@ -18,7 +18,7 @@ router.actionForRoute("admin/admins", (parameters) => {
 
 router.actionForRoute("admin/clients", (parameters) => {
     let newModel = new Client(parameters.model);
-    if (parameters.id != null) {
+    if (parameters.id !== null && parameters.id !== undefined) {
         Client.update(parameters.id, newModel).then(() => {
             location.href='#admin/clients';
         });
@@ -31,12 +31,12 @@ router.actionForRoute("admin/clients", (parameters) => {
 
 router.actionForRoute("admin/products", (parameters) => {
     let newModel = new Product(parameters.model);
-    if (parameters.id != null) {
-        Client.update(parameters.id, newModel).then(() => {
+    if (parameters.id !== null && parameters.id !== undefined) {
+        Product.update(parameters.id, newModel).then(() => {
             location.href='#admin/products';
         });
     } else {
-        Client.create(newModel).then(() => {
+        Product.create(newModel).then(() => {
             location.href='#admin/products';
         });
     }
@@ -44,12 +44,12 @@ router.actionForRoute("admin/products", (parameters) => {
 
 router.actionForRoute("admin/events", (parameters) => {
     let newModel = new CalendarEvent(parameters.model);
-    if (parameters.id != null) {
-        Client.update(parameters.id, newModel).then(() => {
+    if (parameters.id !== null && parameters.id !== undefined) {
+        Event.update(parameters.id, newModel).then(() => {
             location.href='#admin/calendar';
         });
     } else {
-        Client.create(newModel).then(() => {
+        Event.create(newModel).then(() => {
             location.href='#admin/calendar';
         });
     }
@@ -57,12 +57,12 @@ router.actionForRoute("admin/events", (parameters) => {
 
 router.actionForRoute("client/pets", (parameters) => {
     let newModel = new Pet(parameters.model);
-    if (parameters.id != null) {
-        Client.update(parameters.id, newModel).then(() => {
+    if (parameters.id !== null && parameters.id !== undefined) {
+        Pet.update(parameters.id, newModel).then(() => {
             location.href='#pets';
         });
     } else {
-        Client.create(newModel).then(() => {
+        Pet.create(newModel).then(() => {
             location.href='#pets';
         });
     }

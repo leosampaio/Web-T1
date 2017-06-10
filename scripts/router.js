@@ -36,7 +36,7 @@ class Router {
     }
 
     triggerActionForRoute(route, model, id) {
-        if (id) {
+        if (id !== null && id !== undefined) {
             event = new CustomEvent(this._buildEventNameForActionRoute(route), {
                 bubbles: true,
                 composed: true, 
