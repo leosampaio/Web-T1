@@ -23,7 +23,7 @@
             </thead>
 
             <tbody>
-            <template is="dom-repeat" items="{{products}}">
+            <template is="dom-repeat" items="{{filtered(filter, products)}}">
               <tr>
               <td>{{item.id}}</td>
               <td>{{item.name}}</td>
@@ -50,7 +50,25 @@
         return {
           products: {
             type: Array
-          }
+          },
+          filter: String
+        }
+      }
+
+      ready() {
+        super.ready();
+        document.addEventListener("did-search", (e) => {
+            this.filter = e.detail.query;
+        });
+      }
+
+      filtered() {
+        if (!this.filter) {
+          return this.products;
+        } else {
+          return this.products.filter((p) => {
+            return p.name.includes(this.filter);
+          })
         }
       }
 

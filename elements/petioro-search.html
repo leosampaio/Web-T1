@@ -51,11 +51,12 @@
       }
 
       searchSubmit(e) {
-        event = new CustomEvent("did-search", {
+        let event = new CustomEvent("did-search", {
                 bubbles: true,
                 composed: true, 
                 detail: {query: e.target.value}
         });
+        document.dispatchEvent(event);
       }
     }
     customElements.define(PetioroSearch.is, PetioroSearch);
