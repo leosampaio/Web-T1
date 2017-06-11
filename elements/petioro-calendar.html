@@ -159,7 +159,12 @@
             <template is="dom-repeat" items="{{dailySummary.slots}}">
 
               <template is="dom-if" if="{{!item.isScheduled}}">
-                <div class="row schedules schedule-free" onclick="location.href='#admin/events/new';">{{item.time}}</div>
+                <template is="dom-if" if="{{_isAdmin(admin)}}">
+                  <div class="row schedules schedule-free" onclick="location.href='#admin/events/new';">{{item.time}}</div>
+                </template>
+                <template is="dom-if" if="{{!_isAdmin(admin)}}">
+                  <div class="row schedules schedule-free">{{item.time}}</div>
+                </template>
               </template>
 
               <template is="dom-if" if="{{item.isScheduled}}">
@@ -188,6 +193,10 @@
 
       static get properties() {
         return {
+          admin: {
+            type: Boolean,
+            value: false,
+          },
           dailySummary: {
             type: Object
           }
@@ -205,6 +214,10 @@
       didPressRemove(e) {
         let model = e.model.item.event;
         router.triggerActionForRoute('remove-event', model, model.id);
+      }
+
+      _isAdmin() {
+        return this.admin;
       }
     }
     customElements.define(PetioroCalendar.is, PetioroCalendar);
