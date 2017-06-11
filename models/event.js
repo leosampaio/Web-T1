@@ -12,7 +12,7 @@ class CalendarEvent {
 
     static getEventsForDay(day) {
         let p = new Promise((resolve, reject) => {
-            let date = new Date(day);
+            let date = dateFromDateID(day);
             let db = new Database();
             db.getIDB().then((idb) => {
                 let models = [];
@@ -72,7 +72,7 @@ class CalendarEvent {
         let startingDate = new Date()
         let week = [];
         let day = new Date();
-        for(let i=0; i<7; i++) {
+        for(let i=0; i<10; i++) {
             day.setDate(startingDate.getDate() + i);
             week.push(this._formattedDate(day));
         }
@@ -125,7 +125,7 @@ class DailySummary {
     static getDailySummaryForDate(dateid) {
         let p = new Promise((resolve, reject) => {
             CalendarEvent.getEventsForDay(dateid).then((events) => {
-                let date = new Date(dateid);
+                let date = dateFromDateID(dateid);
                 let slots = [];
                 for (let i = 0; i < 10; i++) {
                     let slot = {};
@@ -151,4 +151,10 @@ class DailySummary {
     static getDailySummaryForToday() {
         return DailySummary.getDailySummaryForDate(DailySummary._formatDateForID(new Date()));
     }
+}
+
+function dateFromDateID(dateid) {
+    let date = new Date(dateid)
+    date.setHours(date.getHours()+12);
+    return date;
 }
