@@ -68,3 +68,9 @@ router.actionForRoute("pets", (parameters) => {
     }
 })
 
+router.actionForRoute("add-product-to-cart", (parameters) => {
+    let product = new Product(parameters.model);
+    Cart.addProduct(product).then(() => {
+        window.dispatchEvent(new Event('hashchange')); // "reload" page
+    });
+})

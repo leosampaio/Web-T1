@@ -55,7 +55,9 @@
       }
 
       addToCart(e) {
-        
+        let product = e.model.item;
+        let router = new Router();
+        router.triggerActionForRoute('add-product-to-cart', product, product.id)
       }
     }
     customElements.define(ProductsSaleTable.is, ProductsSaleTable);

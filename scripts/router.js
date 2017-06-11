@@ -35,12 +35,12 @@ class Router {
         return "action-" + this._buildEventNameForRoute(route);
     }
 
-    triggerActionForRoute(route, model, id) {
+    triggerActionForRoute(route, model, id, extra) {
         if (id !== null && id !== undefined) {
             event = new CustomEvent(this._buildEventNameForActionRoute(route), {
                 bubbles: true,
                 composed: true, 
-                detail: {id: id, model: model}
+                detail: {id: id, model: model, extra: extra}
             });
             document.dispatchEvent(event);
         } else {

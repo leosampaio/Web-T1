@@ -19,23 +19,62 @@ class Cart {
 
     static getCurrent() {
         let p = new Promise((resolve, reject) => {
-        resolve(new Cart({
-            sales:[
-                new Sale({id: 1, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 2, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 3, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 4, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 5, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 6, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-              ]
-            }));
+            let db = new Database();
+            db.getIDB().then((idb) => {
+                let models = [];
+                db.idb.transaction(["cart"]).objectStore("cart").openCursor().onsuccess = (event) => {
+                  let cursor = event.target.result;
+                  if (cursor) {
+                    let model = new Sale(cursor.value);
+                    model.id = cursor.key;
+                    model.product = new Product(model.product);
+                    models.push(model);
+                    cursor.continue();
+                  }
+                  else {
+                    let cart = new Cart({sales: models});
+                    resolve(cart);
+                  }
+                };
+            })
         });
         return p;
+    }
+
+    static addProduct(product) {
+        let p = new Promise((resolve, reject) => {
+            this.getCurrent().then((cart) => {
+                let sale, request; 
+                let db = new Database()
+                let transaction = db.idb.transaction(["cart"], "readwrite");
+                let objectStore = transaction.objectStore("cart");
+                transaction.onerror = (event) => { console.error("Something went wrong!", event); };
+
+                let currentSalesOfSameProduct = cart.sales.filter((s) => {
+                    return s.product.id == product.id;
+                });
+                if (currentSalesOfSameProduct.length != 0) {
+                    sale = currentSalesOfSameProduct[0];
+                    sale.product = product;
+                    sale.qty++;
+                    request = objectStore.put(sale);
+                } else {
+                    sale = new Sale({qty: 1, product: product});
+                    sale.id = this.incrementId();
+                    request = objectStore.add(sale);
+                }
+
+                request.onsuccess = (event) => {
+                   resolve();
+                };
+            });
+        });
+        return p;
+    }
+
+    static incrementId() {
+        if (this.latestId == null) this.latestId = 0;
+        else this.latestId++
+        return this.latestId
     }
 }

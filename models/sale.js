@@ -55,4 +55,10 @@ class Sale {
         });
         return p
     }
+
+    static incrementId() {
+        if (this.latestId == null) this.latestId = 0;
+        else this.latestId++
+        return this.latestId
+    }
 }
