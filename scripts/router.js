@@ -157,11 +157,18 @@ class Router {
             if (sidebar == null || (sidebarShouldBeAdmin != sidebar.admin)) {
                 router.ajaxGet(shell, response => {
                     body.innerHTML = response;
+
                     content = document.querySelector("petioro-content");
                     content.innerHTML = html;
                     resolve(content)
+                    setTimeout(() => { 
+                        body.querySelector("side-navbar").selectedItemMenu = location.hash;
+                    }, 1000);
                 })
             } else {
+                // get sidebar and set selected item menu
+                body.querySelector("side-navbar").selectedItemMenu = location.hash;
+
                 content.innerHTML = html;
                 resolve(content)
             }
