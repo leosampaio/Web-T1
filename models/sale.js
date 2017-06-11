@@ -30,20 +30,22 @@ class Sale {
 
     static getAll() {
         let p = new Promise((resolve, reject) => {
-        resolve([
-                new Sale({id: 1, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 2, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 3, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 4, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 5, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-                new Sale({id: 6, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}),
-              ]);
+            let db = new Database();
+            db.getIDB().then((idb) => {
+                let models = [];
+                db.idb.transaction(["sales"]).objectStore("sales").openCursor().onsuccess = (event) => {
+                  let cursor = event.target.result;
+                  if (cursor) {
+                    let model = new Sale(cursor.value);
+                    model.id = cursor.key;
+                    models.push(model);
+                    cursor.continue();
+                  }
+                  else {
+                    resolve(models);
+                  }
+                };
+            })
         });
         return p;
     }
@@ -56,9 +58,33 @@ class Sale {
         return p
     }
 
+    static createSales(sales) {
+        let db = new Database()
+        let transaction = db.idb.transaction(["sales"], "readwrite");
+
+        transaction.onerror = (event) => {
+          console.error("Something went wrong!", event);
+        };
+
+        let objectStore = transaction.objectStore("sales");
+
+        let promises = sales.map((sale) => {
+            let p = new Promise((resolve, reject) => {
+                sale.datetime = new Date();
+                let request = objectStore.add(sale);
+                request.onsuccess = (event) => {
+                   resolve();
+                };
+            });
+            return p;
+        })
+        console.log(promises);
+        return Promise.all(promises);
+    }
+
     static incrementId() {
         if (this.latestId == null) this.latestId = 0;
-        else this.latestId++
-        return this.latestId
+        else this.latestId += 2;
+        return this.latestId;
     }
 }

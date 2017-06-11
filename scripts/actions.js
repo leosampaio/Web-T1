@@ -80,3 +80,9 @@ router.actionForRoute("close-client-sale", (parameters) => {
         window.dispatchEvent(new Event('hashchange')); // "reload" page
     });
 })
+
+router.actionForRoute("close-admin-sale", (parameters) => {
+    Cart.closeSale().then(() => {
+        location.href='#admin/sales';
+    });
+})

@@ -137,6 +137,17 @@ class Database {
                 }
             }
         };
+
+        this.idb.transaction(["sales"]).objectStore("sales").openCursor(null, 'prev').onsuccess = (event) => {
+            let cursor = event.target.result;
+            if (cursor) {
+                if (cursor.key == 0) {
+                    cursor.continue();
+                } else {
+                    Sale.latestId = cursor.key;
+                }
+            }
+        };
     }
 
     getIDB() {

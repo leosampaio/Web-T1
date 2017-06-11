@@ -72,8 +72,28 @@ class Cart {
         return p;
     }
 
+    static clear() {
+        let p = new Promise((resolve, reject) => {
+            let db = new Database();
+            db.getIDB().then((idb) => {
+                let transaction = idb.transaction(["cart"], "readwrite");
+                let objectStore = transaction.objectStore("cart");
+                objectStore.clear();
+            })
+        });
+        return p;
+    }
+
     static closeSale() {
-        
+        let p = new Promise((resolve, reject) => {
+            this.getCurrent().then((cart) => {
+                return Sale.createSales(cart.sales);
+            }).then(() => {
+                this.clear();
+                resolve();
+            });
+        });
+        return p;
     }
 
     static incrementId() {
