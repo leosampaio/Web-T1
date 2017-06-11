@@ -53,17 +53,24 @@
       }
 
       .sidebar .sidebar-item.selected {
+        background-color: #B27576;
         border: none;
         border-left: 3px solid rgba(0,0,0, 0.2);
         position: relative;
         left: 1px;
-        background-color: #B27576;
       }
     </style>
 
     <template is="dom-if" if="{{_isAdmin()}}">
       <nav class="sidebar">
-        <a href="#admin/admins" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>
+        <template is="dom-if" if="{{ _isItemSelected('admin', selectedItemMenu)}}">
+          <a href="#admin/admins" class="sidebar-item sidebar-button selected"><i class="fa fa-lock"></i> Administradores</a>      
+        </template>
+
+        <template is="dom-if" if="{{!_isItemSelected('admin', selectedItemMenu)}}">
+          <a href="#admin/admins" class="sidebar-item sidebar-button"><i class="fa fa-lock"></i> Administradores</a>      
+        </template>
+
         <a href="#admin/clients" class="sidebar-item sidebar-button"><i class="fa fa-users"></i> Clientes</a>
         <a href="#admin/products" class="sidebar-item sidebar-button"><i class="fa fa-list"></i> Produtos</a>
         <a href="#admin/earnings" class="sidebar-item sidebar-button"><i class="fa fa-money"></i> Ganhos</a>
@@ -91,15 +98,23 @@
         return {
           username: String,
           admin: Boolean,
-          "profile-pic": String
+          selectedItemMenu: String,
+          "profile-pic": String         
         }
       }
 
       _isAdmin() {
         return this.admin == true
       }
+
+      
+      _isItemSelected(itemMenu, selectedItemMenu) {   
+        return this.selectedItemMenu == itemMenu;                  
+      }
+
     }
 
     customElements.define(SideNavbar.is, SideNavbar);
   </script>
 </dom-module>
+

@@ -17,6 +17,9 @@ router.viewForRoute("admin/admins", () => {
         let content = results[0];
         let admins = results[1];
         content.querySelector('admins-table').admins = admins;
+
+        let sidebar = document.querySelector("side-navbar")
+        sidebar.selectedItemMenu = 'admins';
     })
 })
 
@@ -43,6 +46,9 @@ router.viewForRoute("admin/clients", () => {
         let content = results[0];
         let clients = results[1];
         content.querySelector('clients-table').clients = clients;
+
+        let sidebar = document.querySelector("side-navbar")
+        sidebar.selectedItemMenu = 'clients';
     })
 })
 
