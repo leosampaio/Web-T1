@@ -181,7 +181,16 @@ class Router {
     }
 
     renderClient(html) {
-        return this.renderHTMLWithType(html, "client");
+        let p = new Promise((resolve, reject) => {
+            this.renderHTMLWithType(html, "client").then((content) => {
+                resolve(content);
+                return Cart.getCount();
+            }).then((count) => {
+                let navbar = document.querySelector('top-navbar');
+                navbar.cartCount = "("+count+")";
+            });
+        });
+        return p;   
     }
 
     renderLogin() {

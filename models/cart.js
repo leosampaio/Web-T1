@@ -41,6 +41,15 @@ class Cart {
         return p;
     }
 
+    static getCount() {
+        let p = new Promise((resolve, reject) => {
+            this.getCurrent().then((cart) => {
+                resolve(cart.sales.length);
+            });
+        });
+        return p;
+    }
+
     static addProduct(product) {
         let p = new Promise((resolve, reject) => {
             this.getCurrent().then((cart) => {

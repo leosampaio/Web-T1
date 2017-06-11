@@ -80,7 +80,7 @@
             <p>Bem vindo {{username}}</p>
             <div class="links-top-navbar">
               <a id="cart-link" href="#cart" hidden={{admin}}>
-                <i class="fa fa-cart-plus"></i> Carrinho (1)
+                <i class="fa fa-cart-plus"></i> Carrinho {{cartCount}}
               </a>
               <a id="profile-link" href="#profile">Perfil</a>
               <a id="logout-link" href="#logout">Sair</a>
@@ -101,29 +101,9 @@
         return {
           username: String,
           admin: Boolean,
-          "profile-pic": String
+          "profile-pic": String,
+          cartCount: String,
         }
-      }
-
-      ready() {
-        super.ready();
-        let cartLink = this.$['cart-link'];
-        cartLink.addEventListener('click', e => {
-          let event = new CustomEvent('did-click-cart', {bubbles: true, composed: true});
-          this.dispatchEvent(event);
-        });
-
-        let profileLink = this.$['profile-link'];
-        profileLink.addEventListener('click', e => {
-          let event = new CustomEvent('did-click-profile', {bubbles: true, composed: true});
-          this.dispatchEvent(event);
-        });
-
-        let logoutLink = this.$['logout-link'];
-        logoutLink.addEventListener('click', e => {
-          let event = new CustomEvent('did-click-logout', {bubbles: true, composed: true});
-          this.dispatchEvent(event);
-        });
       }
     }
 
