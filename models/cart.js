@@ -60,7 +60,7 @@ class Cart {
                     request = objectStore.put(sale);
                 } else {
                     sale = new Sale({qty: 1, product: product});
-                    sale.id = this.incrementId();
+                    sale.id = Sale.incrementId();
                     request = objectStore.add(sale);
                 }
 
@@ -94,11 +94,5 @@ class Cart {
             });
         });
         return p;
-    }
-
-    static incrementId() {
-        if (this.latestId == null) this.latestId = 0;
-        else this.latestId++
-        return this.latestId
     }
 }
