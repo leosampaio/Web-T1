@@ -1,0 +1,181 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../css/style-module.html">
+<link rel="import" href="../elements/import.html">
+
+<dom-module id="petioro-payment">
+  <template>
+    <style include="style-module">
+      :host * {
+        box-sizing: border-box;
+      }
+
+      .segmented-control {
+          margin-bottom: -25px;
+      }
+
+      .segmented-control-segment {
+          background-color: #BDB19E;
+          text-align: center;
+          border-bottom: 2px solid rgba(0,0,0,0.1);
+          padding-top: 6px;
+          padding-bottom: 6px;
+          cursor: pointer;
+      }
+
+      .segmented-control-segment:first-child {
+          border-top-left-radius: 5px;
+      }
+
+      .segmented-control-segment:last-child {
+          border-top-right-radius:  5px;
+      }
+
+      .segmented-control-segment[data-selected] {
+          background-color: #B3A590;
+          border: 2px solid rgba(0,0,0,0.1);
+          border-top: none;
+          border-radius: 5px 5px 0 0;
+          padding-top: 10px;
+      }
+
+      .segmented-control-segment:not([data-selected]) {
+          position: relative;
+          top: 3px;
+      }
+
+      .segmented-control-segment a {
+          text-decoration: none;
+          color: #FFF;
+          width: 100%;
+          display: block;
+          height: 100%;
+      }
+
+      .segmented-control-content {
+          border: 1px solid rgba(0,0,0,0.1);
+          background-color: #fafafa;
+          display: block;
+          padding: 10px;
+          border-radius: 0 0 5px 5px;
+          border-bottom: 4px solid rgba(0,0,0,0.1);
+      }
+
+      .segmented-control-content:not([data-selected]) {
+          display: none;
+          height: 0;
+          width: 0;
+      }
+    </style>
+
+    <div class="row">
+      <div class="segmented-control col-6">
+        <div class="col-2 segmented-control-segment credit-card" data-selected>
+          <a on-click="didSelectCreditCard">Cartão de Crédito</a>
+        </div>
+
+        <div class="col-2 segmented-control-segment debit-card">
+          <a on-click="didSelectDebitCard">Cartão de Débito</a> 
+        </div>
+
+        <div class="col-2 segmented-control-segment money">
+          <a on-click="didSelectMoney">Dinheiro</a> 
+        </div>
+      </div>
+      <div class="segmented-control-content-blocks">
+        <div class="col-6">
+          <section class="segmented-control-content credit-card" data-selected>
+            <petioro-form>
+              <span slot='left-columm'>
+                <label for="name">Nome Titular</label>
+                <input type="text" name="name" />
+                <label for="cardNumber">Número Cartão</label>
+                <input type="text" name="cardNumber" />
+                <label for="">Data de Vencimento</label>
+                <input type="text" name="" />
+              </span>
+              <span slot='right-columm'>
+                <label for="">CVV</label>
+                <input type="text" name="" />
+              </span>
+            </petioro-form>
+          </section>
+        </div>
+        <div class="col-6">
+          <section class="segmented-control-content debit-card">
+            <petioro-form>
+              <span slot='left-columm'>
+                <label for="name">Nome Titular</label>
+                <input type="text" name="name" />
+                <label for="cardNumber">Número Cartão</label>
+                <input type="text" name="cardNumber" />
+                <label for="">Data de Vencimento</label>
+                <input type="text" name="" />
+              </span>
+              <span slot='right-columm'>
+                <label for="">CVV</label>
+                <input type="text" name="" />
+              </span>
+            </petioro-form>
+          </section>
+        </div>
+        <div class="col-6">
+          <section class="segmented-control-content money">
+            <petioro-form>
+              <span slot='left-columm'>
+                <label for="name">Nome Completo</label>
+                <input type="text" name="name" />
+              </span>
+              <span slot='right-columm'>
+                <label for="">CPF</label>
+                <input type="text" name="" />
+              </span>
+            </petioro-form>
+          </section>
+        </div>
+      </div>
+    </div>
+
+  </template>
+  <script>
+    'use strict';
+
+    class PetioroPayment extends Polymer.Element {
+      static get is() {
+        return "petioro-payment";
+      }
+
+      static get properties() {
+        return {
+          
+        }
+      }
+
+      didSelectCreditCard() {
+        let allSections = this.shadowRoot.querySelectorAll('section, .segmented-control-segment');
+        allSections = Array.from(allSections);
+        allSections.map( (s) => { s.removeAttribute('data-selected'); s.parentElement.style.display = "none"; });
+        let section = Array.from(this.shadowRoot.querySelectorAll('.credit-card'));
+        section.map( (s) => { s.setAttribute('data-selected', true); s.parentElement.style.display = "block"; });
+      }
+
+      didSelectDebitCard() {
+        let allSections = this.shadowRoot.querySelectorAll('section, .segmented-control-segment');
+        allSections = Array.from(allSections);
+        console.log(allSections);
+        allSections.map( (s) => { s.removeAttribute('data-selected'); s.parentElement.style.display = "none"; });
+        let section = Array.from(this.shadowRoot.querySelectorAll('.debit-card'));
+        console.log(section);
+        section.map( (s) => { s.setAttribute('data-selected', true); s.parentElement.style.display = "block"; });
+      }
+
+      didSelectMoney() {
+        let allSections = this.shadowRoot.querySelectorAll('section, .segmented-control-segment');
+        allSections = Array.from(allSections);
+        allSections.map( (s) => { s.removeAttribute('data-selected'); s.parentElement.style.display = "none"; });
+        let section =  Array.from(this.shadowRoot.querySelectorAll('.money'));
+        section.map( (s) => { s.setAttribute('data-selected', true); s.parentElement.style.display = "block"; });
+      }      
+    }
+    customElements.define(PetioroPayment.is, PetioroPayment);
+  </script>
+</dom-module>

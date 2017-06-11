@@ -74,3 +74,9 @@ router.actionForRoute("add-product-to-cart", (parameters) => {
         window.dispatchEvent(new Event('hashchange')); // "reload" page
     });
 })
+
+router.actionForRoute("close-client-sale", (parameters) => {
+    Cart.closeSale().then(() => {
+        window.dispatchEvent(new Event('hashchange')); // "reload" page
+    });
+})

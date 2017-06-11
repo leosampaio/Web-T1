@@ -80,9 +80,11 @@
             submitButton = node;
           }
         }
-        submitButton.addEventListener('click', (e) => {
-          this.didSubmitForm(e);
-        });
+        if (submitButton) {
+          submitButton.addEventListener('click', (e) => {
+            this.didSubmitForm(e);
+          });
+        }
       }
 
       _getAllInputNodes() {

@@ -72,6 +72,10 @@ class Cart {
         return p;
     }
 
+    static closeSale() {
+        
+    }
+
     static incrementId() {
         if (this.latestId == null) this.latestId = 0;
         else this.latestId++

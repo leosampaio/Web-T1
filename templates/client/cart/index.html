@@ -8,54 +8,11 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="segmented-control col-6">
-    <div class="col-2 segmented-control-segment" selected>
-      <a href="#">Cartão de Crédito</a>
-    </div>
-
-    <div class="col-2 segmented-control-segment">
-      <a href="#">Cartão de Débito</a> 
-    </div>
-
-    <div class="col-2 segmented-control-segment">
-      <a href="#">PicPay</a> 
-    </div>
-  </div>
-</div>
-
-<div class="segmented-control-content-blocks">
-  <div class="col-6">
-    <section class="segmented-control-content" selected>
-      <div class="row">
-        <form>
-          <div class="col-3">
-            <label for="name-prod-reg">Nome Titular</label>
-            <input class="two-col-input space-btw-two-co" type="text" name="name-prod-reg">
-            <label for="code-prod-reg">Número Cartão</label>
-            <input class="two-col-input" type="text" name="code-prod-reg">
-            <label for="price-prod-reg">Data de Vencimento</label>
-            <input class="two-col-input" type="text" name="price-prod-reg">
-          </div>
-          <div class="col-3">
-            <label for="name-prod-reg">CVV</label>
-            <input class="two-col-input" type="text" name="name-prod-reg">
-          </div>
-        </form>
-      </div>
-    </section>
-  </div>
-  <div class="col-6">
-    <section class="segmented-control-content">Conteúdo da Aba 2</section>
-  </div>
-  <div class="col-6">
-    <section class="segmented-control-content">Conteúdo da Aba 2</section>
-  </div>
-</div>
+<petioro-payment></petioro-payment>
 
 <div class="row">
   <div class="col-6">
-    <button class="btn btn-primary align-left" style="width:100%">
+    <button class="btn btn-primary align-left" style="width:100%" onclick="(new Router()).triggerActionForRoute('close-client-sale');">
     <i class="fa fa-diamond fa-fw "></i> Finalizar Compra
     </button>
   </div>
