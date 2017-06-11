@@ -34,6 +34,19 @@ class Product {
         return p;
     }
 
+    static getAllServices() {
+        let p = new Promise((resolve, reject) => {
+            let db = new Database();
+            this.getAll().then((products) => {
+                let services = products.filter((p) => {
+                    return p.type == "service";
+                });
+                resolve(services);
+            });
+        });
+        return p;
+    }
+
     static getByID(id) {
         let p = new Promise((resolve, reject) => {
             let db = new Database();

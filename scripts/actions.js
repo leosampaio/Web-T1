@@ -15,7 +15,6 @@ router.actionForRoute("admin/admins", (parameters) => {
     }
 })
 
-
 router.actionForRoute("admin/clients", (parameters) => {
     let newModel = new Client(parameters.model);
     if (parameters.id !== null && parameters.id !== undefined) {

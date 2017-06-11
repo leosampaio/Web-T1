@@ -145,17 +145,17 @@ router.viewForRoute("admin/calendar/id", (params) => {
 router.viewForRoute("admin/events/id", (params) => {
     if (params.id == 'new') {
         router.getTemplate("admin/events/form.html").then((response) => {
-            return router.renderAdmin(response);
-        }).then((content) => {
-
-        })
-    } else {
-        router.getTemplate("admin/events/form.html").then((response) => {
-            return Promise.all([router.renderAdmin(response), CalendarEvent.getByID(params.id)]);
+            return Promise.all([router.renderAdmin(response), Product.getAllServices()]);
         }).then((results) => {
             let content = results[0];
-            let model = results[1];
-            content.querySelector('petioro-form').model = model;
+            let services = results[1];
+            let serviceSelect = content.querySelector('#select-service');
+            for (let service of services) {
+                let option = document.createElement("option");
+                option.text = service.name;
+                option.value = service;
+                serviceSelect.add(option);
+            }
         })
     }
 })
