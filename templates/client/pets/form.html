@@ -17,9 +17,15 @@
     <label for="description">Biografia</label>
     <input type="text" name="description">
   </span>
-  <button slot="left-button" class="btn btn-primary align-left" onclick="location.href='#pets';">
+  <span slot="left-button">
+    <button  class="btn btn-primary align-left col-3" onclick="location.href='#pets';">
     <i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i>&nbsp; Cancelar
-  </button>
+    </button>
+    <button  class="btn btn-danger col-3 align-right" style="width: 45%;" onclick="(new Router()).triggerActionForRoute('remove-pet')">
+    <i class="fa fa-trash fa-lg" aria-hidden="true"></i>&nbsp; Apagar
+    </button>
+  </span>
+  
   <button slot="right-button" class="btn btn-primary" type="submit">
     <i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i>&nbsp; Salvar
   </button>

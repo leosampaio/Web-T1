@@ -116,10 +116,16 @@ router.actionForRoute("remove-event", (parameters) => {
     });
 })
 
-router.actionForRoute("remove-pet", (parameters) => {
-    Pet.delete(parameters.id).then(() => {
+router.actionForRoute("remove-pet", () => {
+    let model = document.querySelector('petioro-form').model;
+    if (model !== null && model !== undefined) {
+        let id = model.id;
+        Pet.delete(id).then(() => {
+            location.href='#pets';
+        });
+    } else {
         location.href='#pets';
-    });
+    }
 })
 
 router.actionForRoute("remove-product", (parameters) => {
