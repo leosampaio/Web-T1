@@ -12,12 +12,12 @@
 
       <div class="row">
         <div class="col-3">
-          <h3 class="earnings-big-values">{{totalQty(sales)}}</h3>
-          <p>produtos vendidos no mês de Abril</p>
+          <h3 class="earnings-big-values">{{totalQty(sales, filter)}}</h3>
+          <p>produtos vendidos {{formattedMonthName(filter)}}</p>
         </div>
         <div class="col-3">
-          <h3 class="earnings-big-values">R$ {{totalAmount(sales)}}</h3>
-          <p>de faturamento no mês de Abril</p>
+          <h3 class="earnings-big-values">R$ {{totalAmount(sales, filter)}}</h3>
+          <p>de faturamento {{formattedMonthName(filter)}}</p>
         </div>
       </div>
 
@@ -29,14 +29,14 @@
             <option value="1">Fevereiro</option>
             <option value="2">Março</option>
             <option value="3">Abril</option>
-            <option value="3">Maio</option>
-            <option value="3">Junho</option>
-            <option value="3">Julho</option>
-            <option value="3">Agosto</option>
-            <option value="3">Setembro</option>
-            <option value="3">Outubro</option>
-            <option value="3">Novembro</option>
-            <option value="3">Dezembro</option>
+            <option value="4">Maio</option>
+            <option value="5">Junho</option>
+            <option value="6">Julho</option>
+            <option value="7">Agosto</option>
+            <option value="8">Setembro</option>
+            <option value="9">Outubro</option>
+            <option value="10">Novembro</option>
+            <option value="11">Dezembro</option>
           </select>
         </div>
         <div class="col-3">
@@ -59,7 +59,7 @@
             </thead>
 
             <tbody>
-            <template is="dom-repeat" items="{{sales}}">
+            <template is="dom-repeat" items="{{filteredSales(sales, filter)}}">
               <tr data-id={{item.id}}>
               <td>{{item.formattedDate}}</td>
               <td>{{item.product.name}}</td>
@@ -87,15 +87,44 @@
           sales: {
             type: Array
           },
+          filter: {
+            type: Number,
+            value: () => { return -1; }
+          }
         }
       }
 
       totalAmount(sales) {
-        return Sale.totalAmountFromSumOfSales(sales).toFixed(2);
+        return Sale.totalAmountFromSumOfSales(this.filteredSales(sales)).toFixed(2);
       }
 
       totalQty(sales) {
-        return Sale.totalQtyFromSumOfSales(sales);
+        return Sale.totalQtyFromSumOfSales(this.filteredSales(sales));
+      }
+
+      didChangeFilter(e) {
+        let select = e.target;
+        let selectedMonth = select.value;
+        this.filter = selectedMonth;
+      }
+
+      filteredSales(sales) {
+        if (this.filter == -1) {
+          return sales;
+        } else {
+          return sales.filter((s) => {
+            return s.datetime.getMonth() == this.filter;
+          });
+        }
+      }
+
+      formattedMonthName() {
+        if (this.filter == -1) {
+          return "em todo o ano";
+        } else {
+          let option = this.shadowRoot.querySelector('option[value=\'' + this.filter + '\']');
+          return "no mês de " + option.text;
+        }
       }
     }
     customElements.define(EarningsTable.is, EarningsTable);
