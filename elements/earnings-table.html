@@ -55,6 +55,7 @@
               <th>Valor individual</th>
               <th>Quantidade</th>
               <th>Valor total</th>
+              <th width="150px"></th>
               </tr>
             </thead>
 
@@ -66,6 +67,7 @@
               <td>{{item.product.price}}</td>
               <td>{{item.qty}}</td>
               <td>{{item.formattedTotalPrice}}</td>
+              <td on-click='didPressRemove'><a class="sales-add-to-cart-link">Apagar<i class="fa fa-trash"></i></a></td>
               </tr>
             </template>
             </tbody>
@@ -125,6 +127,11 @@
           let option = this.shadowRoot.querySelector('option[value=\'' + this.filter + '\']');
           return "no mês de " + option.text;
         }
+      }
+
+      didPressRemove(e) {
+        let model = e.model.item;
+        router.triggerActionForRoute('remove-sale', model, model.id)
       }
     }
     customElements.define(EarningsTable.is, EarningsTable);

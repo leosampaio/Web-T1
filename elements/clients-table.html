@@ -14,22 +14,22 @@
           <table>
             <thead>
               <tr>
-              <th></th>
               <th>ID</th>
               <th>Nome</th>
               <th>Email</th>
               <th>Telefone</th>
+              <th width="150px"></th>
               </tr>
             </thead>
 
             <tbody>
             <template is="dom-repeat" items="{{clients}}">
               <tr>
-              <td><input type="checkbox" name="delete" value="{{item.id}}" /></td>
               <td on-click='didSelectItem'>{{item.id}}</td>
               <td on-click='didSelectItem'>{{item.name}}</td>
               <td on-click='didSelectItem'>{{item.email}}</td>
               <td on-click='didSelectItem'>{{item.phone}}</td>
+              <td on-click='didPressRemove'><a class="sales-add-to-cart-link">Apagar<i class="fa fa-trash"></i></a></td>
               </tr>
             </template>
             </tbody>
@@ -56,6 +56,11 @@
 
       didSelectItem(e) {
         location.href= '#admin/clients/' + e.model.item.id;
+      }
+
+      didPressRemove(e) {
+        let model = e.model.item;
+        router.triggerActionForRoute('remove-client', model, model.id)
       }
     }
     customElements.define(ClientsTable.is, ClientsTable);

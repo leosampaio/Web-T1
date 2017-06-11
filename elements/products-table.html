@@ -14,22 +14,22 @@
           <table>
             <thead>
               <tr>
-              <th></th>
               <th>ID</th>
               <th>Nome</th>
               <th>Preço</th>
               <th>Estoque</th>
+              <th width="150px"></th>
               </tr>
             </thead>
 
             <tbody>
             <template is="dom-repeat" items="{{products}}">
               <tr>
-              <td><input type="checkbox" name="delete" value="{{item.id}}" /></td>
               <td on-click='didSelectItem'>{{item.id}}</td>
               <td on-click='didSelectItem'>{{item.name}}</td>
               <td on-click='didSelectItem'>{{item.price}}</td>
               <td on-click='didSelectItem'>{{item.qty}}</td>
+              <td on-click='didPressRemove'><a class="sales-add-to-cart-link">Apagar<i class="fa fa-trash"></i></a></td>
               </tr>
             </template>
             </tbody>
@@ -56,6 +56,11 @@
 
       didSelectItem(e) {
         location.href= '#admin/products/' + e.model.item.id;
+      }
+
+      didPressRemove(e) {
+        let model = e.model.item;
+        router.triggerActionForRoute('remove-product', model, model.id)
       }
     }
     customElements.define(ProductsTable.is, ProductsTable);

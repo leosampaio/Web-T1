@@ -166,7 +166,7 @@
                 <div class="row schedules scheduled">{{item.time}}
                   <span class="itens-follow">{{item.event.pet.name}}</span>
                   <span class="itens-follow">{{item.event.service.name}}</span>
-                  <span class="del-schedule itens-follow "> Excluir<i class="fa fa-trash"></i></span>
+                  <span class="del-schedule itens-follow" on-click="didPressRemove"> Excluir<i class="fa fa-trash"></i></span>
                 </div>
               </template>
 
@@ -200,6 +200,11 @@
 
       didClickPrevious(e) {
         location.href='#admin/calendar/' + this.dailySummary.previousDateID
+      }
+
+      didPressRemove(e) {
+        let model = e.model.item.event;
+        router.triggerActionForRoute('remove-event', model, model.id);
       }
     }
     customElements.define(PetioroCalendar.is, PetioroCalendar);

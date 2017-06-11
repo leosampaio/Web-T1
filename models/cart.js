@@ -72,6 +72,24 @@ class Cart {
         return p;
     }
 
+    static removeItem(id) {
+        let p = new Promise((resolve, reject) => {
+            let db = new Database();
+            let transaction = db.idb.transaction(["cart"], "readwrite");
+
+            transaction.onerror = (event) => {
+              console.error("Something went wrong!", event);
+            };
+
+            let objectStore = transaction.objectStore("cart");
+            let request = objectStore.delete(id);
+            request.onsuccess = (event) => {
+               resolve();
+            };
+        });
+        return p;
+    }
+
     static clear() {
         let p = new Promise((resolve, reject) => {
             let db = new Database();

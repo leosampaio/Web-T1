@@ -107,6 +107,24 @@ class Product {
         return p;
     }
 
+    static delete(id) {
+        let p = new Promise((resolve, reject) => {
+            let db = new Database();
+            let transaction = db.idb.transaction(["products"], "readwrite");
+
+            transaction.onerror = (event) => {
+              console.error("Something went wrong!", event);
+            };
+
+            let objectStore = transaction.objectStore("products");
+            let request = objectStore.delete(id);
+            request.onsuccess = (event) => {
+               resolve();
+            };
+        });
+        return p;
+    }
+
     static incrementId() {
         if (this.latestId == null) this.latestId = 0;
         else this.latestId++

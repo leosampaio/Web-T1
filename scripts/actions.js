@@ -85,3 +85,51 @@ router.actionForRoute("close-admin-sale", (parameters) => {
         location.href='#admin/sales';
     });
 })
+
+router.actionForRoute("close-admin-sale", (parameters) => {
+    Cart.closeSale().then(() => {
+        location.href='#admin/sales';
+    });
+})
+
+router.actionForRoute("remove-item-from-cart", (parameters) => {
+    Cart.removeItem(parameters.id).then(() => {
+        window.dispatchEvent(new Event('hashchange')); // "reload" page
+    });
+})
+
+router.actionForRoute("remove-admin", (parameters) => {
+    Admin.delete(parameters.id).then(() => {
+        window.dispatchEvent(new Event('hashchange')); // "reload" page
+    });
+})
+
+router.actionForRoute("remove-client", (parameters) => {
+    Client.delete(parameters.id).then(() => {
+        window.dispatchEvent(new Event('hashchange')); // "reload" page
+    });
+})
+
+router.actionForRoute("remove-event", (parameters) => {
+    CalendarEvent.delete(parameters.id).then(() => {
+        window.dispatchEvent(new Event('hashchange')); // "reload" page
+    });
+})
+
+router.actionForRoute("remove-pet", (parameters) => {
+    Pet.delete(parameters.id).then(() => {
+        location.href='#pets';
+    });
+})
+
+router.actionForRoute("remove-product", (parameters) => {
+    Product.delete(parameters.id).then(() => {
+        window.dispatchEvent(new Event('hashchange')); // "reload" page
+    });
+})
+
+router.actionForRoute("remove-sale", (parameters) => {
+    Sale.delete(parameters.id).then(() => {
+        window.dispatchEvent(new Event('hashchange')); // "reload" page
+    });
+})

@@ -94,8 +94,26 @@ class Client {
         return p;
     }
 
+    static delete(id) {
+        let p = new Promise((resolve, reject) => {
+            let db = new Database();
+            let transaction = db.idb.transaction(["clients"], "readwrite");
+
+            transaction.onerror = (event) => {
+              console.error("Something went wrong!", event);
+            };
+
+            let objectStore = transaction.objectStore("clients");
+            let request = objectStore.delete(id);
+            request.onsuccess = (event) => {
+               resolve();
+            };
+        });
+        return p;
+    }
+
     static incrementId() {
-        if (this.latestId == null) this.latestId = 0;
+        if (this.latestId == null) this.latestId = 1;
         else this.latestId++
         return this.latestId
     }

@@ -88,6 +88,24 @@ class Sale {
         return this.latestId;
     }
 
+    static delete(id) {
+        let p = new Promise((resolve, reject) => {
+            let db = new Database();
+            let transaction = db.idb.transaction(["sales"], "readwrite");
+
+            transaction.onerror = (event) => {
+              console.error("Something went wrong!", event);
+            };
+
+            let objectStore = transaction.objectStore("sales");
+            let request = objectStore.delete(id);
+            request.onsuccess = (event) => {
+               resolve();
+            };
+        });
+        return p;
+    }
+
     static totalAmountFromSumOfSales(sales) {
         if (!sales) { return 0; }
         let amount = sales.reduce((total, sale) => { return total + sale.totalPrice }, 0);

@@ -31,7 +31,7 @@
             <td>{{item.product.price}}</td>
             <td>{{item.qty}}</td>
             <td>{{item.formattedTotalPrice}}</td>
-            <td on-click='removeFromCart'><a class="sales-add-to-cart-link">Remover<i class="fa fa-trash"></i></a></td>
+            <td on-click='didPressRemove'><a class="sales-add-to-cart-link">Remover<i class="fa fa-trash"></i></a></td>
             </tr>
           </template>
           </tbody>
@@ -62,8 +62,9 @@
         }
       }
 
-      removeFromCart(e) {
-        
+      didPressRemove(e) {
+        let model = e.model.item;
+        router.triggerActionForRoute('remove-item-from-cart', model, model.id)
       }
     }
     customElements.define(CartTable.is, CartTable);
