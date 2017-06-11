@@ -12,40 +12,75 @@ class CalendarEvent {
 
     static getEventsForDay(day) {
         let p = new Promise((resolve, reject) => {
-            resolve([
-                    new CalendarEvent({id: 1,
-                        client: new Client({id: 1, name: 'John', email: 'client@mail.com', phone: '555 17 3343'}),
-                        pet: new Pet({id: 1, name: 'Auau', image_url: '../img/pet-0.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                        service: new Product({id: 1, image_url: "../img/product-0.jpg", name: "Escova para Cães", price: "R$100,00"}),
-                        date: Date(),
-                        slotid: Math.floor((Math.random() * 10) + 1),
-                    }),
-                  ]);
-            });
+            let date = new Date(day);
+            let db = new Database();
+            db.getIDB().then((idb) => {
+                let models = [];
+                db.idb.transaction(["events"]).objectStore("events").openCursor().onsuccess = (event) => {
+                  let cursor = event.target.result;
+                  if (cursor) {
+                    let model = new CalendarEvent(cursor.value);
+                    model.id = cursor.key;
+                    if (model.date.toDateString() == date.toDateString()) {
+                        models.push(cursor.value);
+                    }
+                    cursor.continue();
+                  }
+                  else {
+                    resolve(models);
+                  }
+                };
+            })
+        });
         return p;
     }
 
-    static getByID(id) {
-        let p = new Promise((resolve, reject) => {
-            resolve(new CalendarEvent({id: 1,
-                        client: new Client({id: 1, name: 'John', email: 'client@mail.com', phone: '555 17 3343'}),
-                        pet: new Pet({id: 1, name: 'Auau', image_url: '../img/pet-0.jpg', description: 'Lorem ipsum dolor sit amet'}),
-                        service: new Product({id: 1, image_url: "../img/product-0.jpg", name: "Escova para Cães", price: "R$100,00"}),
-                        date: Date(),
-                        slotid: Math.floor((Math.random() * 10) + 1),
-                    }));
-        });
-        return p
-    }
-
-    static update(id, model) {
-        console.log("Updated id " + id + " with: ")
-        console.log(model);
-    }
-
     static create(model) {
-        console.log("Created new model:")
-        console.log(model);
+        let p = new Promise((resolve, reject) => {
+            Promise.all([Pet.getByID(model.pet), Product.getByID(model.service)]).then((results) => {
+                model.id = this.incrementId();
+                model.pet = results[0];
+                model.service = results[1];
+                model.date = new Date(model.date);
+                console.log("Created new model:")
+                console.log(model);
+
+                let db = new Database()
+                let transaction = db.idb.transaction(["events"], "readwrite");
+
+                transaction.onerror = (event) => {
+                  console.error("Something went wrong!", event);
+                };
+
+                let objectStore = transaction.objectStore("events");
+                let request = objectStore.add(model);
+                request.onsuccess = (event) => {
+                   resolve();
+                };
+            });
+        });
+        return p;
+    }
+
+    static incrementId() {
+        if (this.latestId == null) this.latestId = 0;
+        else this.latestId++;
+        return this.latestId;
+    }
+
+    static getWeekFromNow() {
+        let startingDate = new Date()
+        let week = [];
+        let day = new Date();
+        for(let i=0; i<7; i++) {
+            day.setDate(startingDate.getDate() + i);
+            week.push(this._formattedDate(day));
+        }
+        return week;
+    }
+
+    static _formattedDate(date) {
+        return (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
     }
 }
 

@@ -3,17 +3,18 @@
 <petioro-form action="admin/events">
   <span slot="left-columm">
     <label for="service">Selecione o serviço que deseja:</label>
-    <select class="select select-forms" id="select-service">
-        
+    <select class="select select-forms" id="select-service" name="service">
     </select>
-    <label for="pet">Username do Amigo</label>
-    <input type="text" name="pet">
+    <label for="pet">Nome do Amigo</label>
+    <select class="select select-forms" id="select-pet" name="pet">
+    </select>
   </span>
   <span slot="right-columm">
     <label for="date">Data Escolhida</label>
-    <input type="text" name="date">
-    <label for="picture_url">Horário Escolhido</label>
-    <select class="select select-forms">
+    <select class="select select-forms" id="select-date" name="date">
+    </select>
+    <label for="slodid">Horário Escolhido</label>
+    <select class="select select-forms" name="slotid">
         <option value="0" selected>8:00</option>
         <option value="1">9:00</option>
         <option value="2">10:00</option>
@@ -25,7 +26,6 @@
         <option value="8">16:00</option>
         <option value="9">17:00</option>
       </select>
-    
   </span>
   <button slot="left-button" class="btn btn-primary align-left" onclick="location.href='#admin/calendar';">
     <i class="fa fa-arrow-circle-left fa-lg" aria-hidden="true"></i>&nbsp; Cancelar

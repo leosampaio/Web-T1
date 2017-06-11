@@ -165,7 +165,7 @@
               <template is="dom-if" if="{{item.isScheduled}}">
                 <div class="row schedules scheduled">{{item.time}}
                   <span class="itens-follow">{{item.event.pet.name}}</span>
-                  <i class="fa fa-scissors fa-lg itens-follow" aria-hidden="true"></i>
+                  <span class="itens-follow">{{item.event.service.name}}</span>
                   <span class="del-schedule itens-follow "> Excluir<i class="fa fa-trash"></i></span>
                 </div>
               </template>

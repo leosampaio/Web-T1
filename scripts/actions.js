@@ -44,11 +44,11 @@ router.actionForRoute("admin/products", (parameters) => {
 router.actionForRoute("admin/events", (parameters) => {
     let newModel = new CalendarEvent(parameters.model);
     if (parameters.id !== null && parameters.id !== undefined) {
-        Event.update(parameters.id, newModel).then(() => {
+        CalendarEvent.update(parameters.id, newModel).then(() => {
             location.href='#admin/calendar';
         });
     } else {
-        Event.create(newModel).then(() => {
+        CalendarEvent.create(newModel).then(() => {
             location.href='#admin/calendar';
         });
     }

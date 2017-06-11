@@ -111,7 +111,7 @@ class Database {
                 if (cursor.key == 0) {
                     cursor.continue();
                 } else {
-                    Event.latestId = cursor.key;
+                    CalendarEvent.latestId = cursor.key;
                 }
             }
         };

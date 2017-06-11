@@ -145,16 +145,31 @@ router.viewForRoute("admin/calendar/id", (params) => {
 router.viewForRoute("admin/events/id", (params) => {
     if (params.id == 'new') {
         router.getTemplate("admin/events/form.html").then((response) => {
-            return Promise.all([router.renderAdmin(response), Product.getAllServices()]);
+            return Promise.all([router.renderAdmin(response), Product.getAllServices(), Pet.getAll()]);
         }).then((results) => {
             let content = results[0];
             let services = results[1];
+            let pets = results[2];
             let serviceSelect = content.querySelector('#select-service');
             for (let service of services) {
                 let option = document.createElement("option");
                 option.text = service.name;
-                option.value = service;
+                option.value = service.id;
                 serviceSelect.add(option);
+            }
+            let petSelect = content.querySelector('#select-pet');
+            for (let pet of pets) {
+                let option = document.createElement("option");
+                option.text = pet.name;
+                option.value = pet.id;
+                petSelect.add(option);
+            }
+            let dateSelect = content.querySelector('#select-date');
+            for (let date of CalendarEvent.getWeekFromNow()) {
+                let option = document.createElement("option");
+                option.text = date;
+                option.value = date;
+                dateSelect.add(option);
             }
         })
     }
