@@ -87,4 +87,16 @@ class Sale {
         else this.latestId += 2;
         return this.latestId;
     }
+
+    static totalAmountFromSumOfSales(sales) {
+        if (!sales) { return 0; }
+        let amount = sales.reduce((total, sale) => { return total + sale.totalPrice }, 0);
+        return amount;
+    }
+
+    static totalQtyFromSumOfSales(sales) {
+        if (!sales) { return 0; }
+        let qty = sales.reduce((total, sale) => { return total + Number(sale.qty) }, 0);
+        return qty;
+    }
 }

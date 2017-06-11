@@ -9,6 +9,42 @@
         box-sizing: border-box;
       }
     </style>
+
+      <div class="row">
+        <div class="col-3">
+          <h3 class="earnings-big-values">{{totalQty(sales)}}</h3>
+          <p>produtos vendidos no mês de Abril</p>
+        </div>
+        <div class="col-3">
+          <h3 class="earnings-big-values">R$ {{totalAmount(sales)}}</h3>
+          <p>de faturamento no mês de Abril</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          <select class="select select-primary pre-form-btn-left" id="select-month" on-change='didChangeFilter'>
+            <option value="-1" selected>Todos</option>
+            <option value="0">Janeiro</option>
+            <option value="1">Fevereiro</option>
+            <option value="2">Março</option>
+            <option value="3">Abril</option>
+            <option value="3">Maio</option>
+            <option value="3">Junho</option>
+            <option value="3">Julho</option>
+            <option value="3">Agosto</option>
+            <option value="3">Setembro</option>
+            <option value="3">Outubro</option>
+            <option value="3">Novembro</option>
+            <option value="3">Dezembro</option>
+          </select>
+        </div>
+        <div class="col-3">
+          <button class="btn btn-primary pre-form-btn-right btn-small">
+            <i class="fa fa-print fa-lg" aria-hidden="true"></i>&nbsp; Imprimir
+          </button>
+        </div>
+      </div>
       <div class="row">
         <div class="col-6">
           <table>
@@ -50,8 +86,16 @@
         return {
           sales: {
             type: Array
-          }
+          },
         }
+      }
+
+      totalAmount(sales) {
+        return Sale.totalAmountFromSumOfSales(sales).toFixed(2);
+      }
+
+      totalQty(sales) {
+        return Sale.totalQtyFromSumOfSales(sales);
       }
     }
     customElements.define(EarningsTable.is, EarningsTable);
