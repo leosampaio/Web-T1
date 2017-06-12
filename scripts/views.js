@@ -76,13 +76,27 @@ router.viewForRoute("admin/products/id", (params) => {
     if (params.id == 'new') {
         router.getTemplate("admin/products/form.html").then((response) => {
              return router.renderAdmin(response);
-        })
+        }).then((content) => {
+            let select = content.querySelector('#select-type');
+            select.onchange = (e) => {
+              let selectedValue = select.value;
+              let qtyInput = content.querySelector("input[name='qty']");
+              qtyInput.disabled = selectedValue == 'service';
+            };
+        });
     } else {
         router.getTemplate("admin/products/form.html").then((response) => {
             return Promise.all([router.renderAdmin(response), Product.getByID(params.id)]);
         }).then((results) => {
             let content = results[0];
             let model = results[1];
+            let select = content.querySelector('#select-type');
+            select.onchange = (e) => {
+              let selectedValue = select.value;
+              let qtyInput = content.querySelector("input[name='qty']");
+              qtyInput.disabled = selectedValue == 'service';
+            };
+
             content.querySelector('petioro-form').model = model;
         })
     }
