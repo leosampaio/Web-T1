@@ -60,24 +60,39 @@ class Sale {
 
     static createSales(sales) {
         let db = new Database()
-        let transaction = db.idb.transaction(["sales"], "readwrite");
+        let transaction = db.idb.transaction(["sales", "products"], "readwrite");
 
         transaction.onerror = (event) => {
           console.error("Something went wrong!", event);
         };
 
         let objectStore = transaction.objectStore("sales");
+        let productStore = transaction.objectStore("products");
 
-        let promises = sales.map((sale) => {
+        let productPromises = sales.map((sale) => {
+            let p = new Promise((resolve, reject) => {
+                let product = new Product(sale.product);
+                if (product.qty !== null && product.qty !== undefined) { product.qty = product.qty-sale.qty; }
+                sale.product = product;
+                let request = productStore.put(product);
+                request.onsuccess = (event) => {
+                    resolve();
+                };
+            });
+            return p;
+        });
+        let salePromises = sales.map((sale) => {
             let p = new Promise((resolve, reject) => {
                 sale.datetime = new Date();
                 let request = objectStore.add(sale);
                 request.onsuccess = (event) => {
-                   resolve();
+                    resolve();
                 };
             });
             return p;
-        })
+        });
+
+        let promises = salePromises.concat(productPromises);
         console.log(promises);
         return Promise.all(promises);
     }

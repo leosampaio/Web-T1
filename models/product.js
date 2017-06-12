@@ -10,6 +10,8 @@ class Product {
         this.description = properties.description;
         this.image_url = properties.image_url;
         this.price = properties.price
+
+        if (this.type != 'product') { this.qty = null; }
     }
 
     static getAll() {
@@ -68,6 +70,8 @@ class Product {
             console.log("Updated id " + id + " with: ")
             console.log(model);
             model.id = Number(id);
+
+            if (model.type != 'product') { model.qty = null; }
 
             let db = new Database()
             let transaction = db.idb.transaction(["products"], "readwrite");

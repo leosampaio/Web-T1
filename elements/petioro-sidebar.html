@@ -108,7 +108,6 @@
         let links = this.shadowRoot.querySelectorAll('a');
         links = Array.from(links);
         for (let l of links) { 
-          console.log(l, l.href, newValue)
           if (newValue.includes(l.href.substr(l.href.indexOf("#")))) {
             l.classList.add("selected"); 
           } else {
