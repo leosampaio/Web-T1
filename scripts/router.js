@@ -163,7 +163,7 @@ class Router {
                     resolve(content)
                     setTimeout(() => { 
                         body.querySelector("side-navbar").selectedItemMenu = location.hash;
-                    }, 1000);
+                    }, 10);
                 })
             } else {
                 // get sidebar and set selected item menu

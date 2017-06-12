@@ -87,7 +87,10 @@
       static get properties() {
         return {
           username: String,
-          admin: Boolean,
+          admin: {
+            type: Boolean,
+            value: false
+          },
           selectedItemMenu: {
             type: String,
             notify: true,
@@ -104,9 +107,14 @@
       selectedItemDidChange(newValue, oldValue) {   
         let links = this.shadowRoot.querySelectorAll('a');
         links = Array.from(links);
-        links.map( (l) => { l.classList.remove("selected"); });
-        let selected = this.shadowRoot.querySelector('a[href*=\"' + newValue + '"]');
-        if (selected) { selected.classList.add('selected'); }
+        for (let l of links) { 
+          console.log(l, l.href, newValue)
+          if (newValue.includes(l.href.substr(l.href.indexOf("#")))) {
+            l.classList.add("selected"); 
+          } else {
+            l.classList.remove("selected"); 
+          }
+        }
       }
 
     }
