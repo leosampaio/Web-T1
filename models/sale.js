@@ -133,3 +133,7 @@ class Sale {
         return qty;
     }
 }
+
+if (typeof module !== "undefined") {
+    module.exports = Admin
+}

@@ -123,3 +123,7 @@ class Cart {
         return p;
     }
 }
+
+if (typeof module !== "undefined") {
+    module.exports = Admin
+}
