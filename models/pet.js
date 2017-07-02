@@ -117,3 +117,7 @@ class Pet {
         return this.latestId
     }
 }
+
+if (typeof module !== "undefined") {
+    module.exports = Admin
+}

@@ -176,3 +176,7 @@ function dateFromDateID(dateid) {
     date.setHours(date.getHours()+12);
     return date;
 }
+
+if (typeof module !== "undefined") {
+    module.exports = Admin
+}
