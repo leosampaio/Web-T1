@@ -9,6 +9,8 @@ class Admin {
         this.phone = properties.phone;
         this.password = properties.password;
         this.image_url = properties.image_url;
+        this._id = properties._id;
+        this._rev = properties._rev;
     }
 
     static getAll() {
