@@ -33,7 +33,9 @@ router.post('/admins/:id', (req, res) => {
         newModel._rev = oldModel._rev;
         return Admin.insert(newModel);
     }).then((response) => {
-        res.json(response);
+        res.json({
+            'status': 'success'
+        });
     }).catch((error) => {
         console.log(error);
         res.send(error);
@@ -44,7 +46,23 @@ router.post('/admins/', (req, res) => {
     console.log(req.body)
     let model = new Admin(req.body);
     Admin.insert(model).then((response) => {
-        res.json(response);
+        res.json({
+            'status': 'success'
+        });
+    }).catch((error) => {
+        console.log(error);
+        res.send(error);
+    })
+});
+
+router.delete('/admins/', (req, res) => {
+    Admin.getByID(req.body.id).then((response) => {
+        let model = new Admin(response);
+        return Admin.remove(model);
+    }).then((response) => {
+        res.json({
+            'status': 'success'
+        });
     }).catch((error) => {
         console.log(error);
         res.send(error);
@@ -81,7 +99,9 @@ router.post('/clients/:id', (req, res) => {
         console.log(oldModel);
         return Client.insert(newModel);
     }).then((response) => {
-        res.json(response);
+        res.json({
+            'status': 'success'
+        });
     }).catch((error) => {
         console.log(error);
         res.send(error);
@@ -92,7 +112,23 @@ router.post('/clients/', (req, res) => {
     console.log(req.body)
     let model = new Client(req.body);
     Client.insert(model).then((response) => {
-        res.json(response);
+        res.json({
+            'status': 'success'
+        });
+    }).catch((error) => {
+        console.log(error);
+        res.send(error);
+    })
+});
+
+router.delete('/clients/', (req, res) => {
+    Client.getByID(req.body.id).then((response) => {
+        let model = new Client(response);
+        return Client.remove(model);
+    }).then((response) => {
+        res.json({
+            'status': 'success'
+        });
     }).catch((error) => {
         console.log(error);
         res.send(error);

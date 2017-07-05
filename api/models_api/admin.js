@@ -66,9 +66,17 @@ class AdminServer extends Admin {
         return p;
     }
 
-    static delete(id) {
+    static remove(model) {
         let p = new Promise((resolve, reject) => {
-            
+            let adminDB = nano.use('admin');
+            adminDB.destroy(model._id, model._rev, function(err, body) {
+                if (!err) {
+                    console.log(body);
+                    resolve(model);
+                } else {
+                    reject(err);
+                }
+            });
         });
         return p;
     }

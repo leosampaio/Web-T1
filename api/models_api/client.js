@@ -65,6 +65,21 @@ class ClientServer extends Client {
         });
         return p;
     }
+
+    static remove(model) {
+        let p = new Promise((resolve, reject) => {
+            let db = nano.use('client');
+            db.destroy(model._id, model._rev, function(err, body) {
+                if (!err) {
+                    console.log(body);
+                    resolve(model);
+                } else {
+                    reject(err);
+                }
+            });
+        });
+        return p;
+    }
 }
 
 module.exports = ClientServer
