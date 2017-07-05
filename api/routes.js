@@ -22,4 +22,30 @@ router.get('/admins/:id', (req, res) => {
     })
 });
 
+router.post('/admins/:id', (req, res) => {
+    Admin.getByID(req.body.id).then((response) => {
+        let oldModel = response;
+        let newModel = new Admin(req.body);
+        newModel._id = oldModel._id;
+        newModel._rev = oldModel._rev;
+        return Admin.insert(newModel);
+    }).then((response) => {
+        res.json(response);
+    }).catch((error) => {
+        console.log(error);
+        res.send(error);
+    })
+});
+
+router.post('/admins/', (req, res) => {
+    console.log(req.body)
+    let model = new Admin(req.body);
+    Admin.insert(model).then((response) => {
+        res.json(response);
+    }).catch((error) => {
+        console.log(error);
+        res.send(error);
+    })
+});
+
 module.exports = router;

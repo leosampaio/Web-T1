@@ -52,9 +52,17 @@ class AdminServer extends Admin {
         return p;
     }
 
-    static insert(id, model) {
+    static insert(model) {
         let p = new Promise((resolve, reject) => {
-            
+            let adminDB = nano.use('admin');
+            adminDB.insert(model, function(err, body) {
+                if (!err) {
+                    console.log(body);
+                    resolve(model);
+                } else {
+                    reject(500);
+                }
+            });
         });
         return p;
     }
