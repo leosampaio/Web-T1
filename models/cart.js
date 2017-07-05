@@ -3,6 +3,8 @@
 class Cart {
     constructor(properties) {
         this.sales = properties.sales;
+        this._id = properties._id;
+        this._rev = properties._rev;
     }
 
     get totalPrice() {

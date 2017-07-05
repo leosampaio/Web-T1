@@ -8,6 +8,8 @@ class CalendarEvent {
         this.service = properties.service;
         this.date = properties.date;
         this.slotid = properties.slotid;
+        this._id = properties._id;
+        this._rev = properties._rev;
     }
 
     static getEventsForDay(day) {

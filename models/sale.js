@@ -6,6 +6,8 @@ class Sale {
         this.datetime = properties.datetime;
         this.product = properties.product; // the actual product object
         this.qty = properties.qty;
+        this._id = properties._id;
+        this._rev = properties._rev;
     }
 
     get _numericPrice() {

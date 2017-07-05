@@ -2,6 +2,7 @@
 
 let nano = require('nano')('http://localhost:5984');
 let Admin = require('./models/admin.js');
+let Client = require('./models/client.js');
 
 // admins database
 
@@ -61,6 +62,36 @@ nano.db.destroy('admin', () => {
             });
           }
         });
+      }
+    });
+  });
+});
+
+// clients database 
+
+nano.db.destroy('client', () => {
+
+  // create a new database
+  nano.db.create('client', () => {
+
+    let db = nano.use('client');
+    console.log('Created clients db')
+
+    // create design documents
+    db.insert({
+      "views": {
+        "by_id": {
+          "map": function(doc) {
+            emit(doc.id, null);
+          }
+        }
+      }
+    }, '_design/clients', (err, response) => {
+      if (err) {
+        console.log('Failed to create client design document', err.message);
+        return;
+      } else {
+        console.log('Sucessfully created client design document');
       }
     });
   });

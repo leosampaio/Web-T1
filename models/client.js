@@ -10,6 +10,8 @@ class Client {
         this.password = properties.password;
         this.image_url = properties.image_url;
         this.address = properties.address;
+        this._id = properties._id;
+        this._rev = properties._rev;
     }
 
     static getAll() {
@@ -120,5 +122,5 @@ class Client {
 }
 
 if (typeof module !== "undefined") {
-    module.exports = Admin
+    module.exports = Client
 }

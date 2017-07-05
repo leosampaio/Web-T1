@@ -9,6 +9,8 @@ class Pet {
         this.username = properties.username
         this.race = properties.race
         this.birthdate = properties.birthdate
+        this._id = properties._id;
+        this._rev = properties._rev;
     }
 
     static getAll() {

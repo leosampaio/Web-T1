@@ -39,7 +39,6 @@ class AdminServer extends Admin {
                     console.log(err);
                     reject(err);
                 } else {
-                    console.log(body)
                     if (body.rows.length > 0) {
                         let model = new Admin(body.rows[0].doc);
                         resolve(model);

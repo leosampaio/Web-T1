@@ -10,6 +10,8 @@ class Product {
         this.description = properties.description;
         this.image_url = properties.image_url;
         this.price = properties.price
+        this._id = properties._id;
+        this._rev = properties._rev;
 
         if (this.type != 'product') { this.qty = null; }
     }
