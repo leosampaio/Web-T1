@@ -3,7 +3,7 @@
 let CalendarEvent = require('../../models/event.js');
 let nano = require('nano')('http://localhost:5984');
 
-class CalendarEventServer Extends CalendarEvent {
+class CalendarEventServer extends CalendarEvent {
 	static getAll() {
         let p = new Promise((resolve, reject) => {
             let EventDB = nano.use('event');
@@ -65,12 +65,20 @@ class CalendarEventServer Extends CalendarEvent {
         return p;
     }
 
-    static delete(id) {
+    static remove(model) {
         let p = new Promise((resolve, reject) => {
-            
+            let db = nano.use('event');
+            db.destroy(model._id, model._rev, function(err, body) {
+                if (!err) {
+                    console.log(body);
+                    resolve(model);
+                } else {
+                    reject(err);
+                }
+            });
         });
         return p;
     }
 } 
 
-module.exports = EventServer
+module.exports = CalendarEventServer

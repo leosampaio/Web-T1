@@ -180,5 +180,5 @@ function dateFromDateID(dateid) {
 }
 
 if (typeof module !== "undefined") {
-    module.exports = Admin
+    module.exports = CalendarEvent
 }
