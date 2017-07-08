@@ -1,7 +1,9 @@
 'use strict';
 
-let Sale = require('../models/sale.js');
+let Sale = require('../../models/sale.js');
 
 class SaleServer extends Sale {
     
 }
+
+module.exports = SaleServer;
