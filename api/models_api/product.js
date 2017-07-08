@@ -74,20 +74,14 @@ class ProductServer extends Product {
 
     static remove(model) {
         let p = new Promise((resolve, reject) => {
-            let db = nano.use('product');
-            this.count().then((count) => {
-                model.id = count+1;
-                db.insert(model, function(err, body) {
-                    if (!err) {
-                        console.log(body);
-                        resolve(model);
-                    } else {
-                        reject(err);
-                    }
-                });
-            }).catch((err) => {
-                reject(err)
-            })
+            db.destroy(model._id, model._rev, function(err, body) {
+                if (!err) {
+                    console.log(body);
+                    resolve(model);
+                } else {
+                    reject(err);
+                }
+            });
         });
         return p;
     }
