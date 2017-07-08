@@ -121,5 +121,5 @@ class Pet {
 }
 
 if (typeof module !== "undefined") {
-    module.exports = Admin
+    module.exports = Pet
 }

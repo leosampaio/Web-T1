@@ -137,5 +137,5 @@ class Sale {
 }
 
 if (typeof module !== "undefined") {
-    module.exports = Admin
+    module.exports = Sale
 }
