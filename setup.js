@@ -42,6 +42,12 @@ nano.db.destroy('admin', () => {
           "map": function(doc) {
             emit(doc.id, null);
           }
+        },
+        "count": {
+          "map": function(doc) {
+            emit(doc.id, doc.id);
+          },
+          "reduce": "_stats"
         }
       }
     }, '_design/admins', (err, response) => {
@@ -84,6 +90,12 @@ nano.db.destroy('client', () => {
           "map": function(doc) {
             emit(doc.id, null);
           }
+        },
+        "count": {
+          "map": function(doc) {
+            emit(doc.id, null);
+          },
+          "reduce": "_count"
         }
       }
     }, '_design/clients', (err, response) => {
@@ -114,6 +126,12 @@ nano.db.destroy('product', () => {
           "map": function(doc) {
             emit(doc.id, null);
           }
+        },
+        "count": {
+          "map": function(doc) {
+            emit(doc.id, null);
+          },
+          "reduce": "_count"
         }
       }
     }, '_design/products', (err, response) => {
@@ -145,6 +163,12 @@ nano.db.destroy('pet', () => {
           "map": function(doc) {
             emit(doc.id, null);
           }
+        },
+        "count": {
+          "map": function(doc) {
+            emit(doc.id, null);
+          },
+          "reduce": "_count"
         }
       }
     }, '_design/pets', (err, response) => {
@@ -175,6 +199,12 @@ nano.db.destroy('event', () => {
           "map": function(doc) {
             emit(doc.id, null);
           }
+        },
+        "count": {
+          "map": function(doc) {
+            emit(doc.id, null);
+          },
+          "reduce": "_count"
         }
       }
     }, '_design/events', (err, response) => {
@@ -205,6 +235,12 @@ nano.db.destroy('sale', () => {
           "map": function(doc) {
             emit(doc.id, null);
           }
+        },
+        "count": {
+          "map": function(doc) {
+            emit(doc.id, null);
+          },
+          "reduce": "_count"
         }
       }
     }, '_design/sales', (err, response) => {

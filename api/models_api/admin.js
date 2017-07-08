@@ -16,6 +16,7 @@ class AdminServer extends Admin {
                     reject(err);
                     return;
                 } else {
+                    console.log(body)
                     let models = [];
                     body.rows.forEach((doc) => {
                         let model = new Admin(doc.doc);
@@ -39,6 +40,7 @@ class AdminServer extends Admin {
                     console.log(err);
                     reject(err);
                 } else {
+                    console.log(body)
                     if (body.rows.length > 0) {
                         let model = new Admin(body.rows[0].doc);
                         resolve(model);
@@ -53,15 +55,20 @@ class AdminServer extends Admin {
 
     static insert(model) {
         let p = new Promise((resolve, reject) => {
-            let adminDB = nano.use('admin');
-            adminDB.insert(model, function(err, body) {
-                if (!err) {
-                    console.log(body);
-                    resolve(model);
-                } else {
-                    reject(500);
-                }
-            });
+            let db = nano.use('admin');
+            this.count().then((count) => {
+                model.id = count+1;
+                db.insert(model, function(err, body) {
+                    if (!err) {
+                        console.log(body);
+                        resolve(model);
+                    } else {
+                        reject(err);
+                    }
+                });
+            }).catch((err) => {
+                reject(err)
+            })
         });
         return p;
     }
@@ -79,6 +86,22 @@ class AdminServer extends Admin {
             });
         });
         return p;
+    }
+
+    static count() {
+        let p = new Promise((resolve, reject) => {
+            let db = nano.use('admin');
+            db.view('admins', 'count', (err, body) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                    return;
+                } else {
+                    resolve(body.rows[0].value.max);
+                }
+            });
+        });
+        return p
     }
 }
 

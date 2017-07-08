@@ -54,14 +54,19 @@ class ClientServer extends Client {
     static insert(model) {
         let p = new Promise((resolve, reject) => {
             let db = nano.use('client');
-            db.insert(model, function(err, body) {
-                if (!err) {
-                    console.log(body);
-                    resolve(model);
-                } else {
-                    reject(500);
-                }
-            });
+            this.count().then((count) => {
+                model.id = count+1;
+                db.insert(model, function(err, body) {
+                    if (!err) {
+                        console.log(body);
+                        resolve(model);
+                    } else {
+                        reject(err);
+                    }
+                });
+            }).catch((err) => {
+                reject(err)
+            })
         });
         return p;
     }
@@ -79,6 +84,22 @@ class ClientServer extends Client {
             });
         });
         return p;
+    }
+
+    static count() {
+        let p = new Promise((resolve, reject) => {
+            let db = nano.use('client');
+            db.view('clients', 'count', (err, body) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                    return;
+                } else {
+                    resolve(body.rows[0].value.max);
+                }
+            });
+        });
+        return p
     }
 }
 

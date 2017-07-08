@@ -52,16 +52,20 @@ class CalendarEventServer extends CalendarEvent {
 
     static insert(model) {
         let p = new Promise((resolve, reject) => {
-            let EventDB = nano.use('event');
-            EventDB.insert(model, function(err, body) {
-                if (!err) {
-                    console.log(body);
-                    resolve(model);
-                } else {
-                    reject(500);
-                }
-            });
-        });
+            let db = nano.use('event');
+            this.count().then((count) => {
+                model.id = count+1;
+                db.insert(model, function(err, body) {
+                    if (!err) {
+                        console.log(body);
+                        resolve(model);
+                    } else {
+                        reject(err);
+                    }
+                });
+            }).catch((err) => {
+                reject(err)
+            })
         return p;
     }
 
@@ -78,6 +82,22 @@ class CalendarEventServer extends CalendarEvent {
             });
         });
         return p;
+    }
+
+    static count() {
+        let p = new Promise((resolve, reject) => {
+            let db = nano.use('event');
+            db.view('events', 'count', (err, body) => {
+                if (err) {
+                    console.log(err);
+                    reject(err);
+                    return;
+                } else {
+                    resolve(body.rows[0].value.max);
+                }
+            });
+        });
+        return p
     }
 } 
 
