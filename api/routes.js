@@ -30,11 +30,12 @@ router.get('/admins/:id', (req, res) => {
 });
 
 router.post('/admins/:id', (req, res) => {
-    Admin.getByID(req.body.id).then((response) => {
+    Admin.getByID(req.params.id).then((response) => {
         let oldModel = response;
         let newModel = new Admin(req.body);
         newModel._id = oldModel._id;
         newModel._rev = oldModel._rev;
+        newModel.id = parseInt(req.params.id);
         return Admin.insert(newModel);
     }).then((response) => {
         res.json({
@@ -62,6 +63,7 @@ router.post('/admins/', (req, res) => {
 router.delete('/admins/', (req, res) => {
     Admin.getByID(req.body.id).then((response) => {
         let model = new Admin(response);
+
         return Admin.remove(model);
     }).then((response) => {
         res.json({
@@ -94,13 +96,12 @@ router.get('/clients/:id', (req, res) => {
 });
 
 router.post('/clients/:id', (req, res) => {
-    Client.getByID(req.body.id).then((response) => {
+    Client.getByID(req.params.id).then((response) => {
         let oldModel = response;
         let newModel = new Client(req.body);
         newModel._id = oldModel._id;
         newModel._rev = oldModel._rev;
-        console.log(newModel);
-        console.log(oldModel);
+        newModel.id = parseInt(req.params.id);
         return Client.insert(newModel);
     }).then((response) => {
         res.json({
@@ -160,13 +161,12 @@ router.get('/products/:id', (req, res) => {
 });
 
 router.post('/products/:id', (req, res) => {
-    Product.getByID(req.body.id).then((response) => {
+    Product.getByID(req.params.id).then((response) => {
         let oldModel = response;
         let newModel = new Product(req.body);
         newModel._id = oldModel._id;
         newModel._rev = oldModel._rev;
-        console.log(newModel);
-        console.log(oldModel);
+        newModel.id = parseInt(req.params.id);
         return Product.insert(newModel);
     }).then((response) => {
         res.json({
@@ -226,13 +226,12 @@ router.get('/pets/:id', (req, res) => {
 });
 
 router.post('/pets/:id', (req, res) => {
-    Pet.getByID(req.body.id).then((response) => {
+    Pet.getByID(req.params.id).then((response) => {
         let oldModel = response;
         let newModel = new Pet(req.body);
         newModel._id = oldModel._id;
         newModel._rev = oldModel._rev;
-        console.log(newModel);
-        console.log(oldModel);
+        newModel.id = parseInt(req.params.id);
         return Pet.insert(newModel);
     }).then((response) => {
         res.json({
@@ -292,13 +291,12 @@ router.get('/events/:id', (req, res) => {
 });
 
 router.post('/events/:id', (req, res) => {
-    CalendarEvent.getByID(req.body.id).then((response) => {
+    CalendarEvent.getByID(req.params.id).then((response) => {
         let oldModel = response;
         let newModel = new CalendarEvent(req.body);
         newModel._id = oldModel._id;
         newModel._rev = oldModel._rev;
-        console.log(newModel);
-        console.log(oldModel);
+        newModel.id = parseInt(req.params.id);
         return CalendarEvent.insert(newModel);
     }).then((response) => {
         res.json({
@@ -358,13 +356,12 @@ router.get('/sales/:id', (req, res) => {
 });
 
 router.post('/sales/:id', (req, res) => {
-    Sale.getByID(req.body.id).then((response) => {
+    Sale.getByID(req.params.id).then((response) => {
         let oldModel = response;
         let newModel = new Sale(req.body);
         newModel._id = oldModel._id;
         newModel._rev = oldModel._rev;
-        console.log(newModel);
-        console.log(oldModel);
+        newModel.id = parseInt(req.params.id);
         return Sale.insert(newModel);
     }).then((response) => {
         res.json({

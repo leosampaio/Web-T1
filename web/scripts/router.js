@@ -200,3 +200,23 @@ class Router {
         })
     }
 }
+
+function ajax(method, url, data) {
+    let p = new Promise((resolve, reject) => {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                resolve(JSON.parse(this.responseText));
+            }
+        };
+        xhttp.open(method, url, true);
+        xhttp.setRequestHeader('Content-Type', 'application/json');
+        if (data !== 'undefined') {
+            xhttp.send(JSON.stringify(data));
+        } else {
+            xhttp.send();
+        }
+        
+    });
+    return p;
+}

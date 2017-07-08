@@ -52,15 +52,22 @@ class ProductServer extends Product {
 
     static insert(model) {
         let p = new Promise((resolve, reject) => {
-            let ProductDB = nano.use('product');
-            ProductDB.insert(model, function(err, body) {
-                if (!err) {
-                    console.log(body);
-                    resolve(model);
-                } else {
-                    reject(500);
+            let db = nano.use('product');
+            this.count().then((count) => {
+                if (!model.id) {
+                    model.id = count + 1;
                 }
-            });
+                db.insert(model, function(err, body) {
+                    if (!err) {
+                        console.log(body);
+                        resolve(model);
+                    } else {
+                        reject(err);
+                    }
+                });
+            }).catch((err) => {
+                reject(err)
+            })
         });
         return p;
     }
@@ -94,7 +101,11 @@ class ProductServer extends Product {
                     reject(err);
                     return;
                 } else {
-                    resolve(body.rows[0].value.max);
+                    if (body.rows.length > 0) {
+                        resolve(body.rows[0].value.max);
+                    } else {
+                        resolve(0);
+                    }
                 }
             });
         });

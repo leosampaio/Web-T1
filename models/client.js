@@ -15,25 +15,7 @@ class Client {
     }
 
     static getAll() {
-        let p = new Promise((resolve, reject) => {
-            let db = new Database();
-            db.getIDB().then((idb) => {
-                let models = [];
-                db.idb.transaction(["clients"]).objectStore("clients").openCursor().onsuccess = (event) => {
-                  let cursor = event.target.result;
-                  if (cursor) {
-                    let model = new Client(cursor.value);
-                    model.id = cursor.key;
-                    models.push(cursor.value);
-                    cursor.continue();
-                  }
-                  else {
-                    resolve(models);
-                  }
-                };
-            })
-        });
-        return p;
+        return ajax('GET', '/api/clients');
     }
 
     static getByID(id) {

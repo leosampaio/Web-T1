@@ -54,7 +54,9 @@ class CalendarEventServer extends CalendarEvent {
         let p = new Promise((resolve, reject) => {
             let db = nano.use('event');
             this.count().then((count) => {
-                model.id = count+1;
+                if (!model.id) {
+                    model.id = count + 1;
+                }
                 db.insert(model, function(err, body) {
                     if (!err) {
                         console.log(body);
@@ -66,6 +68,7 @@ class CalendarEventServer extends CalendarEvent {
             }).catch((err) => {
                 reject(err)
             })
+        })
         return p;
     }
 
@@ -93,7 +96,11 @@ class CalendarEventServer extends CalendarEvent {
                     reject(err);
                     return;
                 } else {
-                    resolve(body.rows[0].value.max);
+                    if (body.rows.length > 0) {
+                        resolve(body.rows[0].value.max);
+                    } else {
+                        resolve(0);
+                    }
                 }
             });
         });

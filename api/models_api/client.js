@@ -55,7 +55,9 @@ class ClientServer extends Client {
         let p = new Promise((resolve, reject) => {
             let db = nano.use('client');
             this.count().then((count) => {
-                model.id = count+1;
+                if (!model.id) {
+                    model.id = count + 1;
+                }
                 db.insert(model, function(err, body) {
                     if (!err) {
                         console.log(body);
@@ -95,7 +97,11 @@ class ClientServer extends Client {
                     reject(err);
                     return;
                 } else {
-                    resolve(body.rows[0].value.max);
+                    if (body.rows.length > 0) {
+                        resolve(body.rows[0].value.max);
+                    } else {
+                        resolve(0);
+                    }
                 }
             });
         });

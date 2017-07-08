@@ -93,9 +93,9 @@ nano.db.destroy('client', () => {
         },
         "count": {
           "map": function(doc) {
-            emit(doc.id, null);
+            emit(doc.id, doc.id);
           },
-          "reduce": "_count"
+          "reduce": "_stats"
         }
       }
     }, '_design/clients', (err, response) => {
@@ -129,9 +129,9 @@ nano.db.destroy('product', () => {
         },
         "count": {
           "map": function(doc) {
-            emit(doc.id, null);
+            emit(doc.id, doc.id);
           },
-          "reduce": "_count"
+          "reduce": "_stats"
         }
       }
     }, '_design/products', (err, response) => {
@@ -166,9 +166,9 @@ nano.db.destroy('pet', () => {
         },
         "count": {
           "map": function(doc) {
-            emit(doc.id, null);
+            emit(doc.id, doc.id);
           },
-          "reduce": "_count"
+          "reduce": "_stats"
         }
       }
     }, '_design/pets', (err, response) => {
@@ -202,9 +202,9 @@ nano.db.destroy('event', () => {
         },
         "count": {
           "map": function(doc) {
-            emit(doc.id, null);
+            emit(doc.id, doc.id);
           },
-          "reduce": "_count"
+          "reduce": "_stats"
         }
       }
     }, '_design/events', (err, response) => {
@@ -238,9 +238,9 @@ nano.db.destroy('sale', () => {
         },
         "count": {
           "map": function(doc) {
-            emit(doc.id, null);
+            emit(doc.id, doc.id);
           },
-          "reduce": "_count"
+          "reduce": "_stats"
         }
       }
     }, '_design/sales', (err, response) => {

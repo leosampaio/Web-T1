@@ -57,7 +57,9 @@ class AdminServer extends Admin {
         let p = new Promise((resolve, reject) => {
             let db = nano.use('admin');
             this.count().then((count) => {
-                model.id = count+1;
+                if (!model.id) {
+                    model.id = count + 1;
+                }
                 db.insert(model, function(err, body) {
                     if (!err) {
                         console.log(body);
