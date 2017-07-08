@@ -15,7 +15,15 @@ class Client {
     }
 
     static getAll() {
-        return ajax('GET', '/api/clients');
+        let url = '/api/clients';
+        let p = new Promise((resolve, reject) => {
+            ajax('GET', url).then((result) => {
+                resolve(result.map((m) => { return new Client(m) }))
+            }).catch((error) => {
+                reject(error);
+            })
+        });
+        return p;
     }
 
     static getByID(id) {

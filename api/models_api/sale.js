@@ -1,6 +1,7 @@
 'use strict';
 
 let Sale = require('../../models/sale.js');
+let Product = require('./product.js');
 let nano = require('nano')('http://localhost:5984');
 
 class SaleServer extends Sale {
@@ -67,6 +68,57 @@ class SaleServer extends Sale {
                 });
             }).catch((err) => {
                 reject(err)
+            })
+        });
+        return p;
+    }
+
+    static insertMany(sales) {
+        console.log('sales: ', sales);
+        let p = new Promise((resolve, reject) => {
+            let db = nano.use('sale');
+            this.count().then((count) => {
+                let productPromises = sales.map((sale) => {
+                    let p = new Promise((resolve, reject) => {
+                        Product.getByID(sale.product.id).then((response) => {
+                            let product = new Product(response);
+                            if (product.qty !== null && product.qty !== undefined) {
+                                product.qty = product.qty - sale.qty;
+                            }
+                            sale.product = product;
+                            return Product.insert(product);
+                        }).then((response) => {
+                            resolve(response);
+                        }).catch((error) => {
+                            reject(error);
+                        })
+                    });
+                    return p;
+                });
+
+                let salePromises = sales.map((sale) => {
+                    sale.datetime = new Date();
+                    let p = new Promise((resolve, reject) => {
+                        count = count + 1;
+                        sale.id = count;
+                        console.log(sale);
+                        db.insert(sale, function(err, body) {
+                            if (!err) {
+                                console.log(body);
+                                resolve(sale);
+                            } else {
+                                reject(err);
+                            }
+                        });
+                    })
+                    return p;
+                });
+                let promises = salePromises.concat(productPromises);
+                return Promise.all(promises);
+            }).then((result) => {
+                resolve();
+            }).catch((err) => {
+                reject(err);
             })
         });
         return p;

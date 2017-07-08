@@ -86,12 +86,6 @@ router.actionForRoute("close-admin-sale", (parameters) => {
     });
 })
 
-router.actionForRoute("close-admin-sale", (parameters) => {
-    Cart.closeSale().then(() => {
-        location.href='#admin/sales';
-    });
-})
-
 router.actionForRoute("remove-item-from-cart", (parameters) => {
     Cart.removeItem(parameters.id).then(() => {
         window.dispatchEvent(new Event('hashchange')); // "reload" page

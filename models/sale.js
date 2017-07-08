@@ -3,7 +3,7 @@
 class Sale {
     constructor(properties) {
         this.id = properties.id;
-        this.datetime = properties.datetime;
+        this.datetime = Date(properties.datetime);
         this.product = properties.product; // the actual product object
         this.qty = properties.qty;
         this._id = properties._id;
@@ -22,7 +22,7 @@ class Sale {
     }
 
     get formattedDate() {
-        let formatted = this.datetime.toLocaleString('pt-BR');
+        let formatted = Date(this.datetime).toLocaleString('pt-BR');
         return formatted;
     }
 
@@ -31,72 +31,25 @@ class Sale {
     }
 
     static getAll() {
+        let url = '/api/sales';
         let p = new Promise((resolve, reject) => {
-            let db = new Database();
-            db.getIDB().then((idb) => {
-                let models = [];
-                db.idb.transaction(["sales"]).objectStore("sales").openCursor().onsuccess = (event) => {
-                  let cursor = event.target.result;
-                  if (cursor) {
-                    let model = new Sale(cursor.value);
-                    model.id = cursor.key;
-                    models.push(model);
-                    cursor.continue();
-                  }
-                  else {
-                    resolve(models);
-                  }
-                };
+            ajax('GET', url).then((result) => {
+                resolve(result.map((m) => { return new Sale(m) }))
+            }).catch((error) => {
+                reject(error);
             })
         });
         return p;
     }
 
     static getByID(id) {
-        let p = new Promise((resolve, reject) => {
-            resolve(new Sale({id: 1, datetime: new Date(), qty: 2,
-                    product: new Product({id: 1, name: "Escova para Cães", price: "R$100,00"})}));
-        });
-        return p
+        let url = '/api/sales/' + id
+        return ajax('GET', url);
     }
 
     static createSales(sales) {
-        let db = new Database()
-        let transaction = db.idb.transaction(["sales", "products"], "readwrite");
-
-        transaction.onerror = (event) => {
-          console.error("Something went wrong!", event);
-        };
-
-        let objectStore = transaction.objectStore("sales");
-        let productStore = transaction.objectStore("products");
-
-        let productPromises = sales.map((sale) => {
-            let p = new Promise((resolve, reject) => {
-                let product = new Product(sale.product);
-                if (product.qty !== null && product.qty !== undefined) { product.qty = product.qty-sale.qty; }
-                sale.product = product;
-                let request = productStore.put(product);
-                request.onsuccess = (event) => {
-                    resolve();
-                };
-            });
-            return p;
-        });
-        let salePromises = sales.map((sale) => {
-            let p = new Promise((resolve, reject) => {
-                sale.datetime = new Date();
-                let request = objectStore.add(sale);
-                request.onsuccess = (event) => {
-                    resolve();
-                };
-            });
-            return p;
-        });
-
-        let promises = salePromises.concat(productPromises);
-        console.log(promises);
-        return Promise.all(promises);
+        let url = '/api/sales/'
+        return ajax('POST', url, sales);
     }
 
     static incrementId() {
@@ -106,21 +59,8 @@ class Sale {
     }
 
     static delete(id) {
-        let p = new Promise((resolve, reject) => {
-            let db = new Database();
-            let transaction = db.idb.transaction(["sales"], "readwrite");
-
-            transaction.onerror = (event) => {
-              console.error("Something went wrong!", event);
-            };
-
-            let objectStore = transaction.objectStore("sales");
-            let request = objectStore.delete(id);
-            request.onsuccess = (event) => {
-               resolve();
-            };
-        });
-        return p;
+        let url = '/api/sales/'
+        return ajax('DELETE', url, {"id": id});
     }
 
     static totalAmountFromSumOfSales(sales) {

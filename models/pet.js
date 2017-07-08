@@ -14,7 +14,15 @@ class Pet {
     }
 
     static getAll() {
-        return ajax('GET', '/api/pets');
+        let url = '/api/pets';
+        let p = new Promise((resolve, reject) => {
+            ajax('GET', url).then((result) => {
+                resolve(result.map((m) => { return new Pet(m) }))
+            }).catch((error) => {
+                reject(error);
+            })
+        });
+        return p;
     }
 
     static getByID(id) {

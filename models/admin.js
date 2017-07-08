@@ -14,7 +14,15 @@ class Admin {
     }
 
     static getAll() {
-        return ajax('GET', '/api/admins');
+        let url = '/api/admins/'
+        let p = new Promise((resolve, reject) => {
+            ajax('GET', url).then((result) => {
+                resolve(result.map((m) => { return new Admin(m) }))
+            }).catch((error) => {
+                reject(error);
+            })
+        });
+        return p;
     }
 
     static getByID(id) {

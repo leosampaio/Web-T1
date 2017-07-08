@@ -17,7 +17,15 @@ class Product {
     }
 
     static getAll() {
-        return ajax('GET', '/api/products');
+        let url = '/api/products';
+        let p = new Promise((resolve, reject) => {
+            ajax('GET', url).then((result) => {
+                resolve(result.map((m) => { return new Product(m) }))
+            }).catch((error) => {
+                reject(error);
+            })
+        });
+        return p;
     }
 
     static getAllServices() {

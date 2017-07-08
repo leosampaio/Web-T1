@@ -375,8 +375,8 @@ router.post('/sales/:id', (req, res) => {
 
 router.post('/sales/', (req, res) => {
     console.log(req.body)
-    let model = new Sale(req.body);
-    Sale.insert(model).then((response) => {
+    let models = req.body;
+    Sale.insertMany(models).then((response) => {
         res.json({
             'status': 'success'
         });
