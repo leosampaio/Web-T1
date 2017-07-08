@@ -19,81 +19,23 @@ class Client {
     }
 
     static getByID(id) {
-        let p = new Promise((resolve, reject) => {
-            let db = new Database();
-            let transaction = db.idb.transaction(["clients"]);
-            let objectStore = transaction.objectStore("clients");
-            let request = objectStore.get(Number(id));
-            request.onerror = function(event) {
-              console.error("Something went wrong!", event);
-            };
-            request.onsuccess = function(event) {
-              resolve(new Client(request.result));
-            };
-        });
-        return p;
+        let url = '/api/clients/' + id
+        return ajax('GET', url);
     }
 
     static update(id, model) {
-        let p = new Promise((resolve, reject) => {
-            console.log("Updated id " + id + " with: ")
-            console.log(model);
-            model.id = Number(id);
-
-            let db = new Database()
-            let transaction = db.idb.transaction(["clients"], "readwrite");
-
-            transaction.onerror = (event) => {
-              console.error("Something went wrong!", event);
-            };
-
-            let objectStore = transaction.objectStore("clients");
-            let request = objectStore.put(model);
-            request.onsuccess = (event) => {
-               resolve();
-            };
-        });
-        return p;
+        let url = '/api/clients/' + id
+        return ajax('POST', url, model);
     }
 
     static create(model) {
-        let p = new Promise((resolve, reject) => {
-            model.id = this.incrementId();
-            console.log("Created new model:")
-            console.log(model);
-
-            let db = new Database()
-            let transaction = db.idb.transaction(["clients"], "readwrite");
-
-            transaction.onerror = (event) => {
-              console.error("Something went wrong!", event);
-            };
-
-            let objectStore = transaction.objectStore("clients");
-            let request = objectStore.add(model);
-            request.onsuccess = (event) => {
-               resolve();
-            };
-        });
-        return p;
+        let url = '/api/clients/'
+        return ajax('POST', url, model);
     }
 
     static delete(id) {
-        let p = new Promise((resolve, reject) => {
-            let db = new Database();
-            let transaction = db.idb.transaction(["clients"], "readwrite");
-
-            transaction.onerror = (event) => {
-              console.error("Something went wrong!", event);
-            };
-
-            let objectStore = transaction.objectStore("clients");
-            let request = objectStore.delete(id);
-            request.onsuccess = (event) => {
-               resolve();
-            };
-        });
-        return p;
+        let url = '/api/clients/'
+        return ajax('DELETE', url, {"id": id});
     }
 
     static incrementId() {
