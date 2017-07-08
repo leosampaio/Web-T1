@@ -6,8 +6,8 @@ let nano = require('nano')('http://localhost:5984');
 class ProductServer extends Product {
 	static getAll() {
         let p = new Promise((resolve, reject) => {
-            let ProductDB = nano.use('product');
-            ProductDB.view('products', 'by_id', {
+            let db = nano.use('product');
+            db.view('products', 'by_id', {
                 'include_docs': true
             }, (err, body) => {
                 if (err) {
@@ -29,8 +29,8 @@ class ProductServer extends Product {
 
     static getByID(id) {
         let p = new Promise((resolve, reject) => {
-            let ProductDB = nano.use('product');
-            ProductDB.view('products', 'by_id', {
+            let db = nano.use('product');
+            db.view('products', 'by_id', {
                 'key': parseInt(id),
                 'include_docs': true
             }, (err, body) => {
@@ -74,6 +74,7 @@ class ProductServer extends Product {
 
     static remove(model) {
         let p = new Promise((resolve, reject) => {
+            let db = nano.use('product');
             db.destroy(model._id, model._rev, function(err, body) {
                 if (!err) {
                     console.log(body);

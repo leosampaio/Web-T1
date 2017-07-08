@@ -17,25 +17,7 @@ class Product {
     }
 
     static getAll() {
-        let p = new Promise((resolve, reject) => {
-            let db = new Database();
-            db.getIDB().then((idb) => {
-                let models = [];
-                db.idb.transaction(["products"]).objectStore("products").openCursor().onsuccess = (event) => {
-                  let cursor = event.target.result;
-                  if (cursor) {
-                    let model = new Product(cursor.value);
-                    model.id = cursor.key;
-                    models.push(cursor.value);
-                    cursor.continue();
-                  }
-                  else {
-                    resolve(models);
-                  }
-                };
-            })
-        });
-        return p;
+        return ajax('GET', '/api/products');
     }
 
     static getAllServices() {
@@ -52,83 +34,24 @@ class Product {
     }
 
     static getByID(id) {
-        let p = new Promise((resolve, reject) => {
-            let db = new Database();
-            let transaction = db.idb.transaction(["products"]);
-            let objectStore = transaction.objectStore("products");
-            let request = objectStore.get(Number(id));
-            request.onerror = function(event) {
-              console.error("Something went wrong!", event);
-            };
-            request.onsuccess = function(event) {
-              resolve(new Product(request.result));
-            };
-        });
-        return p;
+        let url = '/api/products/' + id
+        return ajax('GET', url);
     }
 
     static update(id, model) {
-        let p = new Promise((resolve, reject) => {
-            console.log("Updated id " + id + " with: ")
-            console.log(model);
-            model.id = Number(id);
-
-            if (model.type != 'product') { model.qty = null; }
-
-            let db = new Database()
-            let transaction = db.idb.transaction(["products"], "readwrite");
-
-            transaction.onerror = (event) => {
-              console.error("Something went wrong!", event);
-            };
-
-            let objectStore = transaction.objectStore("products");
-            let request = objectStore.put(model);
-            request.onsuccess = (event) => {
-               resolve();
-            };
-        });
-        return p;
+        let url = '/api/products/' + id
+        if (model.type != 'product') { model.qty = null; }
+        return ajax('POST', url, model);
     }
 
     static create(model) {
-        let p = new Promise((resolve, reject) => {
-            model.id = this.incrementId();
-            console.log("Created new model:")
-            console.log(model);
-
-            let db = new Database()
-            let transaction = db.idb.transaction(["products"], "readwrite");
-
-            transaction.onerror = (event) => {
-              console.error("Something went wrong!", event);
-            };
-
-            let objectStore = transaction.objectStore("products");
-            let request = objectStore.add(model);
-            request.onsuccess = (event) => {
-               resolve();
-            };
-        });
-        return p;
+        let url = '/api/products/'
+        return ajax('POST', url, model);
     }
 
     static delete(id) {
-        let p = new Promise((resolve, reject) => {
-            let db = new Database();
-            let transaction = db.idb.transaction(["products"], "readwrite");
-
-            transaction.onerror = (event) => {
-              console.error("Something went wrong!", event);
-            };
-
-            let objectStore = transaction.objectStore("products");
-            let request = objectStore.delete(id);
-            request.onsuccess = (event) => {
-               resolve();
-            };
-        });
-        return p;
+        let url = '/api/products/'
+        return ajax('DELETE', url, {"id": id});
     }
 
     static incrementId() {
